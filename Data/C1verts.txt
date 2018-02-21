@@ -1,0 +1,33 @@
+#Central Building
+#
+#Floor 1
+#Room Nodes
+C1MO
+C1CE
+C1CF
+C1CY
+C1KT
+C1CM
+C1BB
+#Door Nodes
+C1D1
+C1D15
+C1D16
+#Navigation Nodes
+C1NA
+C1NB
+C1NC
+C1ND
+C1NE
+C1NF
+C1NG
+C1NH
+C1NI
+C1NJ
+C1NK
+C1NL
+C1NM
+C1NN
+C1NO
+C1NP
+C1NQ

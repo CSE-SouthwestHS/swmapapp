@@ -1,0 +1,31 @@
+#East Building
+#
+#Floor 0
+E05
+E08
+E09
+E10
+E12
+E13
+E19
+E20
+E21
+E23
+E0PO
+E0EG
+E0LR
+#Bathroom Nodes
+E0BM
+E0BW
+#Navigation Nodes
+E0NA
+E0NB
+E0NC
+E0ND
+E0NE
+E0NF
+E0NG
+E0NH
+E0NI
+E0NJ
+E0NK

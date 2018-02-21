@@ -1,0 +1,21 @@
+#Central Building
+#
+#Floor 2
+#Room Nodes
+201
+203
+206
+207
+208
+209
+211
+212
+C2MC
+#Navigation Nodes
+C2NA
+C2NB
+C2NC
+C2ND
+C2NE
+C2NF
+C2NG

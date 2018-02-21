@@ -1,0 +1,41 @@
+#East Building
+#
+#Floor 1
+#Room Nodes
+E101
+E102
+E103
+E104
+E105
+E106
+E107
+E110
+E112
+E115
+E117
+E119
+E120
+E122
+E124
+E1PS
+#Bathroom Nodes
+E1BB
+#Door Nodes
+E1D17
+E1D19
+#Navigation Nodes
+E1NA
+E1NB
+E1NC
+E1ND
+E1NE
+E1NF
+E1NG
+E1NH
+E1NI
+E1NJ
+E1NK
+E1NL
+E1NM
+E1NN
+E1NO

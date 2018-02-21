@@ -1,0 +1,35 @@
+#West Building
+#
+#Floor 3
+#Room Nodes
+W301
+W302
+W303
+W304
+W313
+W314
+W316
+W318
+W319
+W320
+W321
+W322
+#Bathroom Nodes
+W3BW
+W3BM
+#Navigation Nodes
+W3NA
+W3NB
+W3NC
+W3ND
+W3NE
+W3NF
+W3NG
+W3NH
+W3NI
+W3NJ
+W3NK
+W3NL
+W3NM
+W3NN
+W3NO
