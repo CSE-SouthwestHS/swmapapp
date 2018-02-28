@@ -7,17 +7,63 @@ def load_vertices(name):
     for line in fin:
         if line[0] != "#":
             clean = line.split()
-            result.append(Vertex(clean[0]))
+            result.append(Vertex(clean[0], int(clean[1]), int(clean[2])))
     return result
 
+#a function to return the correct scale factor
+def scale_factor(key):
+    scales = {
+        "E0": 1,
+        "E1": 1,
+        "C1": 1,
+        "C2": 1,
+        "C3": 1,
+        "W1": 1,
+        "W2": 1,
+        "W3": 1,
+        "N1": 1
+    }
+    return scales.get(key, "Error: bad key")
+
+#a function to get the distance between two points
+def distance(x1, y1, x2, y2):
+    return ((x1-x2)**2+(y1-y2)**2)**(.5)
+
+def time_between(v1, v2):
+    scale = {
+        "0": 11/165,
+        "1": 35/468,
+        "2": 24/447,
+        "3": 25/422
+    }
+    if v1.getkey()[1] == v2.getkey()[1]:
+        d = distance(v1.getx(), v1.gety(), v2.getx(), v2.gety())
+        t = d*scale[v1.getkey()[1]]
+        #adjust distance for scale factor
+        return t
+    else:
+        #assuming it takes twelve seconds to go up/down a flight of stairs
+        return 12
+
 #a function to read edges from a .txt file
-def load_edges(name):
+def load_edges(vertices, name):
     fin = open(name, "r")
     result = []
     for line in fin:
         if line[0] != "#":
+            #if it's not a commented line
             split = line.split()
-            result.append([split[0], split[1], float(split[2])])
+            if len(split) == 2:
+                #if it is not a hardcoded distance
+                k1 = split[0]
+                k2 = split[1]
+                v1 = vertices[k1]
+                v2 = vertices[k2]
+                t = time_between(v1, v2)
+                result.append([k1, k2, t])
+            else:
+                #if a distance is hardcoded
+                result.append([split[0],split[1], float(split[2])])
     fin.close()
     return result
 
@@ -69,14 +115,12 @@ class Edges:
 
 class Graph:
     #a class to represeent our final graph
-    def __init__(self, vertices = [], edges = []):
+    def __init__(self, vertices = {}, edges = []):
         self.__vertices = vertices
         self.__edges = Edges(edges)
     #getters
     def distance(self, k1, k2):
         return self.__edges.get(k1,k2)
-
-    #the smaller cajun, recursive aspect of the path finding
 
     #the big cajun, find the path between two vertices
     def path(self, k1, k2):
@@ -85,20 +129,20 @@ class Graph:
         distance = {}
         pathto = {}
         for vertex in self.__vertices:
-            distance[vertex.getkey()] = "inf"
+            distance[vertex] = "inf"
 
         #loopin let's do it
         current = k1
         tovisit[current] = True
         distance[current] = 0
-        pathto[current] = [current]
+        pathto[current] = [self.__vertices[current]]
         while len(tovisit) > 0:
             connections = self.__edges.connections(current)
             for key in connections:
                 this_distance = distance[current] + connections[key]
                 if distance[key] == "inf" or distance[key] > this_distance:
                     distance[key] = this_distance
-                    pathto[key] = pathto[current] + [key]
+                    pathto[key] = pathto[current] + [self.__vertices[key]]
                     tovisit[key] = True
             del tovisit[current]
             min_distance = "inf"
@@ -112,12 +156,12 @@ class Graph:
             if current == k2:
                 return (distance[k2], pathto[k2])
         #shouldn't be necesarry but a failsafe
-        return (distance[k2], pathto[k2])
+        return (int(distance[k2]+.5), pathto[k2])
             
 
 def main():
-    print("start")
-    v = []
+    print("Starting Program")
+    v = {}
     e = []
     for key in ["Data/W1verts.txt",
                 "Data/N1verts.txt",
@@ -129,7 +173,9 @@ def main():
                 "Data/E0verts.txt",
                 "Data/E1verts.txt"
                 ]:
-        v.extend(load_vertices(key))
+        vertices = load_vertices(key)
+        for vertex in vertices:
+            v[vertex.getkey()] = vertex
     for key in ["Data/W1edges.txt",
                 "Data/N1edges.txt",
                 "Data/W2edges.txt",
@@ -141,13 +187,15 @@ def main():
                 "Data/E1edges.txt",
                 "Data/BetweenSections.txt"
                 ]:
-        e.extend(load_edges(key))
+        e.extend(load_edges(v, key))
 
     g = Graph(v, e)
-    print("initialized")
-    start = float(time.time())
-    print(g.path("E106","W2BR"))
-    print(float(time.time())-start)
+    print("Initialized Graph")
+    path = g.path(input("Starting Node: "), input("Ending Node: "))
+    print("Estimated Time: " + str(path[0]) + " seconds")
+    print("Route: ")
+    for vertex in path[1]:
+        print(vertex.getkey())
 
 if __name__ == "__main__":
     main()
