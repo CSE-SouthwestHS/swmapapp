@@ -1,4 +1,4 @@
-import time
+import Draw
 
 #a function to read vertices from a .txt file
 def load_vertices(name):
@@ -83,7 +83,7 @@ class Vertex:
     def getkey(self):
         return self.__key
     def getfloor(self):
-        return self.__floor
+        return self.__key[1]
 
 class Edges:
     #two-dimensional associative array to store distances
@@ -196,6 +196,7 @@ def main():
     print("Route: ")
     for vertex in path[1]:
         print(vertex.getkey())
+    Draw.draw_path(path[1])
 
 if __name__ == "__main__":
     main()
