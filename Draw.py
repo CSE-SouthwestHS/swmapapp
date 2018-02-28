@@ -22,7 +22,7 @@ def draw_path(vertices, r = 16):
         return False
     floor_map = {
         "0": "FloorPlans/SW_Map_Floor_0.png",
-        "1":"FloorPlans/SW_Map_Floor_1.png",
+        "1": "FloorPlans/SW_Map_Floor_1.png",
         "2": "FloorPlans/SW_Map_Floor_2.png",
         "3": "FloorPlans/SW_Map_Floor_3.png"
     }
@@ -39,7 +39,7 @@ def draw_path(vertices, r = 16):
     pathfolder = "Paths/" + vertices[0].getkey() + "_" + vertices[-1].getkey() + "/"
     if not os.path.exists(pathfolder):
         os.makedirs(pathfolder)
-    draw_vertex(curdraw, vertices[0], r/2)
+    draw_vertex(curdraw, vertices[0], r*2)
     ix = 0
     while ix < len(vertices)-1:
         v1 = vertices[ix]
@@ -47,14 +47,19 @@ def draw_path(vertices, r = 16):
         if v1.getfloor() == v2.getfloor():
             draw_line(curdraw, v1, v2, r)
         else:
-            draw_vertex(curdraw, v1, r/2)
+            draw_vertex(curdraw, v1, r*2)
             name = pathfolder + v1.getfloor() + ".png"
             curimage.save(name)
-            curimage = Image.open(floor_map[v2.getfloor()])
+            if os.path.exists(pathfolder + v2.getfloor() + ".png"):
+                #if we have already drawn on this floor
+                curimage = Image.open(pathfolder + v2.getfloor() + ".png")
+            else:
+                #we need to load a blank image of the floor
+                curimage = Image.open(floor_map[v2.getfloor()])
             curdraw = ImageDraw.Draw(curimage)
-            draw_vertex(curdraw, v2, r/2)
+            draw_vertex(curdraw, v2, r*2)
         ix += 1
-    draw_vertex(curdraw, vertices[-1], r/2)
+    draw_vertex(curdraw, vertices[-1], r*2)
     name = pathfolder + vertices[-1].getfloor() + ".png"
     curimage.save(name)
     return True

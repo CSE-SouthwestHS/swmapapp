@@ -1,4 +1,5 @@
 import Draw
+import random
 
 #a function to read vertices from a .txt file
 def load_vertices(name):
@@ -16,10 +17,10 @@ def distance(x1, y1, x2, y2):
 
 def time_between(v1, v2):
     scale = {
-        "0": 11/165,
-        "1": 35/468,
-        "2": 24/447,
-        "3": 25/422
+        "0": 16/165,
+        "1": 54/468,
+        "2": 36/447,
+        "3": 38/422
     }
     if v1.getkey()[1] == v2.getkey()[1]:
         d = distance(v1.getx(), v1.gety(), v2.getx(), v2.gety())
@@ -141,7 +142,7 @@ class Graph:
             if current == k2:
                 return (distance[k2], pathto[k2])
         #shouldn't be necesarry but a failsafe
-        return (int(distance[k2]+.5), pathto[k2])
+        return (distance[k2], pathto[k2])
             
 
 def main():
@@ -176,6 +177,24 @@ def main():
 
     g = Graph(v, e)
     print("Initialized Graph")
+
+    #code to generate random paths to take for testing
+    """
+    keys = sorted(list(v.keys()))
+    for _ in range(100):
+        ax = random.randint(0, len(keys)-1)
+        bx = random.randint(0, len(keys)-1)
+        while keys[ax][2] == "N":
+            ax = random.randint(0, len(keys)-1)
+        while keys[bx][2] == "N":
+            bx = random.randint(0, len(keys)-1)
+        print(keys[ax] + " to " + keys[bx])
+        (time, path) = g.path(keys[ax], keys[bx])
+        Draw.draw_path(path)
+    return
+    """
+
+    #classic procedure
     path = g.path(input("Starting Node: "), input("Ending Node: "))
     print("Estimated Time: " + str(path[0]) + " seconds")
     print("Route: ")
