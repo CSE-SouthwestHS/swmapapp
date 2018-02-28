@@ -10,21 +10,6 @@ def load_vertices(name):
             result.append(Vertex(clean[0], int(clean[1]), int(clean[2])))
     return result
 
-#a function to return the correct scale factor
-def scale_factor(key):
-    scales = {
-        "E0": 1,
-        "E1": 1,
-        "C1": 1,
-        "C2": 1,
-        "C3": 1,
-        "W1": 1,
-        "W2": 1,
-        "W3": 1,
-        "N1": 1
-    }
-    return scales.get(key, "Error: bad key")
-
 #a function to get the distance between two points
 def distance(x1, y1, x2, y2):
     return ((x1-x2)**2+(y1-y2)**2)**(.5)
@@ -43,7 +28,7 @@ def time_between(v1, v2):
         return t
     else:
         #assuming it takes twelve seconds to go up/down a flight of stairs
-        return 12
+        return 13
 
 #a function to read edges from a .txt file
 def load_edges(vertices, name):

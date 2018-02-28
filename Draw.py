@@ -31,7 +31,7 @@ def draw_path(vertices, r = 16):
     curdraw = ImageDraw.Draw(curimage)
     if len(vertices) == 1:
         #one item case
-        draw_vertex(curdraw, vertices[0], r/2)
+        draw_vertex(curdraw, vertices[0], r)
         name = "Nodes/" + vertices[0].getkey() + ".png"
         curimage.save(name)
         return True
