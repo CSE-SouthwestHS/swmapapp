@@ -125,6 +125,9 @@ class Graph:
         while len(tovisit) > 0:
             connections = self.__edges.connections(current)
             for key in connections:
+                #this if statement makes sure only navigation nodes are considered
+                if key[2] != "N" and key != k2:
+                    continue
                 this_distance = distance[current] + connections[key]
                 if distance[key] == "inf" or distance[key] > this_distance:
                     distance[key] = this_distance
@@ -145,8 +148,7 @@ class Graph:
         return (distance[k2], pathto[k2])
             
 
-def main():
-    print("Starting Program")
+def route(start, end):
     v = {}
     e = []
     for key in ["Data/W1verts.txt",
@@ -174,33 +176,8 @@ def main():
                 "Data/BetweenSections.txt"
                 ]:
         e.extend(load_edges(v, key))
-
     g = Graph(v, e)
-    print("Initialized Graph")
-
-    #code to generate random paths to take for testing
-    """
-    keys = sorted(list(v.keys()))
-    for _ in range(100):
-        ax = random.randint(0, len(keys)-1)
-        bx = random.randint(0, len(keys)-1)
-        while keys[ax][2] == "N":
-            ax = random.randint(0, len(keys)-1)
-        while keys[bx][2] == "N":
-            bx = random.randint(0, len(keys)-1)
-        print(keys[ax] + " to " + keys[bx])
-        (time, path) = g.path(keys[ax], keys[bx])
-        Draw.draw_path(path)
-    return
-    """
-
     #classic procedure
-    path = g.path(input("Starting Node: "), input("Ending Node: "))
-    print("Estimated Time: " + str(path[0]) + " seconds")
-    print("Route: ")
-    for vertex in path[1]:
-        print(vertex.getkey())
-    Draw.draw_path(path[1])
-
-if __name__ == "__main__":
-    main()
+    path = g.path(start, end)
+    images = Draw.draw_path(path[1])
+    return (path[0], images)

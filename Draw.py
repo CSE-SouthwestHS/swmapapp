@@ -1,5 +1,4 @@
 from PIL import Image, ImageDraw
-from Map import Vertex
 import os
 
 #draws an individual point
@@ -26,19 +25,22 @@ def draw_path(vertices, r = 16):
         "2": "FloorPlans/SW_Map_Floor_2.png",
         "3": "FloorPlans/SW_Map_Floor_3.png"
     }
+    images = {
+        "0": Image.open(floor_map["0"]),
+        "1": Image.open(floor_map["1"]),
+        "2": Image.open(floor_map["2"]),
+        "3": Image.open(floor_map["3"])
+    }
     #initialize shit
-    curimage = Image.open(floor_map[vertices[0].getfloor()])
-    curdraw = ImageDraw.Draw(curimage)
     if len(vertices) == 1:
         #one item case
-        draw_vertex(curdraw, vertices[0], r)
-        name = "Nodes/" + vertices[0].getkey() + ".png"
-        curimage.save(name)
-        return True
+        curimage = images[vertices[0].getfloor()]
+        curdraw = ImageDraw.Draw(curimage)
+        draw_vertex(curdraw, vertices[0], r*2)
+        return images
     #the big cajun
-    pathfolder = "Paths/" + vertices[0].getkey() + "_" + vertices[-1].getkey() + "/"
-    if not os.path.exists(pathfolder):
-        os.makedirs(pathfolder)
+    curimage = images[vertices[0].getfloor()]
+    curdraw = ImageDraw.Draw(curimage)
     draw_vertex(curdraw, vertices[0], r*2)
     ix = 0
     while ix < len(vertices)-1:
@@ -48,18 +50,9 @@ def draw_path(vertices, r = 16):
             draw_line(curdraw, v1, v2, r)
         else:
             draw_vertex(curdraw, v1, r*2)
-            name = pathfolder + v1.getfloor() + ".png"
-            curimage.save(name)
-            if os.path.exists(pathfolder + v2.getfloor() + ".png"):
-                #if we have already drawn on this floor
-                curimage = Image.open(pathfolder + v2.getfloor() + ".png")
-            else:
-                #we need to load a blank image of the floor
-                curimage = Image.open(floor_map[v2.getfloor()])
+            curimage = images[v2.getfloor()]
             curdraw = ImageDraw.Draw(curimage)
             draw_vertex(curdraw, v2, r*2)
         ix += 1
     draw_vertex(curdraw, vertices[-1], r*2)
-    name = pathfolder + vertices[-1].getfloor() + ".png"
-    curimage.save(name)
-    return True
+    return images

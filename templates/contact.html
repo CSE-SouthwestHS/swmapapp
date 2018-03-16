@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="/static/barlogo.ico">
+    <title>SWMapp Contact</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115470904-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115470904-1');
+    </script>
+    <link href="/static/MapCSS/style.css" type="text/css" rel="stylesheet">
+    <script src="/static/Java/feedback.js"></script>
+  </head>
+  <body>
+    <div class="smallheader">
+      <div class="container">
+        <h1><a href="/home/">Southwest Map App<a></h1>
+      </div>
+    </div>
+
+    <div class="nav">
+      <div class="container">
+        <ul>
+	  <a class="btn" href="/home/"><li>Home</li></a>
+          <a class="btn select" href="/contact/"><li>Contact</li></a>
+          <a class="btn" href="/help/"><li>Help</li></a>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contact">
+      	<div class="essay3">
+          <h1>Contributers:</h1><br/>
+
+      	  <h1>Seay Zagar</h1>
+      	  <ul>
+      	    <li><p>Email: seaystir@gmail.com</p></li>
+      	  </ul>
+
+      	  <h1>Mark Pekala</h1>
+      	  <ul>
+      	    <li><p>Email: mpek66@gmail.com</p></li>
+      	  </ul>
+
+      	  <h1>Simon Lynn-Klimenko</h1>
+      	  <ul>
+      	    <li><p>Email: simon.lynnklimenko@gmail.com </p></li>
+      	  </ul>
+
+      	  <h1>William Munnich</h1>
+      	  <ul>
+      	    <li><p>Email: wmun1901@mpsedu.org </p></li>
+      	  </ul>
+
+          <h1>Ben Peterson</h1>
+	         <ul>
+	            <li><p>Email: benpeterson1357@gmail.com </p></li>
+	         </ul>
+
+           <h1>Caelan Kleinhans</h1>
+	          <ul>
+	             <li><p>Email: calexk@live.com </p></li>
+	          </ul>
+
+          <h1>Mr. Pass</h1>
+      	  <ul>
+      	    <li><p>Email: gabrielpass@mpls.k12.mn.us </p></li>
+      	  </ul>
+
+       	</div>
+
+        <div class="feedbox">
+          <form method="post" role="form" id="feedback_form" action="/static/form-to-email.php">
+            <h1>Tell us about your experience</h1>
+            <label for="fname">First Name *</label><br/>
+            <input type="text" id="fname" name="firstname" placeholder="" required><br/>
+
+            <label for="lname">Last Name *</label><br/>
+            <input type="text" id="lname" name="lastname" placeholder="" required><br/>
+
+            <label for="email">Email *</label><br/>
+            <input type="email" id="email" name="email" placeholder="" required><br/>
+
+
+            <label for="experience">Experience *</label><br/>
+            <select id="experience" name="experience" required>
+              <option value="great">Great</option>
+              <option value="average">Average</option>
+              <option value="bad">Bad</option>
+            </select>
+
+            <label for="subject">Description</label>
+            <textarea id="coments" name="subject" placeholder="" rows="5"></textarea>
+
+            <input type="submit" name="submit" value="Submit">
+          </form>
+        </div>
+
+    </div>
+    <div id="success_message" style="width:100%; height:75%; display:none; "> <h3>Posted your feedback successfully!</h3> </div>
+    <div id="error_message" style="width:100%; height:75%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+    <script type="text/javascript">
+    var frmvalidator = new Validator("feedback_form");
+    frmvalidator.addValidation("fname","req","Please enter your first name.");
+    frmvalidator.addValidation("lname","req");
+    frmvalidator.addValidation("email","req");
+    frmvalidator.addValidation("email","email","Please enter a valid email address.");
+    </script>
+    <div class="footer3">
+      <div class="container">
+        <p>&copy; SWMapp</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <title>SWMapp</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115470904-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115470904-1');
+    </script>
+    <link rel="shortcut icon" href="/static/SWmapico.ico">
+    <link rel="icon" type="image/png" href="/static/images/SWmapico_16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" type="image/png" href="/static/images/SWmapico_32x32.png" sizes="32x32">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' type='text/css'>
+    <link rel="stylesheet" href="/static/MapCSS/style.css" type="text/css">
+    <link rel="stylesheet" href="/static/MapCSS/rangeslider.css" type="text/css">
+    <script type="text/javascript">
+//----------------------Loading Screen-------//
+    window.addEventListener("load", function(){
+      var load_screen = document.getElementById("load_screen");
+      setTimeout(function(){
+      document.body.removeChild(load_screen);
+      document.getElementById("floor_img").innerHTML = "<img src=\"/static/images/SW_Floor_1.svg\" width=\"30px\" height=\"auto\">";
+    }, 800);
+    });
+    </script>
+    <script type="text/javascript">
+    window.onload = function() {
+      initCanvas();
+    }
+    </script>
+    <style>
+    /*-------------^-Loading Loading Screen-^-------------*/
+    #load_screen{
+      background: #424242;
+      opacity: 1;
+      position: fixed;
+      z-index: 10;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+    }
+    #loading{
+      width: 240px;
+      height: 48px;
+      margin: 400px auto;
+    }
+    .bar p{
+      padding-top: 40px;
+      padding-left: 50px;
+      position: inherit;
+      color: white;
+    }
+    .bar {
+      width: 240px;
+      height: 48px;
+      border: 3px solid #ddd;
+      border-radius: 40px;
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          #891cdf,
+          #891cdf 15px,
+          #ddd 25px,
+          #ddd 40px /* determines size */
+        );
+      background-size: 56px 56px;
+      animation: move .5s linear infinite;
+    }
+    @keyframes move {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 56px 0;
+      }
+    }
+    </style>
+  </head>
+  <body>
+      
+    <img src="data:image/png;base64,{{zero}}" width="100%">
+    <img src="data:image/png;base64,{{one}}" width="100%">
+    <img src="data:image/png;base64,{{two}}" width="100%">
+    <img src="data:image/png;base64,{{three}}" width="100%">
+    
+    <div id="load_screen">
+      <div id="loading">
+        <div class="bar">
+        <p>Loading...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="windowcolor"></div>
+
+    <div class="Scontainer">
+      <div class="rangeslider">
+        <input type="ange" id="Cslider" max="360" min="0" step="1" value="57" onclick="colorChange()"></input>
+      </div>
+      <div id="/Xicon" onclick="noColor()"></div>
+    </div>
+
+    <div id="FLUI-div" class="FLUI" onclick="Deactivate()">
+      <svg id="FLUI-svg" xmlns="http://www.w3.org/2000/svg" style="display: inline; width: 100%; min-width: 100%; max-width: 100%; height: 100%; min-height: 100%; max-height: 100%;" version="1.1">
+            <g>
+              <rect width="800" height="800" fill="none"/>
+            </g>
+            <defs>
+              <pattern id="mapView" width="800" height="800"/>
+            </defs>
+            <image x="0" y="400" id="FloorX" width="800" height="800" xlink:href="/static/images/SW_Floor_1.svg" clip-path="url(#mapView)"/>
+            <image x="0" y="1000" id="FloorY" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
+            <image x="0" y="1500" id="FloorZ" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
+            <image x="0" y="2075" id="Floor0" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
+            <text x="0" y="1000" id="floor_text" class="floor_text"></text>
+      </svg>
+    </div>
+
+    <div class="container3" id="map">
+        <div class="essayMap">
+          <a id="floor_img" class="floor_img"></a>
+        </div>
+      </div>
+
+    <div class="searchSpace">
+      <div class="searchBar">
+        <form autocomplete="off">
+          <div class="autocomplete">
+            <input id="search" type="text" placeholder="Search Southwest" onclick="Deactivate()">
+          </div>
+          <button type="button" id="srchBtn" class="searchBtn" onclick="Entry()"><img src="/static/images/searchButton.jpg"/></button>
+        </form>
+        <div class="floor">
+            <div class="flico">
+              <img src="/static/images/layer.png" alt="Search">
+              <a onclick="fl1()">Floor 1</a>
+              <a onclick="fl2()">Floor 2</a>
+              <a onclick="fl3()">Floor 3</a>
+              <a onclick="bsm()">Basement</a>
+              <a onclick="All()">Show all</a>
+              <a onclick="clr()">Clear</a>
+            </div>
+          </div>
+        <div class="icon">
+          <div class="hamburger">
+            <ul>
+              <a href="/home/">Home</a>
+              <a href="/contact/">Contact</a>
+              <a href="/help/">Help</a>
+              <a onclick="Colors()" class="colorActivator"><p class="colors">Colors</p></a>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="startbar">
+          <form autocomplete="off">
+            <div class="autocomplete">
+              <input id="searchpos" type="text" placeholder="Your Location" onclick="Deactivate()">
+            </div>
+            <button type="button" id="strtBtn" class="startposBtn" onclick="Trace()"><img src="/static/images/Locationicon.png"/></button>
+          </form>
+        </div>
+    </div>
+
+<!-- ________BEGIN javascript________ -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/static/java/slider.js"></script>
+    <script src="/static/java/interactive.js"></script>
+    <script src="/static/java/mapMover.js"></script>
+    <script src="/static/java/autocomplete.js"></script>
+    <script src="/static/java/autocomplete_pos.js"></script>
+
+    <script>
+    function colorChange() {
+      var Color = document.getElementById("Cslider").value;
+      $(".windowcolor").css("background-color", "hsl(" + Color + ", 50%, 85%)");
+    }
+    </script>
+
+    <script>
+    $(function() {
+      $('input[type="range"]').rangeslider({
+        polyfill: false,
+        onSlide: function(position, value) {
+          // do some stuff ...
+
+        },
+        onSlideEnd: function(position) {
+          // do some stuff ...
+
+                  }
+              });
+          });
+    </script>
+
+    <script type="text/javascript">//script to update what's necesarry
+        document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'src', {{zero}});
+        document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', purl2);
+        document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', purl3);
+        document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', purl4);
+    </script>
+
+    <script type="text/javascript">
+    function Call(){
+      Destination();
+      Entry();
+    }
+    function Path(){
+      Trace();
+    }
+    function Entry(){
+      var x = document.getElementById("search").value;
+       if (results.indexOf(x) < 0){
+         $('.startbar').removeClass('active');
+         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+         document.getElementById("floor_img").innerHTML = z;
+         document.getElementById("floor_text").innerHTML = z;
+       } else {
+         // this will be a new recieving function from python.
+         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+         //------------------^
+         document.getElementById("floor_img").innerHTML = x;
+         // ajax the JSON to the server
+         $.post("receiver", x, function(){   // This value will be sent to Python to draw line between Point A and Point B...
+         });
+         // stop link reloading the page
+         event.preventDefault();
+         document.getElementById("floor_text").innerHTML = '';
+         $('.startbar').addClass('active');
+       }
+    }
+    function Trace(){
+      var x = document.getElementById("search").value;
+      var y = document.getElementById("searchpos").value;
+        if ( $('.startbar').hasClass('active') ){
+          if (y == x){
+            document.getElementById("floor_img").innerHTML = "You are there!";
+            document.getElementById("floor_text").innerHTML = "You are there!";
+          } else {
+            if (results.indexOf(y) >= 0){
+              if (results.indexOf(x) == -1){
+                document.getElementById("floor_text").innerHTML = z;
+                document.getElementById("floor_img").innerHTML = "I don't know where you want to go, try a different location.";
+              } else {
+                /*------Send room # to Python Script------*/
+                document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+                document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+                document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+                document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+                document.getElementById("floor_img").innerHTML = y +" -> "+ x;
+                // ajax the JSON to the server
+	              $.post("receiver", x + ", " + y, function(){   // This value will be sent to Python to draw line between Point A and Point B...
+	              });
+	              // stop link reloading the page
+                event.preventDefault();
+                document.getElementById("floor_text").innerHTML = '';
+              }
+            } else {
+              document.getElementById("floor_text").innerHTML = z;
+              document.getElementById("floor_img").innerHTML = z;
+            }
+          }
+        }
+    }
+    var z = "Room not found.";
+    var results = ["110","201","203","206","207","208","209","211","212","303","306","307","308","309","310","311","313","314","315","317","321","Art","Athletic Dir.",
+        "Band","BlackBox","Boys Locker Room","Cafeteria","Choir","Community Ed","Courtyard Lower","Courtyard Upper","Dance","E05","E08","E09","E10","E101","E102","E103","E104","E105",
+        "E106","E107","E110","E112","E115","E117","E119","E12","E120","E122","E124","E13","E19","E20","E21","E23","East Gym","Girls Locker Room","Guitar Room","Kitchen",
+        "Auditorium","Main Office","Media Center","N101","N102","N103","N104","N113","N130","N131","N132","N133","N135","N136","N137","N140","N142","N144","N145","N148",
+        "N149","N150","N151","N152","N153","N154","Pool","Pool Locker Rooms","Pool Seating","The Cove","The Garages","W101","W102","W105","W106","W108","W109","W111","W114",
+        "W115","W116","W117","W118","W119","W120","W121","W124","W125","W126","W201","W202","W203","W204","W208","W221","W223","W225","W226","W228","W229","W230","W232 A-M",
+        "W301","W302","W303","W304","W313","W314","W316","W318","W319","W320","W321","W322","Weight Room","West Gym","Bathrooms","Elevator","Door 1","Door 2","Door 5","Door 6",
+        "Athletic Entrance","Door 7","Door 12","Door 13","Door 15","Door 16","Door 17",];
+    </script>
+
+    <script> // Allow the Enter key to trigger search function.
+        var input = document.getElementById("search");
+        input.addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            document.getElementById("srchBtn").click();
+          }
+        });
+        var input = document.getElementById("searchpos");
+        input.addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            document.getElementById("strtBtn").click();
+          }
+        });
+        </script>
+
+        <script> // Function allows for touch-pan.
+        // Don't use window.onLoad like this in production, because it can only listen to one function.
+        window.onload = function() {
+          var beforePan
+
+          beforePan = function(oldPan, newPan){
+            var stopHorizontal = false
+              , stopVertical = false
+              , gutterWidth = 100
+              , gutterHeight = 100
+                // Computed variables
+              , sizes = this.getSizes()
+              , leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth
+              , rightLimit = sizes.width - gutterWidth - (sizes.viewBox.x * sizes.realZoom)
+              , topLimit = -((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom) + gutterHeight
+              , bottomLimit = sizes.height - gutterHeight - (sizes.viewBox.y * sizes.realZoom)
+
+            customPan = {}
+            customPan.x = Math.max(leftLimit, Math.min(rightLimit, newPan.x))
+            customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y))
+
+            return customPan
+          }
+
+          // Expose to window namespace for testing purposes
+          window.panZoom = svgPanZoom('#FLUI-svg', {
+            zoomEnabled: true
+          , controlIconsEnabled: true
+          , fit: 1
+          , center: 1
+          , beforePan: beforePan
+          });
+
+          // panZoom.setBeforePan(beforePan)
+        };
+      </script>
+<!--____________ END javascript___________-->
+
+
+  </body>
+</html>
