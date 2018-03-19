@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" type="image/png" href="/static/images/SWmapico_32x32.png" sizes="32x32">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' type='text/css'>
     <link rel="stylesheet" href="/static/MapCSS/style.css" type="text/css">
-    <link rel="stylesheet" href="/static/MapCSS/rangeslider.css" type="text/css">
+    <link rel="stylesheet" href="/static/MapCSS/BGColor.css" type="text/css">
     <script type="text/javascript">
 //----------------------Loading Screen-------//
     window.addEventListener("load", function(){
@@ -83,12 +83,7 @@
     </style>
   </head>
   <body>
-      
-    <img src="data:image/png;base64,{{zero}}" width="100%">
-    <img src="data:image/png;base64,{{one}}" width="100%">
-    <img src="data:image/png;base64,{{two}}" width="100%">
-    <img src="data:image/png;base64,{{three}}" width="100%">
-    
+
     <div id="load_screen">
       <div id="loading">
         <div class="bar">
@@ -97,13 +92,13 @@
       </div>
     </div>
 
-    <div class="windowcolor"></div>
+    <div id="windowcolor"></div>
 
     <div class="Scontainer">
-      <div class="rangeslider">
-        <input type="ange" id="Cslider" max="360" min="0" step="1" value="57" onclick="colorChange()"></input>
+      <div id="BGColor" onchange=""="colorChange()">
+        <input type="text" id="Cinput" placeholder="Range 0-360" maxlength="3"oninput="colorChange()"></input>
       </div>
-      <div id="/Xicon" onclick="noColor()"></div>
+      <div id="Xicon" onclick="noColor()"></div>
     </div>
 
     <div id="FLUI-div" class="FLUI" onclick="Deactivate()">
@@ -151,9 +146,10 @@
           <div class="hamburger">
             <ul>
               <a href="/home/">Home</a>
-              <a href="/contact/">Contact</a>
+              <a href="/contact">Contact</a>
               <a href="/help/">Help</a>
               <a onclick="Colors()" class="colorActivator"><p class="colors">Colors</p></a>
+              <a id="displayMode">Night &#x263E;</a>
             </ul>
           </div>
         </div>
@@ -169,6 +165,8 @@
         </div>
     </div>
 
+    <div class="DarkMode"></div>
+
 <!-- ________BEGIN javascript________ -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -180,32 +178,9 @@
 
     <script>
     function colorChange() {
-      var Color = document.getElementById("Cslider").value;
-      $(".windowcolor").css("background-color", "hsl(" + Color + ", 50%, 85%)");
+      var Color = document.getElementById("Cinput").value;
+      $("#windowcolor").css("background-color", "hsl(" + Color + ", 50%, 85%)");
     }
-    </script>
-
-    <script>
-    $(function() {
-      $('input[type="range"]').rangeslider({
-        polyfill: false,
-        onSlide: function(position, value) {
-          // do some stuff ...
-
-        },
-        onSlideEnd: function(position) {
-          // do some stuff ...
-
-                  }
-              });
-          });
-    </script>
-
-    <script type="text/javascript">//script to update what's necesarry
-        document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'src', {{zero}});
-        document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', purl2);
-        document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', purl3);
-        document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', purl4);
     </script>
 
     <script type="text/javascript">
@@ -234,18 +209,17 @@
          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
          //------------------^
          document.getElementById("floor_img").innerHTML = x;
-         // ajax the JSON to the server
-         $.post("receiver", x, function(){   // This value will be sent to Python to draw line between Point A and Point B...
-         });
          // stop link reloading the page
          event.preventDefault();
-         document.getElementById("floor_text").innerHTML = '';
+         document.getElementById("floor_text").innerHTML = x;
          $('.startbar').addClass('active');
        }
     }
     function Trace(){
-      var x = document.getElementById("search").value;
-      var y = document.getElementById("searchpos").value;
+      var init_html = window.location.href,
+          html = init_html.slice(0, -5),
+          x = document.getElementById("search").value,
+          y = document.getElementById("searchpos").value;
         if ( $('.startbar').hasClass('active') ){
           if (y == x){
             document.getElementById("floor_img").innerHTML = "You are there!";
@@ -263,10 +237,8 @@
                 document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
                 document.getElementById("floor_img").innerHTML = y +" -> "+ x;
                 // ajax the JSON to the server
-	              $.post("receiver", x + ", " + y, function(){   // This value will be sent to Python to draw line between Point A and Point B...
-	              });
+	              location.assign(html + "/" + y + "/" + x + "/");
 	              // stop link reloading the page
-                event.preventDefault();
                 document.getElementById("floor_text").innerHTML = '';
               }
             } else {

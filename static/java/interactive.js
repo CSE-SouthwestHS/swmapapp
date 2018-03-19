@@ -31,19 +31,71 @@ function Deactivate() {
 $(document).ready(function(){
   $('.colorActivator').click(function(){
     $('.Scontainer').toggleClass('active');
+    $("#windowcolor").css("animation", "CCActivate 4s forwards");
+    $("#BGColor input[type=text]").css("animation", "CCBarActivate 3s forwards");
+    setTimeout(function() {
+      reset_animation_window();
+      reset_animation_textbox(); }, 4000);
   });
 });
 
+function reset_animation_window() {
+  var el = document.getElementById('windowcolor');
+  el.style.animation = 'none';
+  el.offsetHeight; /* trigger reflow */
+  el.style.animation = null;
+}
+function reset_animation_textbox() {
+  var el = document.getElementById('BGColor');
+  el.style.animation = 'none';
+  el.offsetHeight; /* trigger reflow */
+  el.style.animation = null;
+}
 //----------------windowcolor Changer below----------
 
 function noColor(){
-  $(".windowcolor").css("background-color", "#eeeccc");
+  $("#windowcolor").css("background-color", "#eeeccc");
 }
+
+$(document).ready(function(){
+  $('#displayMode').click(function(){
+    $(".DarkMode").toggleClass('active');
+    if ( $(".Darkmode").hasClass('active') ){
+      $("#windowcolor").css("background-color", "#3b3b2b");
+      $(".searchBar").css("background-color", "#494949");
+      $(".startbar").css("background-color", "#494949");
+      $("#search").css("background-color", "#494949");
+      $("#search").css("color", "white");
+      $("#searchpos").css("color", "white");
+      $("#searchpos").css("background-color", "#494949");
+      $(".floor a").css("background-color", "#656565");
+      $(".icon a").css("background-color", "#656565");
+      $(".floor a").css("color", "#d1d1d1");
+      $(".icon a").css("color", "#d1d1d1");
+      $(".FLUI").css("filter", "invert(80%)");
+      document.getElementById("displayMode").innerHTML = "Day &#x2600;";
+    } else {
+      $("#windowcolor").css("background-color", "#eeeccc");
+      $(".searchBar").css("background-color", "white");
+      $(".startbar").css("background-color", "white");
+      $("#search").css("background-color", "white");
+      $("#search").css("color", "black");
+      $("#searchpos").css("color", "black");
+      $("#searchpos").css("background-color", "white");
+      $(".floor a").css("background-color", "#eee");
+      $(".icon a").css("background-color", "#eee");
+      $(".floor a").css("color", "#222");
+      $(".icon a").css("color", "#222");
+      $(".FLUI").css("filter", "invert(0%)");
+      document.getElementById("displayMode").innerHTML = "Night &#x263E;";
+    }
+  });
+});
 //--------------------Floor Display below------
 
 function fl1() {
   document.getElementById("floor_text").innerHTML = '';
-  document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', floor);
+  document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'images/SW_Floor_1.svg');
   document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
   document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
   document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');

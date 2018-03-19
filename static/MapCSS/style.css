@@ -11,7 +11,7 @@ body {
   background-color: toggle(black);
 }
 
-.windowcolor{
+#windowcolor{
   position: fixed;
   z-index: -5;
   background: #eeeccc;
@@ -19,6 +19,21 @@ body {
   height: 100%;
   margin-top: 0;
   min-height: 100%;
+}
+
+@keyframes CCActivate {
+  0%{
+    background-color: #eeeccc;
+  }
+  45%{
+    background-color: black;
+  }
+  55%{
+    background-color: black;
+  }
+  100%{
+    background-color: #eeeccc;
+  }
 }
 
 .FLUI{
@@ -1106,13 +1121,12 @@ sub {
       position: relative;
       left: 0;
       z-index: 3;
-      box-shadow: 0 6px 14px #888888;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
 
     .searchBar img{
       width: 60px;
       cursor: auto;
-      background: url(layer.png);
       position: absolute;
       right: 10px;
       top: -3px;
@@ -1170,13 +1184,13 @@ sub {
       top: 55px;
       margin-left: 55px;
       width: 100px;
+      background-color: white;
     }
 
     .autocomplete-items div {
       padding: 10px;
       font-size: 1em;
       cursor: pointer;
-      background-color: #fff;
       border-bottom: 1px solid #d4d4d4;
       overflow: scroll;
     }
@@ -1264,6 +1278,7 @@ sub {
     }
     .startbar.active{
       animation: appear .5s forwards;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
 
     @keyframes hid {
@@ -1332,13 +1347,12 @@ sub {
     position: relative;
     left:0px;
     z-index: 3;
-    box-shadow: 0 10px 18px #888888;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.5);
   }
 
   .searchBar img{
     width: 220px;
     cursor: auto;
-    background: url(layer.png);
     position: absolute;
     right: -28px;
     top: -42px;
@@ -1396,13 +1410,13 @@ sub {
     top: 140px;
     margin-left: 140px;
     width: 300px;
+    background-color: white;
   }
 
   .autocomplete-items div {
     padding: 15px;
     font-size: 3.5em;
     cursor: pointer;
-    background-color: #fff;
     border-bottom: 1px solid #d4d4d4;
     overflow: scroll;
   }
@@ -1491,6 +1505,7 @@ sub {
     }
     .startbar.active{
     animation: appear .5s forwards;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
 
     @keyframes hid {
@@ -1505,12 +1520,12 @@ sub {
     0%{
       transform: translateY(-140px);
       z-index: -2;
-      box-shadow: 0 #888888;
+      box-shadow: 0 rgba(0,0,0,0.5);
       }
     100%{
       transform: translateY(0px);
       z-index: 4;
-      box-shadow: 5px 10px 10px #888;
+      box-shadow: 5px 10px 10px rgba(0,0,0,0.5);
       }
     }
 
@@ -1599,6 +1614,7 @@ sub {
   .colors p{
     line-height: 0px;
   }
+
   .icon a{
     background: #eee;
     color: #222;
@@ -1613,13 +1629,13 @@ sub {
     margin-left: -55px;
     margin-top: -5px;
     overflow: auto;
-    box-shadow: 0 6px 8px #888888;
+    box-shadow: 0 6px 8px rgba(0,0,0,0.5);
     animation: slideback 0.75s ease forwards;
     z-index: 5;
   }
 
   .icon a:hover{
-    background: #dabbfd;
+    background: #dabbfd !important;
   }
 
   .icon.active a{
@@ -1705,12 +1721,12 @@ sub {
     margin-left: -50px;
     margin-top: -5px;
     overflow: scroll;
-    box-shadow: 0 6px 8px #888888;
+    box-shadow: 0 6px 8px rgba(0,0,0,0.5);
     animation: slideback2 0.5s ease forwards;
   }
 
   .floor a:hover{
-    background: #dabbfd;
+    background: #dabbfd !important;
   }
 
   .floor.active a{
@@ -1723,7 +1739,8 @@ sub {
 
   @keyframes slide2{
     0%{
-      transform: translateX(75px) translateY(60px);
+      -webkit-transform: translateX(75px) translateY(60px);
+      -moz-transform: translateX(75px) translateY(60px);
     }
     100%{
       transform: translateX(-50px) translateY(60px);
@@ -1764,7 +1781,7 @@ sub {
     width: 85px;
     height: 85px;
     background: transparent;
-    cursor: auto;
+    cursor: pointer;
   }
 
   .hamburger{
@@ -1804,15 +1821,15 @@ sub {
     line-height: 140px;
     font-weight: 500;
     margin-left: -50px;
-    margin-top: -5px;
+    margin-top: -6px;
     overflow: auto;
     animation: slideback 0.75s ease forwards;
-    box-shadow: 0 10px 18px #888888;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.5);
     z-index: 4;
   }
 
   .icon a:hover{
-    background: #dabbfd;
+    background: #dabbfd !important;
   }
 
   .icon.active a{
@@ -1894,12 +1911,12 @@ sub {
     margin-left: -50px;
     margin-top: -5px;
     overflow: auto;
-    box-shadow: 0 10px 18px #888888;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.5);
     animation: slideback2 0.5s ease forwards;
   }
 
   .floor a:hover{
-    background: #dabbfd;
+    background: #dabbfd !important;
   }
 
   .floor.active a{
