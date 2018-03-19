@@ -113,7 +113,9 @@
             <image x="0" y="1000" id="FloorY" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
             <image x="0" y="1500" id="FloorZ" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
             <image x="0" y="2075" id="Floor0" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
-            <text x="0" y="1000" id="floor_text" class="floor_text">HERE</text>
+            <text x="0" y="1000" id="floor_text" class="floor_text">
+            Estimated Travel Time: {{time}}
+            </text>
       </svg>
     </div>
 
@@ -237,7 +239,7 @@
                 document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
                 document.getElementById("floor_img").innerHTML = y +" -> "+ x;
                 // ajax the JSON to the server
-	              location.assign(html + "/" + y + "/" + x + "/");
+	              location.assign(html + "/map/" + y + "/" + x + "/");
 	              // stop link reloading the page
                 document.getElementById("floor_text").innerHTML = '';
               }
