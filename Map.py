@@ -146,11 +146,17 @@ class Graph:
                 return (distance[k2], pathto[k2])
         #shouldn't be necesarry but a failsafe
         return (distance[k2], pathto[k2])
-            
+
+#a function to take a user input and turn it into a node namespace
+def parse_input(raw):
+    pass
 
 def route(start, end):
     v = {}
     e = []
+    #boolean variable to check if keys are valid
+    startvalid = False
+    endvalid = False
     for key in ["Data/W1verts.txt",
                 "Data/N1verts.txt",
                 "Data/W2verts.txt",
@@ -163,7 +169,14 @@ def route(start, end):
                 ]:
         vertices = load_vertices(key)
         for vertex in vertices:
+            #set up the necesarry mappings
             v[vertex.getkey()] = vertex
+            if vertex.getkey() == start:
+                startvalid = True
+            if vertex.getkey() == end:
+                endvalid = True
+    if not endvalid or not startvalid:
+        return "ERROR", "Bad Key"
     for key in ["Data/W1edges.txt",
                 "Data/N1edges.txt",
                 "Data/W2edges.txt",

@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, send_file, request, session, abort
+from flask import Flask, flash, redirect, url_for, render_template, request, session, abort
 from random import randint
 
 from Map import route
@@ -26,7 +26,14 @@ def blank():
 
 @app.route("/map/<string:first>/")
 def point(first):
-    time, images = route(first, first)
+    #generate the estimated time and fastes route images
+    time, images = route(first,first)
+    #check if we recieved an error, for now redirect back
+    if time == "ERROR":
+        """eventually error listening will be more sophisticatedself.
+        I want time to contain "ERROR" and images to be a string of the error,
+        so I can make a special HTML file to render with the error message."""
+        return redirect(url_for("blank"))
     floors = []
     for floor in images:
         byte_io = BytesIO()
@@ -45,7 +52,15 @@ def point(first):
 
 @app.route("/map/<string:first>/<string:second>/")
 def path(first, second):
+    #generate the estimated time and fastes route images
     time, images = route(first,second)
+    #check if we recieved an error, for now redirect back
+    if time == "ERROR":
+        """eventually error listening will be more sophisticatedself.
+        I want time to contain "ERROR" and images to be a string of the error,
+        so I can make a special HTML file to render with the error message."""
+        return redirect(url_for("blank"))
+    #code below does all the image shit
     floors = []
     for floor in images:
         byte_io = BytesIO()
