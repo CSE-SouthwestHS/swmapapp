@@ -84,11 +84,6 @@
   </head>
   <body>
 
-    <img src="data:image/png;base64,{{zero}}" width="100%">
-    <img src="data:image/png;base64,{{one}}" width="100%">
-    <img src="data:image/png;base64,{{two}}" width="100%">
-    <img src="data:image/png;base64,{{three}}" width="100%">
-
     <div id="load_screen">
       <div id="loading">
         <div class="bar">
@@ -114,7 +109,7 @@
             <defs>
               <pattern id="mapView" width="800" height="800"/>
             </defs>
-            <image x="0" y="400" id="FloorX" width="800" height="800" xlink:href="/static/images/SW_Floor_1.svg" clip-path="url(#mapView)"/>
+            <image x="0" y="400" id="FloorX" width="800" height="800" xlink:href="data:image/png;base64,{{one}}" clip-path="url(#mapView)"/>
             <image x="0" y="1000" id="FloorY" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
             <image x="0" y="1500" id="FloorZ" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
             <image x="0" y="2075" id="Floor0" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>

@@ -99,7 +99,7 @@ function fl1() {
   document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
   document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
   document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-  document.getElementById("floor_img").innerHTML = "<img src=\"/static/images/SW_Floor_1.svg\ width=\"30px\" height=\"auto\">";
+  document.getElementById("floor_img").innerHTML = "<img src=\"/static/images/SW_Floor_1.svg\" width=\"30px\" height=\"auto\">";
   document.getElementById("searchpos").value = '';
   document.getElementById("search").value = '';
   $('.startbar').removeClass('active');
