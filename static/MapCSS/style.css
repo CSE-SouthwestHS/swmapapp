@@ -52,6 +52,14 @@ body {
   font-weight: inherit;
 }
 
+.MapPath{
+  display: none;
+}
+.Base64{
+  color: red;
+  visibility: hidden;
+}
+
 @keyframes cchange {
   0%{color: #ff7474;}
   20%{color: #d777ff;}
