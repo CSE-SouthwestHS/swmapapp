@@ -114,14 +114,9 @@
             <image x="0" y="1500" id="FloorZ" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
             <image x="0" y="2075" id="Floor0" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
             <text x="00" y="2000" id="floor_text" class="floor_text"></text>
-            <!-- Python will change these images below -->
-            <image x="0" y="0400" id="MapPath" class="MapPath" width="800" height="800" xlink:href="data:image/png;base64,{{zero}}" clip-path="url(#mapView)"/>
-            <image x="0" y="1000" class="MapPath" width="800" height="800" xlink:href="data:image/png;base64,{{one}}" clip-path="url(#mapView)"/>
-            <image x="0" y="1500" class="MapPath" width="800" height="800" xlink:href="data:image/png;base64,{{two}}" clip-path="url(#mapView)"/>
-            <image x="0" y="2075" class="MapPath" width="800" height="800" xlink:href="data:image/png;base64,{{three}}" clip-path="url(#mapView)"/>
       </svg>
     </div>
-    <div style="visibility:hidden;" id="ETA" class="Base64">{{time}}</div>
+    <div id="ETA" class="Base64">Travel time: {{time}}sec.</div>
 <!--Estimated Travel Time: {{time}} seconds.
 -->
     <div class="container3" id="map">
@@ -177,7 +172,7 @@
 <!-- ________BEGIN javascript________ -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="/static/java/slider.js"></script>
+
     <script src="/static/java/interactive.js"></script>
     <script src="/static/java/mapMover.js"></script>
     <script src="/static/java/autocomplete.js"></script>
@@ -189,7 +184,19 @@
       $("#windowcolor").css("background-color", "hsl(" + Color + ", 50%, 85%)");
     }
     </script>
-
+    <script>
+    $(document).ready(function(){
+      if (init_html == html){
+        $('#ETA').css("visibility", "hidden");
+      } else {
+        $('#ETA').css("visibility", "visible");
+        document.getElementById('FloorX').setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{one}}');
+        document.getElementById('FloorY').setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{two}}');
+        document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{three}}');
+        document.getElementById('Floor0').setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{zero}}');
+      }
+    });
+    </script>
     <script type="text/javascript">
     function Call(){
       Destination();
@@ -254,7 +261,7 @@
             } else {
               document.getElementById("floor_text").innerHTML = z;
               document.getElementById("floor_img").innerHTML = z;
-              $('#ETA').css("visibility", "hidden");
+
             }
           }
         }

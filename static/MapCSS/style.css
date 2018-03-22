@@ -51,10 +51,6 @@ body {
   list-style: none;
   font-weight: inherit;
 }
-
-.MapPath{
-  display: none;
-}
 #ETA{
   position: absolute;
   font-size: 2.5em;
