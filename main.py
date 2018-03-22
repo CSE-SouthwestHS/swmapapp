@@ -30,7 +30,7 @@ def point(first):
     time, images = route(first,first)
     #check if we recieved an error, for now redirect back
     if time == "ERROR":
-        """eventually error listening will be more sophisticatedself.
+        """eventually error listening will be more sophisticated.
         I want time to contain "ERROR" and images to be a string of the error,
         so I can make a special HTML file to render with the error message."""
         return redirect(url_for("blank"))
@@ -56,7 +56,7 @@ def path(first, second):
     time, images = route(first,second)
     #check if we recieved an error, for now redirect back
     if time == "ERROR":
-        """eventually error listening will be more sophisticatedself.
+        """eventually error listening will be more sophisticated.
         I want time to contain "ERROR" and images to be a string of the error,
         so I can make a special HTML file to render with the error message."""
         return redirect(url_for("blank"))
