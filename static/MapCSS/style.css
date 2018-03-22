@@ -55,9 +55,13 @@ body {
 .MapPath{
   display: none;
 }
-.Base64{
-  color: red;
-  visibility: hidden;
+#ETA{
+  position: absolute;
+  font-size: 2.5em;
+  font-weight: 400;
+  left: 5%;
+  bottom: 120px;
+  z-index: 5;
 }
 
 @keyframes cchange {

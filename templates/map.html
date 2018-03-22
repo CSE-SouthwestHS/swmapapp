@@ -121,7 +121,7 @@
             <image x="0" y="2075" class="MapPath" width="800" height="800" xlink:href="data:image/png;base64,{{three}}" clip-path="url(#mapView)"/>
       </svg>
     </div>
-    <div id="Base64" class="Base64">{{three}}</div>
+    <div style="visibility:hidden;" id="ETA" class="Base64">{{time}}</div>
 <!--Estimated Travel Time: {{time}} seconds.
 -->
     <div class="container3" id="map">
@@ -208,6 +208,7 @@
          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
          document.getElementById("floor_img").innerHTML = z;
          document.getElementById("floor_text").innerHTML = z;
+         $('#ETA').css("visibility", "hidden");
        } else {
          // this will be a new recieving function from python.
          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -231,11 +232,13 @@
           if (y == x){
             document.getElementById("floor_img").innerHTML = "You are there!";
             document.getElementById("floor_text").innerHTML = "You are there!";
+            $('#ETA').css("visibility", "hidden");
           } else {
             if (results.indexOf(y) >= 0){
               if (results.indexOf(x) == -1){
                 document.getElementById("floor_text").innerHTML = z;
                 document.getElementById("floor_img").innerHTML = z;
+                $('#ETA').css("visibility", "hidden");
               } else {
                 /*------Send room # to Python Script------*/
                 document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -251,6 +254,7 @@
             } else {
               document.getElementById("floor_text").innerHTML = z;
               document.getElementById("floor_img").innerHTML = z;
+              $('#ETA').css("visibility", "hidden");
             }
           }
         }
