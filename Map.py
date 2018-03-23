@@ -69,7 +69,13 @@ class Vertex:
     def getkey(self):
         return self.__key
     def getfloor(self):
-        return self.__key[1]
+        evaluate = {
+            "N": self.__key[1],
+            "W": self.__key[1],
+            "C": self.__key[1],
+            "E": self.__key[1]
+        }
+        return evaluate.get(self.__key[0], self.__key[0])
 
 class Edges:
     #two-dimensional associative array to store distances
