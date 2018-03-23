@@ -132,7 +132,7 @@ class Graph:
             connections = self.__edges.connections(current)
             for key in connections:
                 #this if statement makes sure only navigation nodes are considered
-                if key[2] != "N" and key != k2:
+                if key[2] != "N" and key[2] != "B" and key != k2:
                     continue
                 this_distance = distance[current] + connections[key]
                 if distance[key] == "inf" or distance[key] > this_distance:
@@ -155,9 +155,57 @@ class Graph:
 
 #a function to take a user input and turn it into a node namespace
 def parse_input(raw):
-    pass
+    raw = raw.replace("%", " ")
+    parse = {
+        "Art": "N144",
+        "Athletic Dir.": "N1AD",
+        "Boys Locker Room": "N1BLR",
+        "Cafeteria": "C1CF",
+        "Community Ed": "C1CE",
+        "Courtyard Upper": "C1CY",
+        "Girls Locker Room": "N1GLR",
+        "Kitchen": "C1KT",
+        "Main Office": "C1MO",
+        "Pool Seating": "E1PS",
+        "The Cove": "W1CV",
+        "The Garages": "W1GG",
+        "Weight Room": "N1WR",
+        "West Gym": "N1WG",
+        "Men's Bathroom": "BM",
+        "Women's Bathroom": "BW",
+        "Gender Neutral Bathroom": "BGN",
+        "Elevator": "Elevator",
+        "Door 1": "C1D1",
+        "Door 2": "W1D2",
+        "Door 5": "W1D5",
+        "Door 6": "N1D6",
+        "Athletic Entrance": "N1D7",
+        "Door 7": "N1D7",
+        "Door 12": "N1D12",
+        "Door 12": "N1D13",
+        "Door 15": "C1D15",
+        "Door 16": "C1D16",
+        "Door 17": "E1D17",
+        "Auditorium": "W2AU",
+        "Band": "W2BR",
+        "BlackBox": "W2XB",
+        "Choir": "W2CR",
+        "Dance": "W2DR",
+        "Media Center": "C2MC",
+        "W232 A-M": "W232",
+        "Guitar Room": "W2GR",
+        "Pool Locker Rooms": "E0LR",
+        "Pool": "E0PO",
+        "Courtyard Lower": "C1CY",
+        "East Gym": "E0EG"
+    }
+    return parse.get(raw, raw)
 
 def route(start, end):
+    #parse start and end Nodes
+    start = parse_input(start)
+    end = parse_input(end)
+    #vertices and edges
     v = {}
     e = []
     #boolean variable to check if keys are valid
