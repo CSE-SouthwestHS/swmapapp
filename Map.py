@@ -237,8 +237,6 @@ def route(start, end):
                 startvalid = True
             if vertex.getkey() == end:
                 endvalid = True
-            if start == "EV":
-                startvalid = True
             if end in ["BM", "BW", "BGN", "EV"]:
                 endvalid = True
     if not endvalid or not startvalid:
