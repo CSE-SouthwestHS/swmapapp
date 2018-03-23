@@ -22,10 +22,6 @@ function Destination() {
     $('.startbar').removeClass('active');
   }
 }
-function Deactivate() {
-    $('.floor').removeClass('active');
-    $('.icon').removeClass('active');
-}
 //---------------deactivate buttons above------------
 
 $(document).ready(function(){
