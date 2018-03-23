@@ -51,13 +51,17 @@ body {
   list-style: none;
   font-weight: inherit;
 }
-#ETA{
+.ETA{
+  visibility: hidden;
   position: absolute;
   font-size: 2.5em;
   font-weight: 400;
   left: 5%;
   bottom: 120px;
   z-index: 5;
+}
+.show{
+  visibility: visible !important;
 }
 
 @keyframes cchange {
