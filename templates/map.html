@@ -19,7 +19,7 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' type='text/css'>
     <link rel="stylesheet" href="/static/MapCSS/style.css" type="text/css">
     <link rel="stylesheet" href="/static/MapCSS/BGColor.css" type="text/css">
-    <script type="text/javascript">
+    <script>
 //----------------------Loading Screen-------//
     window.addEventListener("load", function(){
       var load_screen = document.getElementById("load_screen");
@@ -29,7 +29,7 @@
     }, 800);
     });
     </script>
-    <script type="text/javascript">
+    <script>
     window.onload = function() {
       initCanvas();
     }
@@ -131,7 +131,7 @@
           <div class="autocomplete">
             <input id="search" type="text" placeholder="Search Southwest" class="closer">
           </div>
-          <button type="button" id="srchBtn" class="searchBtn" onclick="Entry()"><img src="/static/images/searchButton.jpg"/></button>
+          <button type="button" id="srchBtn" class="searchBtn" onclick="Entry()"><img src="/static/images/searchButton.jpg" alt="Search"/></button>
         </form>
         <div class="floor">
             <div class="flico">
@@ -162,7 +162,7 @@
           <div class="autocomplete">
             <input id="searchpos" type="text" placeholder="Your Location" class="closer">
           </div>
-          <button type="button" id="strtBtn" class="startposBtn" onclick="Trace()"><img src="/static/images/Locationicon.png"/></button>
+          <button type="button" id="strtBtn" class="startposBtn" onclick="Trace()"><img src="/static/images/Locationicon.png" alt="Search"/></button>
         </form>
       </div>
     </div>
@@ -206,7 +206,7 @@
       }
     });
     </script>
-    <script type="text/javascript">
+    <script>
     function Call(){
       Destination();
       Entry();
