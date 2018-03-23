@@ -52,16 +52,33 @@ body {
   font-weight: inherit;
 }
 .ETA{
+  color: white;
+  width:auto;
+  height: auto;
+  padding-left: 7%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-right: 10px;
   visibility: hidden;
   position: absolute;
   font-size: 2.5em;
-  font-weight: 400;
-  left: 5%;
-  bottom: 120px;
+  font-weight: 500;
+  left: 0;
+  bottom: 130px;
   z-index: 5;
+  background: #333333;
+  border-color: white;
+  border-width: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  z-index: 0;
 }
 .show{
   visibility: visible !important;
+  animation: slide 2s forwards;
 }
 
 @keyframes cchange {
@@ -99,17 +116,6 @@ body {
   min-height: 120%;
   background: white;
   overflow: scroll;
-}
-
-.container3 {
-  width: auto;
-  padding: 0 20px;
-  height: auto;
-  background: transparent;
-  position: fixed;
-  overflow: visible;
-  z-index: 0;
-  opacity: 0.5;
 }
 
 .header .container {
@@ -153,12 +159,6 @@ body {
 .essay {
   margin: 5% 100%;
   overflow: hidden;
-}
-
-.essayMap a {
-  height:auto;
-  width:auto;
-  z-index: 2;
 }
 
 sub {
@@ -1118,14 +1118,6 @@ sub {
 
 @media (max-width: 900px){
 
-    .essayMap {
-      position: relative;
-      margin: 0;
-      overflow: visible;
-      z-index: 2;
-      outline: 1px solid #777;
-    }
-
     .searchBar{
       background: white;
       height: 55px;
@@ -1344,13 +1336,6 @@ sub {
 }
 
 @media (min-width: 900px){
-  .essayMap {
-    position: relative;
-    margin: 0;
-    overflow: visible;
-    z-index: 2;
-    outline: 1px solid #777;
-  }
 
   .searchBar{
     background: white;
