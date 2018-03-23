@@ -22,7 +22,7 @@ def time_between(v1, v2):
         "2": 36/447,
         "3": 38/422
     }
-    if v1.getkey()[1] == v2.getkey()[1]:
+    if v1.getfloor() == v2.getfloor():
         d = distance(v1.getx(), v1.gety(), v2.getx(), v2.gety())
         t = d*scale[v1.getkey()[1]]
         #adjust distance for scale factor
@@ -131,8 +131,9 @@ class Graph:
         while len(tovisit) > 0:
             connections = self.__edges.connections(current)
             for key in connections:
-                #this if statement makes sure only navigation nodes are considered
-                if key[2] != "N" and key[2] != "B" and key != k2:
+                #this if statement makes sure only navigation nodes are considered,
+                #or bathrooms/elevators if that's what were looking for
+                if key[2] != "N" and key != k2 and key[-2:] not in ["BM", "BW", "EV", "BB"] and key[-3:] != "BGN":
                     continue
                 this_distance = distance[current] + connections[key]
                 if distance[key] == "inf" or distance[key] > this_distance:
@@ -150,6 +151,12 @@ class Graph:
             #when we get to our location
             if current == k2:
                 return (distance[k2], pathto[k2])
+            if (k2 == "BM" or k2 == "BW") and (current[-2:] == k2 or current[-2:] == "BB"):
+                return (distance[current], pathto[current])
+            if (k2 == "BGN") and (current[-3:] == k2):
+                return (distance[current], pathto[current])
+            if (k2 == "EV") and (current[-2:] == k2):
+                return (distance[current], pathto[current])
         #shouldn't be necesarry but a failsafe
         return (distance[k2], pathto[k2])
 
@@ -197,7 +204,8 @@ def parse_input(raw):
         "Pool Locker Rooms": "E0LR",
         "Pool": "E0PO",
         "Courtyard Lower": "C1CY",
-        "East Gym": "E0EG"
+        "East Gym": "E0EG",
+        "Elevator": "EV"
     }
     return parse.get(raw, raw)
 
@@ -228,6 +236,10 @@ def route(start, end):
             if vertex.getkey() == start:
                 startvalid = True
             if vertex.getkey() == end:
+                endvalid = True
+            if start == "EV":
+                startvalid = True
+            if end in ["BM", "BW", "BGN", "EV"]:
                 endvalid = True
     if not endvalid or not startvalid:
         return "ERROR", "Bad Key"
