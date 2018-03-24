@@ -234,9 +234,9 @@ ShadowViewport.prototype.cacheViewBox = function() {
 ShadowViewport.prototype.simpleViewBoxCache = function() {
   var bBox = this.viewport.getBBox()
 
-  this.viewBox.x = bBox.x + 30
+  this.viewBox.x = bBox.x
   this.viewBox.y = bBox.y
-  this.viewBox.width = bBox.width * 0.6
+  this.viewBox.width = bBox.width
   this.viewBox.height = bBox.height
 }
 

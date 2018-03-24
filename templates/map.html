@@ -100,19 +100,12 @@
       <div id="Xicon" onclick="noColor()"></div>
     </div>
 
-    <div id="FLUI-div" class="FLUI closer">
+    <div id="FLUI-div" class="FLUI" onclick="Deactivate()">
       <svg id="FLUI-svg" xmlns="http://www.w3.org/2000/svg" style="display: inline; width: 100%; min-width: 100%; max-width: 100%; height: 100%; min-height: 100%; max-height: 100%;" version="1.1">
-            <g>
-              <rect width="800" height="800" fill="none"/>
-            </g>
-            <defs>
-              <pattern id="mapView" width="800" height="800"/>
-            </defs>
-            <image x="0" y="1500" id="FloorZ" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
-            <image x="0" y="1000" id="FloorY" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
-            <image x="0" y="0400" id="FloorX" width="800" height="800" xlink:href="/static/images/SW_Floor_1.svg" clip-path="url(#mapView)"/>
-            <image x="0" y="2075" id="Floor0" width="800" height="800" xlink:href="" clip-path="url(#mapView)"/>
-            <text x="00" y="2000" id="floor_text" class="floor_text"></text>
+        <image x="0" y="0" id="FloorX" width="150" height="150" xlink:href="/static/images/SW_Floor_1.svg" clip-path="url(#mapView)"/>
+        <image x="0" y="115" id="FloorY" width="150" height="150" xlink:href="" clip-path="url(#mapView)"/>
+        <image x="0" y="205" id="FloorZ" width="150" height="150" xlink:href="" clip-path="url(#mapView)"/>
+        <image x="0" y="310" id="Floor0" width="150" height="150" xlink:href="" clip-path="url(#mapView)"/>
       </svg>
     </div>
     <div class="ETA">Travel time: {{time}}sec.</div>
@@ -220,7 +213,6 @@
          $('.startbar').removeClass('active');
          document.getElementById('search').value = '';
          $('.ETA').removeClass('show');
-         document.getElementById("floor_text").innerHTML = '';
        } else {
          // stop link reloading the page
          event.preventDefault();
@@ -228,7 +220,6 @@
          $('.checkmark').addClass('active');
          $('.checkmark__check').addClass('active');
          $('.checkmark__circle').addClass('active');
-         document.getElementById("floor_text").innerHTML = 'test';
        }
     }
     function Trace(){
@@ -238,7 +229,6 @@
           y = document.getElementById("searchpos").value;
         if ( $('.startbar').hasClass('active') ){
           if (y == x){
-            document.getElementById("floor_text").innerHTML = "You are there!";
             $('.ETA').removeClass('show');
           } else {
             if (results.indexOf(y) >= 0){
@@ -248,9 +238,7 @@
                 document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
 	              location.assign(html + "/map/" + y + "/" + x + "/");
 	              // stop link reloading the page
-                document.getElementById("floor_text").innerHTML = '';
             } else {
-              document.getElementById("floor_text").innerHTML = '';
               document.getElementById('searchpos').value = '';
             }
           }
@@ -280,8 +268,41 @@
             document.getElementById("strtBtn").click();
           }
         });
-        </script>
-        <script> // Function allows for touch-pan.
+    </script>
+    <script>
+    document.addEventListener("click", function(){
+      if ($('.Darkmode').hasClass('active')){
+        $("#windowcolor").css("background-color", "#3b3b2b");
+        $(".searchBar").css("background-color", "#494949");
+        $(".startbar").css("background-color", "#494949");
+        $("#search").css("background-color", "#494949");
+        $("#search").css("color", "white");
+        $("#searchpos").css("color", "white");
+        $("#searchpos").css("background-color", "#494949");
+        $(".floor a").css("background-color", "#656565");
+        $(".icon a").css("background-color", "#656565");
+        $(".floor a").css("color", "#d1d1d1");
+        $(".icon a").css("color", "#d1d1d1");
+        $(".FLUI").css("filter", "invert(80%)");
+        document.getElementById('displayMode').innerHTML = "Day &#x2600;";
+      } else {
+        $("#windowcolor").css("background-color", "#eeeccc");
+        $(".searchBar").css("background-color", "white");
+        $(".startbar").css("background-color", "white");
+        $("#search").css("background-color", "white");
+        $("#search").css("color", "black");
+        $("#searchpos").css("color", "black");
+        $("#searchpos").css("background-color", "white");
+        $(".floor a").css("background-color", "#eee");
+        $(".icon a").css("background-color", "#eee");
+        $(".floor a").css("color", "#222");
+        $(".icon a").css("color", "#222");
+        $(".FLUI").css("filter", "invert(0%)");
+        document.getElementById('displayMode').innerHTML = "Night &#x263E;";
+      }
+    });
+    </script>
+    <script> // Function allows for touch-pan.
         // Don't use window.onLoad like this in production, because it can only listen to one function.
         window.onload = function() {
           var beforePan
@@ -289,8 +310,8 @@
           beforePan = function(oldPan, newPan){
             var stopHorizontal = false
               , stopVertical = false
-              , gutterWidth = 100
-              , gutterHeight = 100
+              , gutterWidth = 500
+              , gutterHeight = 500
                 // Computed variables
               , sizes = this.getSizes()
               , leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth
@@ -316,12 +337,11 @@
 
           // panZoom.setBeforePan(beforePan)
         };
-      </script>
+    </script>
 
-      <!-- Changing floors-->
-      <script type=text/javascript>
+    <!-- Changing floors-->
+    <script type=text/javascript>
       function fl1() {
-        document.getElementById("floor_text").innerHTML = '';
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{one}}');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -331,7 +351,6 @@
         $('.startbar').removeClass('active');
       }
       function fl2() {
-        document.getElementById("floor_text").innerHTML = '';
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{two}}');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -341,7 +360,6 @@
         $('.startbar').removeClass('active');
       }
       function fl3() {
-        document.getElementById("floor_text").innerHTML = '';
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{three}}');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -351,7 +369,6 @@
         $('.startbar').removeClass('active');
       }
       function bsm() {
-        document.getElementById("floor_text").innerHTML = '';
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{zero}}');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -361,7 +378,6 @@
         $('.startbar').removeClass('active');
       }
       function clr() {
-        document.getElementById("floor_text").innerHTML = '';
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -371,7 +387,6 @@
         $('.startbar').removeClass('active');
       }
       function All() {
-        document.getElementById("floor_text").innerHTML = '';
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{one}}');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{two}}');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{three}}');
@@ -380,15 +395,15 @@
         document.getElementById("search").value = '';
         $('.startbar').removeClass('active');
       }
-      </script>
-      <script>
-      $(document).ready(function(){
-        $('.closer').click(function(){
-          $('.floor').removeClass('active');
-          $('.icon').removeClass('active');
-        });
+    </script>
+    <script>
+    $(document).ready(function(){
+      $('.closer').click(function(){
+        $('.floor').removeClass('active');
+        $('.icon').removeClass('active');
       });
-      </script>
+    });
+    </script>
 <!--____________ END javascript___________-->
 
 
