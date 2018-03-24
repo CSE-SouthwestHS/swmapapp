@@ -56,8 +56,44 @@ function noColor(){
 $(document).ready(function(){
   $('#displayMode').click(function(){
     $(".DarkMode").toggleClass('active');
+    DNMode();
   });
 });
+
+function DNMode(){
+  var c = document.getElementById('search').value;
+  if ( $('.Darkmode').hasClass('active')) {
+    $("#windowcolor").css("background-color", "#3b3b2b");
+    $(".searchBar").css("background-color", "#494949");
+    $(".startbar").css("background-color", "#494949");
+    $("#search").css("background-color", "#494949");
+    $("#search").css("color", "white");
+    $("#searchpos").css("color", "white");
+    $("#searchpos").css("background-color", "#494949");
+    $(".floor a").css("background-color", "#656565");
+    $(".icon a").css("background-color", "#656565");
+    $(".floor a").css("color", "#d1d1d1");
+    $(".icon a").css("color", "#d1d1d1");
+    $(".FLUI").css("filter", "invert(80%)");
+    document.getElementById('displayMode').innerHTML = "Day &#x2600;";
+    document.getElementById('search').value = c + 'work';
+  } else {
+    $("#windowcolor").css("background-color", "#eeeccc");
+    $(".searchBar").css("background-color", "white");
+    $(".startbar").css("background-color", "white");
+    $("#search").css("background-color", "white");
+    $("#search").css("color", "black");
+    $("#searchpos").css("color", "black");
+    $("#searchpos").css("background-color", "white");
+    $(".floor a").css("background-color", "#eee");
+    $(".icon a").css("background-color", "#eee");
+    $(".floor a").css("color", "#222");
+    $(".icon a").css("color", "#222");
+    $(".FLUI").css("filter", "invert(0%)");
+    document.getElementById('displayMode').innerHTML = "Night &#x263E;";
+    document.getElementById('search').value = c + 'broke';
+  }
+}
 //-----------------------Room-sources------------------------->
 // organized by floor--below
 
