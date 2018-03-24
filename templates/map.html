@@ -121,9 +121,15 @@
 
     <div class="searchSpace">
       <div class="searchBar">
+        <div class="check">
+          <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+        </div>
         <form autocomplete="off">
           <div class="autocomplete">
-            <input id="search" type="text" placeholder="Search Southwest" class="closer">
+            <input id="search" type="text" name="Search"placeholder="Search Southwest" class="closer">
           </div>
           <button type="button" id="srchBtn" class="searchBtn" onclick="Entry()"><img src="/static/images/searchButton.jpg" alt="Search"/></button>
         </form>
@@ -144,7 +150,7 @@
               <a href="/home/">Home</a>
               <a href="/contact">Contact</a>
               <a href="/help/">Help</a>
-              <a onclick="Colors()" class="colorActivator"><p class="colors">Colors</p></a>
+              <a class="colorActivator"><p class="colors">Colors</p></a>
               <a id="displayMode">Night &#x263E;</a>
             </ul>
           </div>
@@ -154,7 +160,7 @@
       <div class="startbar">
         <form autocomplete="off">
           <div class="autocomplete">
-            <input id="searchpos" type="text" placeholder="Your Location" class="closer">
+            <input id="searchpos" type="text" name="Searchpos"placeholder="Your Location" class="closer">
           </div>
           <button type="button" id="strtBtn" class="startposBtn" onclick="Trace()"><img src="/static/images/Locationicon.png" alt="Search"/></button>
         </form>
@@ -212,17 +218,17 @@
       var x = document.getElementById("search").value;
        if (results.indexOf(x) < 0){
          $('.startbar').removeClass('active');
-         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-         document.getElementById("floor_text").innerHTML = z;
-         $('#ETA').css("visibility", "hidden");
+         document.getElementById('search').value = '';
+         $('.ETA').removeClass('show');
+         document.getElementById("floor_text").innerHTML = '';
        } else {
          // stop link reloading the page
          event.preventDefault();
-         document.getElementById("floor_text").innerHTML = x;
          $('.startbar').addClass('active');
+         $('.checkmark').addClass('active');
+         $('.checkmark__check').addClass('active');
+         $('.checkmark__circle').addClass('active');
+         document.getElementById("floor_text").innerHTML = 'test';
        }
     }
     function Trace(){
@@ -233,25 +239,19 @@
         if ( $('.startbar').hasClass('active') ){
           if (y == x){
             document.getElementById("floor_text").innerHTML = "You are there!";
-            $('#ETA').css("visibility", "hidden");
+            $('.ETA').removeClass('show');
           } else {
             if (results.indexOf(y) >= 0){
-              if (results.indexOf(x) == -1){
-                document.getElementById("floor_text").innerHTML = z;
-                $('#ETA').css("visibility", "hidden");
-              } else {
-                /*------Send room # to Python Script------*/
                 document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
                 document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
                 document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
                 document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-                // ajax the JSON to the server
 	              location.assign(html + "/map/" + y + "/" + x + "/");
 	              // stop link reloading the page
                 document.getElementById("floor_text").innerHTML = '';
-              }
             } else {
-              document.getElementById("floor_text").innerHTML = z;
+              document.getElementById("floor_text").innerHTML = '';
+              document.getElementById('searchpos').value = '';
             }
           }
         }

@@ -1,25 +1,6 @@
 // svg-pan-zoom v3.5.2
 // https://github.com/ariutta/svg-pan-zoom
-(function e(t, n, r) {function s(o, u) {
-  if (!n[o]) {
-    if (!t[o]) {
-      var a = typeof require === "function" && require;
-      if (!u && a)
-        return a(o,!0);
-      if (i)
-        return i(o,!0);
-      var f = new Error("Cannot find module '"+o+"'");
-      throw f.code = "MODULE_NOT_FOUND",f}
-      var l = n[o] = {exports:{}};
-      t[o][0].call(l.exports,function(e){
-        var n = t[o][1][e];
-        return s(n?n:e)},l,l.exports,e,t,n,r)}
-        return n[o].exports
-      }
-        var i = typeof require == "function" && require;
-        for (var o = 0;o<r.length;o++)s(r[o]);
-        return s
-      })({1:[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var svgPanZoom = require('./svg-pan-zoom.js');
 
 // UMD module definition
@@ -88,10 +69,12 @@ module.exports = {
     zoomIn.addEventListener('touchstart', function() {instance.getPublicInstance().zoomIn()}, false)
 
     var zoomInBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
-    zoomInBackground.setAttribute('x', '75');
-    zoomInBackground.setAttribute('y', '-60');
-    zoomInBackground.setAttribute('width', '1400'); // larger than expected because the whole group is transformed to scale down
-    zoomInBackground.setAttribute('height', '1400');
+    zoomInBackground.setAttribute('x', '5');
+    zoomInBackground.setAttribute('y', '-120');
+    zoomInBackground.setAttribute('rx', '65%');
+    zoomInBackground.setAttribute('ry', '50%');
+    zoomInBackground.setAttribute('width', '1525'); // larger than expected because the whole group is transformed to scale down
+    zoomInBackground.setAttribute('height', '1525');
     zoomInBackground.setAttribute('class', 'svg-pan-zoom-control-background');
     zoomIn.appendChild(zoomInBackground);
 
@@ -113,10 +96,12 @@ module.exports = {
     resetPanZoomControl.addEventListener('touchstart', function() {instance.getPublicInstance().reset()}, false);
 
     var resetPanZoomControlBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
-    resetPanZoomControlBackground.setAttribute('x', '5');
-    resetPanZoomControlBackground.setAttribute('y', '3');
-    resetPanZoomControlBackground.setAttribute('width', '176'); // larger than expected because the whole group is transformed to scale down
-    resetPanZoomControlBackground.setAttribute('height', '55');
+    resetPanZoomControlBackground.setAttribute('x', '0.5');
+    resetPanZoomControlBackground.setAttribute('y', '1.5');
+    resetPanZoomControlBackground.setAttribute('rx', '15px');
+    resetPanZoomControlBackground.setAttribute('ry', '10px');
+    resetPanZoomControlBackground.setAttribute('width', '185'); // larger than expected because the whole group is transformed to scale down
+    resetPanZoomControlBackground.setAttribute('height', '60');
     resetPanZoomControlBackground.setAttribute('class', 'svg-pan-zoom-control-background');
     resetPanZoomControl.appendChild(resetPanZoomControlBackground);
 
@@ -126,7 +111,7 @@ module.exports = {
     resetPanZoomControl.appendChild(resetPanZoomControlShape1);
 
     var resetPanZoomControlShape2 = document.createElementNS(SvgUtils.svgNS, 'path');
-    resetPanZoomControlShape2.setAttribute('d', 'M170.231,0.5H15.847C7.102,0.5,0.5,5.708,0.5,11.84v38.861C0.5,56.833,7.102,61.5,15.847,61.5h154.384c8.745,0,15.269-4.667,15.269-10.798V11.84C185.5,5.708,178.976,0.5,170.231,0.5z M42.837,48.569h-7.969c-0.219-0.766-0.375-1.383-0.469-1.852c-0.188-0.969-0.289-1.961-0.305-2.977l-0.047-3.211c-0.03-2.203-0.41-3.672-1.142-4.406c-0.732-0.734-2.103-1.102-4.113-1.102h-7.05v13.547h-7.055V14.022h16.524c2.361,0.047,4.178,0.344,5.45,0.891c1.272,0.547,2.351,1.352,3.234,2.414c0.731,0.875,1.31,1.844,1.737,2.906s0.64,2.273,0.64,3.633c0,1.641-0.414,3.254-1.242,4.84s-2.195,2.707-4.102,3.363c1.594,0.641,2.723,1.551,3.387,2.73s0.996,2.98,0.996,5.402v2.32c0,1.578,0.063,2.648,0.19,3.211c0.19,0.891,0.635,1.547,1.333,1.969V48.569z M75.579,48.569h-26.18V14.022h25.336v6.117H56.454v7.336h16.781v6H56.454v8.883h19.125V48.569z M104.497,46.331c-2.44,2.086-5.887,3.129-10.34,3.129c-4.548,0-8.125-1.027-10.731-3.082s-3.909-4.879-3.909-8.473h6.891c0.224,1.578,0.662,2.758,1.316,3.539c1.196,1.422,3.246,2.133,6.15,2.133c1.739,0,3.151-0.188,4.236-0.562c2.058-0.719,3.087-2.055,3.087-4.008c0-1.141-0.504-2.023-1.512-2.648c-1.008-0.609-2.607-1.148-4.796-1.617l-3.74-0.82c-3.676-0.812-6.201-1.695-7.576-2.648c-2.328-1.594-3.492-4.086-3.492-7.477c0-3.094,1.139-5.664,3.417-7.711s5.623-3.07,10.036-3.07c3.685,0,6.829,0.965,9.431,2.895c2.602,1.93,3.966,4.73,4.093,8.402h-6.938c-0.128-2.078-1.057-3.555-2.787-4.43c-1.154-0.578-2.587-0.867-4.301-0.867c-1.907,0-3.428,0.375-4.565,1.125c-1.138,0.75-1.706,1.797-1.706,3.141c0,1.234,0.561,2.156,1.682,2.766c0.721,0.406,2.25,0.883,4.589,1.43l6.063,1.43c2.657,0.625,4.648,1.461,5.975,2.508c2.059,1.625,3.089,3.977,3.089,7.055C108.157,41.624,106.937,44.245,104.497,46.331z M139.61,48.569h-26.18V14.022h25.336v6.117h-18.281v7.336h16.781v6h-16.781v8.883h19.125V48.569z M170.337,20.14h-10.336v28.43h-7.266V20.14h-10.383v-6.117h27.984V20.14z');
+    resetPanZoomControlShape2.setAttribute('d' , 'M170.231,0.5H15.847C7.102,0.5,0.5,5.708,0.5,11.84v38.861C0.5,56.833,7.102,61.5,15.847,61.5h154.384c8.745,0,15.269-4.667,15.269-10.798V11.84C185.5,5.708,178.976,0.5,170.231,0.5z M42.837,48.569h-7.969c-0.219-0.766-0.375-1.383-0.469-1.852c-0.188-0.969-0.289-1.961-0.305-2.977l-0.047-3.211c-0.03-2.203-0.41-3.672-1.142-4.406c-0.732-0.734-2.103-1.102-4.113-1.102h-7.05v13.547h-7.055V14.022h16.524c2.361,0.047,4.178,0.344,5.45,0.891c1.272,0.547,2.351,1.352,3.234,2.414c0.731,0.875,1.31,1.844,1.737,2.906s0.64,2.273,0.64,3.633c0,1.641-0.414,3.254-1.242,4.84s-2.195,2.707-4.102,3.363c1.594,0.641,2.723,1.551,3.387,2.73s0.996,2.98,0.996,5.402v2.32c0,1.578,0.063,2.648,0.19,3.211c0.19,0.891,0.635,1.547,1.333,1.969V48.569z M75.579,48.569h-26.18V14.022h25.336v6.117H56.454v7.336h16.781v6H56.454v8.883h19.125V48.569z M104.497,46.331c-2.44,2.086-5.887,3.129-10.34,3.129c-4.548,0-8.125-1.027-10.731-3.082s-3.909-4.879-3.909-8.473h6.891c0.224,1.578,0.662,2.758,1.316,3.539c1.196,1.422,3.246,2.133,6.15,2.133c1.739,0,3.151-0.188,4.236-0.562c2.058-0.719,3.087-2.055,3.087-4.008c0-1.141-0.504-2.023-1.512-2.648c-1.008-0.609-2.607-1.148-4.796-1.617l-3.74-0.82c-3.676-0.812-6.201-1.695-7.576-2.648c-2.328-1.594-3.492-4.086-3.492-7.477c0-3.094,1.139-5.664,3.417-7.711s5.623-3.07,10.036-3.07c3.685,0,6.829,0.965,9.431,2.895c2.602,1.93,3.966,4.73,4.093,8.402h-6.938c-0.128-2.078-1.057-3.555-2.787-4.43c-1.154-0.578-2.587-0.867-4.301-0.867c-1.907,0-3.428,0.375-4.565,1.125c-1.138,0.75-1.706,1.797-1.706,3.141c0,1.234,0.561,2.156,1.682,2.766c0.721,0.406,2.25,0.883,4.589,1.43l6.063,1.43c2.657,0.625,4.648,1.461,5.975,2.508c2.059,1.625,3.089,3.977,3.089,7.055C108.157,41.624,106.937,44.245,104.497,46.331z M139.61,48.569h-26.18V14.022h25.336v6.117h-18.281v7.336h16.781v6h-16.781v8.883h19.125V48.569z M170.337,20.14h-10.336v28.43h-7.266V20.14h-10.383v-6.117h27.984V20.14z');
     resetPanZoomControlShape2.setAttribute('class', 'svg-pan-zoom-control-element');
     resetPanZoomControl.appendChild(resetPanZoomControlShape2);
 
@@ -143,10 +128,12 @@ module.exports = {
     zoomOut.addEventListener('touchstart', function() {instance.getPublicInstance().zoomOut()}, false);
 
     var zoomOutBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
-    zoomOutBackground.setAttribute('x', '75');
-    zoomOutBackground.setAttribute('y', '-60');
-    zoomOutBackground.setAttribute('width', '1400'); // larger than expected because the whole group is transformed to scale down
-    zoomOutBackground.setAttribute('height', '1400');
+    zoomOutBackground.setAttribute('x', '5');
+    zoomOutBackground.setAttribute('y', '-120');
+    zoomOutBackground.setAttribute('rx', '65%');
+    zoomOutBackground.setAttribute('ry', '50%');
+    zoomOutBackground.setAttribute('width', '1525'); // larger than expected because the whole group is transformed to scale down
+    zoomOutBackground.setAttribute('height', '1525');
     zoomOutBackground.setAttribute('class', 'svg-pan-zoom-control-background');
     zoomOut.appendChild(zoomOutBackground);
 
@@ -247,9 +234,9 @@ ShadowViewport.prototype.cacheViewBox = function() {
 ShadowViewport.prototype.simpleViewBoxCache = function() {
   var bBox = this.viewport.getBBox()
 
-  this.viewBox.x = bBox.x
+  this.viewBox.x = bBox.x + 30
   this.viewBox.y = bBox.y
-  this.viewBox.width = bBox.width
+  this.viewBox.width = bBox.width * 0.6
   this.viewBox.height = bBox.height
 }
 
@@ -279,15 +266,15 @@ ShadowViewport.prototype.processCTM = function() {
       newScale = Math.max(this.options.width/this.viewBox.width, this.options.height/this.viewBox.height);
     }
 
-    newCTM.a = newScale; //x-scale
-    newCTM.d = newScale; //y-scale
+    newCTM.a = newScale * 2; //x-scale change default scale
+    newCTM.d = newScale * 2; //y-scale
     newCTM.e = -this.viewBox.x * newScale; //x-transform
     newCTM.f = -this.viewBox.y * newScale; //y-transform
   }
 
   if (this.options.center) {
     var offsetX = (this.options.width - (this.viewBox.width + this.viewBox.x * 2) * newCTM.a) * 0.5
-      , offsetY = (this.options.height - (this.viewBox.height + this.viewBox.y * 2) * newCTM.a) * 0.5
+      , offsetY = (this.options.height - (this.viewBox.height + this.viewBox.y * 1) * newCTM.a) * 0 + 250
 
     newCTM.e = offsetX
     newCTM.f = offsetY
@@ -525,9 +512,9 @@ var optionsDefaults = {
 , dblClickZoomEnabled: true // enable or disable zooming by double clicking (default enabled)
 , mouseWheelZoomEnabled: true // enable or disable zooming by mouse wheel (default enabled)
 , preventMouseEventsDefault: true // enable or disable preventDefault for mouse events
-, zoomScaleSensitivity: 0.2 // Zoom sensitivity
-, minZoom: 1 // Minimum Zoom level
-, maxZoom: 8 // Maximum Zoom level
+, zoomScaleSensitivity: 0.25 // Zoom sensitivity
+, minZoom: 0.75 // Minimum Zoom level
+, maxZoom: 4.5 // Maximum Zoom level
 , fit: true // enable or disable viewport fit in SVG (default true)
 , contain: false // enable or disable viewport contain the svg (default false)
 , center: true // enable or disable viewport centering in SVG (default true)
