@@ -209,6 +209,22 @@ def parse_input(raw):
     }
     return parse.get(raw, raw)
 
+#return blank base64 encodings
+def defaults():
+    zin = open("static/FloorPlans/floor0.txt", "r")
+    zero = zin.read()
+    zin.close()
+    fin = open("static/FloorPlans/floor1.txt", "r")
+    one = fin.read()
+    fin.close()
+    sin = open("static/FloorPlans/floor2.txt", "r")
+    two = sin.read()
+    sin.close()
+    tin = open("static/FloorPlans/floor3.txt", "r")
+    three = tin.read()
+    tin.close()
+    return (zero, one, two, three)
+
 def route(start, end):
     #parse start and end Nodes
     start = parse_input(start)

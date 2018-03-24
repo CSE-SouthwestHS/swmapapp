@@ -1,7 +1,7 @@
 from flask import Flask, flash, redirect, url_for, render_template, request, session, abort
 from random import randint
 
-from Map import route
+from Map import route, defaults
 from io import BytesIO
 import base64
 
@@ -22,7 +22,8 @@ def help():
 
 @app.route("/map/")
 def blank():
-    return render_template("map.html")
+    zero, one, two, three = defaults()
+    return render_template("map.html", zero = zero, one = one, two = two, three = three)
 
 @app.route("/map/<string:first>/")
 def point(first):
