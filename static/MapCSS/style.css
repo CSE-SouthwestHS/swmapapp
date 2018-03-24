@@ -1171,10 +1171,10 @@ sub {
     top: 25px;
     z-index: 10;
   }
-    .checkmark__circle {
+    .checkmarkCircle {
       fill: none;
     }
-    .checkmark__circle active {
+    .checkmarkCircle checked {
       stroke-dasharray: 166;
       stroke-dashoffset: 166;
       stroke-width: 2;
@@ -1186,7 +1186,7 @@ sub {
       width: 35px;
       height: 35px;
     }
-    .checkmark active {
+    .checkmark checked {
       border-radius: 50%;
       display: block;
       stroke-width: 2px;
@@ -1196,11 +1196,11 @@ sub {
       box-shadow: inset 0px 0px 0px #aa91e9;
       animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
     }
-    .checkmark__check {
+    .checkmarkCheck {
       stroke-dasharray: 48;
       stroke-dashoffset: 48;
     }
-    .checkmark__check active {
+    .checkmarkCheck checked {
       transform-origin: 50% 50%;
       animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
     }
@@ -1445,21 +1445,18 @@ sub {
     display: inline-block;
   }
   .check{
-    text-align: center;
     position: absolute;
-    font-size: 2.25em;
-    color: #55e97a;
-    width: 80px;
-    height: 80px;
+    width: auto;
+    height: auto;
     background: transparent;
-    left: 250px;
-    top: 6px;
+    right: 222px;
+    top: 27px;
     z-index: 10;
   }
-  .checkmark__circle {
+  .checkmarkCircle {
     fill: none;
   }
-  .checkmark__circle active {
+  .checkmarkCircle checked {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
     stroke-width: 2;
@@ -1471,7 +1468,7 @@ sub {
     width: 55px;
     height: 55px;
   }
-  .checkmark active {
+  .checkmark checked {
     background: #aa91e9;
     border-radius: 50%;
     display: block;
@@ -1482,11 +1479,11 @@ sub {
     box-shadow: inset 0px 0px 0px #aa91e9;
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
   }
-  .checkmark__check {
+  .checkmarkCheck {
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
   }
-  .checkmark__check active {
+  .checkmarkCheck checked {
     transform-origin: 50% 50%;
     animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
   }
