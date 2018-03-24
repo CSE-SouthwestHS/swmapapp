@@ -55,14 +55,13 @@ function noColor(){
 
 $(document).ready(function(){
   $('#displayMode').click(function(){
-    $(".DarkMode").toggleClass('active');
+    $(".DarkMode").toggleClass('DayMode');
     DNMode();
   });
 });
 
 function DNMode(){
-  var c = document.getElementById('search').value;
-  if ( $('.Darkmode').hasClass('active')) {
+  if ( $('.DarkMode').hasClass('DayMode')) {
     $("#windowcolor").css("background-color", "#3b3b2b");
     $(".searchBar").css("background-color", "#494949");
     $(".startbar").css("background-color", "#494949");
@@ -76,7 +75,6 @@ function DNMode(){
     $(".icon a").css("color", "#d1d1d1");
     $(".FLUI").css("filter", "invert(80%)");
     document.getElementById('displayMode').innerHTML = "Day &#x2600;";
-    document.getElementById('search').value = c + 'work';
   } else {
     $("#windowcolor").css("background-color", "#eeeccc");
     $(".searchBar").css("background-color", "white");
@@ -91,7 +89,6 @@ function DNMode(){
     $(".icon a").css("color", "#222");
     $(".FLUI").css("filter", "invert(0%)");
     document.getElementById('displayMode').innerHTML = "Night &#x263E;";
-    document.getElementById('search').value = c + 'broke';
   }
 }
 //-----------------------Room-sources------------------------->

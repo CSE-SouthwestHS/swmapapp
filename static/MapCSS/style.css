@@ -1370,6 +1370,7 @@ sub {
     }
 
     .startbar input{
+
       position: fixed;
       left: -45px;
       top: 0px;
@@ -1441,7 +1442,6 @@ sub {
   .autocomplete {
     /*the container must be positioned relative:*/
     position: relative;
-    background: white;
     display: inline-block;
   }
   .check{
