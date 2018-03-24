@@ -50,7 +50,11 @@ function reset_animation_textbox() {
 //----------------windowcolor Changer below----------
 
 function noColor(){
+  if ( $('.DarkMode').hasClass('DayMode')) {
+  $("#windowcolor").css("background-color", "#3b3b2b");
+  } else {
   $("#windowcolor").css("background-color", "#eeeccc");
+  }
 }
 
 $(document).ready(function(){
@@ -106,6 +110,4 @@ var f2 = ["201","203","206","207","208","209","211","212","Auditorium","Band","B
 var f3 = ["303","306","307","308","309","310","311","313","314","315","317","321","W301","W302","W303","W304","W313","W314","W316","W318","W319","W320","W321",
     "W322"]; //24rooms
 
-var bs = ["Pool","Pool Locker Rooms","E05","E08","E09","E10","E12","E13","E19","E20","E21","E23","Courtyard Lower","East Gym"]; //14rooms
-
-//---------------Pass to Python---------->
+var bs = ["Pool","Pool Locker Rooms","E05","E08","E09","E10","E12","E13","E19","E20","E21","E23","Courtyard Lower","East Gym"]; /*14rooms*/
