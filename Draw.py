@@ -20,10 +20,10 @@ def draw_path(vertices, r = 16):
         #failsafe
         return False
     floor_map = {
-        "0": "FloorPlans/SW_Map_Floor_0.png",
-        "1": "FloorPlans/SW_Map_Floor_1.png",
-        "2": "FloorPlans/SW_Map_Floor_2.png",
-        "3": "FloorPlans/SW_Map_Floor_3.png"
+        "0": "static/FloorPlans/SW_Map_Floor_0.png",
+        "1": "static/FloorPlans/SW_Map_Floor_1.png",
+        "2": "static/FloorPlans/SW_Map_Floor_2.png",
+        "3": "static/FloorPlans/SW_Map_Floor_3.png"
     }
     images = {
         "0": Image.open(floor_map["0"]),
