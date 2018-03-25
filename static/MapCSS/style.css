@@ -1035,7 +1035,7 @@ sub {
 /*-----------------Search bar and contents--------------*/
 @media (max-width: 900px){
   .searchBar{
-      background: transparent;
+      background: white;
       height: 55px;
       width: auto;
       position: relative;
@@ -1234,9 +1234,7 @@ sub {
       top: 0px;
       width: 225px;
       border: none;
-      background-color: #fff;
       padding: 8px;
-      font-size: 55px;
       transition: color 0.3s;
     }
   .startposBtn{
