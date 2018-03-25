@@ -114,29 +114,23 @@
 
     <div class="searchSpace">
       <div class="searchBar">
-        <div class="check">
-          <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-            <circle class="checkmarkCircle" cx="26" cy="26" r="25" fill="none"/>
-            <path class="checkmarkCheck" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-          </svg>
-        </div>
         <form autocomplete="off">
           <div class="autocomplete">
-            <input id="search" type="text" name="Search"placeholder="Search Southwest" class="closer">
+            <input id="search" type="text" name="Search" placeholder="Search Southwest" class="closer"></input>
           </div>
           <button type="button" id="srchBtn" class="searchBtn" onclick="Entry()"><img src="/static/images/searchButton.jpg" alt="Search"/></button>
         </form>
         <div class="floor">
-            <div class="flico">
-              <img src="/static/images/layer.png" alt="Search">
+          <div class="flico">
+              <img src="/static/images/layer.png" alt="Floors">
               <a onclick="fl1()">Floor 1</a>
               <a onclick="fl2()">Floor 2</a>
               <a onclick="fl3()">Floor 3</a>
               <a onclick="bsm()">Basement</a>
               <a onclick="All()">Show all</a>
               <a onclick="clr()">Clear</a>
-            </div>
           </div>
+        </div>
         <div class="icon">
           <div class="hamburger">
             <ul>
@@ -153,7 +147,7 @@
       <div class="startbar">
         <form autocomplete="off">
           <div class="autocomplete">
-            <input id="searchpos" type="text" name="Searchpos"placeholder="Your Location" class="closer">
+            <input id="searchpos" type="text" name="Searchpos" placeholder="Your location" class="closer"></input>
           </div>
           <button type="button" id="strtBtn" class="startposBtn" onclick="Trace()"><img src="/static/images/Locationicon.png" alt="Search"/></button>
         </form>
@@ -217,9 +211,10 @@
          // stop link reloading the page
          event.preventDefault();
          $('.startbar').addClass('active');
-         $('.checkmark').addClass('checked');
-         $('.checkmarkCheck').addClass('checked');
-         $('.checkmarkCircle').addClass('checked');
+         $('.searchBar').addClass('valid');
+         setTimeout(function(){
+         $('.searchBar').removeClass('valid');
+       }, 2000);
        }
     }
     function Trace(){
@@ -230,6 +225,7 @@
         if ( $('.startbar').hasClass('active') ){
           if (y == x){
             $('.ETA').removeClass('show');
+            document.getElementById('searchpos').value = '';
           } else {
             if (results.indexOf(y) >= 0){
                 document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -238,6 +234,8 @@
                 document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
 	              location.assign(html + "/map/" + y + "/" + x + "/");
 	              // stop link reloading the page
+                $('.searchBar input').css("color", "#3ee062");
+                $('.startbar input').css("color", "#3ee062");
             } else {
               document.getElementById('searchpos').value = '';
             }
@@ -245,13 +243,16 @@
         }
     }
     var z = "Room not found.";
-    var results = ["110","Art","Athletic Dir.","Boys Locker Room","Cafeteria","Community Ed","Courtyard Upper","E101","E102","E103","E104","E105","E106","E107","E110","E112","E115","E117","E119","E120","E122",
-    "E124","Girls Locker Room","Kitchen","Main Office","N101","N102","N103","N104","N113","N130","N131","N132","N133","N135","N136","N137","N140","N142","N144","N145","N148","N149","N150","N151","N152",
-    "N153","N154","Pool Seating","The Cove","The Garages","W101","W102","W105","W106","W108","W109","W111","W114","W115","W116","W117","W118","W119","W120","W121","W124","W125","W126","Weight Room","West Gym",
-    "Gender Neutral Bathroom", "Men's Bathroom", "Women's Bathroom", "Elevator","Door 1","Door 2","Door 5","Door 6","Athletic Entrance","Door 7","Door 12","Door 13","Door 15","Door 16","Door 17","201","203","206","207","208","209","211","212","Auditorium","Band",
-    "BlackBox","Choir","Dance","Media Center","W201","W202","W203","W204","W208","W221","W223","W225","W226","W228","W229","W230","W232 A-M","Guitar Room","303","306","307","308","309","310","311",
-    "313","314","315","317","321","W301","W302","W303","W304","W313","W314","W316","W318","W319","W320","W321","W322","Pool","Pool Locker Rooms","E05","E08","E09","E10","E12","E13",
-    "E19","E20","E21","E23","Courtyard Lower","East Gym"];
+    var results = ["110","Art","Athletic Dir.","Boys Locker Room","Cafeteria","Community Ed","Courtyard Upper","E101","E102","E103",
+    "E104","E105","E106","E107","E110","E112","E115","E117","E119","E120","E122","E124","Girls Locker Room","Kitchen","Main Office",
+    "N101","N102","N103","N104","N113","N130","N131","N132","N133","N135","N136","N137","N140","N142","N144","N145","N148","N149",
+    "N150","N151","N152","N153","N154","Pool Seating","The Cove","The Garages","W101","W102","W105","W106","W108","W109","W111",
+    "W114","W115","W116","W117","W118","W119","W120","W121","W124","W125","W126","Weight Room","West Gym","Gender Neutral Bathroom",
+    "Men's Bathroom", "Women's Bathroom", "Elevator","Door 1","Door 2","Door 5","Door 6","Athletic Entrance","Door 7","Door 12",
+    "Door 13","Door 15","Door 16","Door 17","201","203","206","207","208","209","211","212","Auditorium","Band","BlackBox","Choir",
+    "Dance","Media Center","W201","W202","W203","W204","W208","W221","W223","W225","W226","W228","W229","W230","W232 A-M","Guitar Room",
+    "303","306","307","308","309","310","311","313","314","315","317","321","W301","W302","W303","W304","W313","W314","W316","W318",
+    "W319","W320","W321","W322","Pool","Pool Locker Rooms","E05","E08","E09","E10","E12","E13","E19","E20","E21","E23","Courtyard Lower","East Gym"];
     </script>
     <script> // Allow the Enter key to trigger search function.
         var input = document.getElementById("search");
@@ -372,7 +373,5 @@
     });
     </script>
 <!--____________ END javascript___________-->
-
-
   </body>
 </html>

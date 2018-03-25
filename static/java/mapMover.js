@@ -513,7 +513,7 @@ var optionsDefaults = {
 , mouseWheelZoomEnabled: true // enable or disable zooming by mouse wheel (default enabled)
 , preventMouseEventsDefault: true // enable or disable preventDefault for mouse events
 , zoomScaleSensitivity: 0.25 // Zoom sensitivity
-, minZoom: 0.75 // Minimum Zoom level
+, minZoom: 0.55 // Minimum Zoom level
 , maxZoom: 4.5 // Maximum Zoom level
 , fit: true // enable or disable viewport fit in SVG (default true)
 , contain: false // enable or disable viewport contain the svg (default false)

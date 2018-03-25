@@ -1039,13 +1039,23 @@ sub {
 /*-----------------Search bar and contents--------------*/
 @media (max-width: 900px){
   .searchBar{
-      background: white;
+      background: transparent;
       height: 55px;
       width: auto;
       position: relative;
       left: 0;
       z-index: 3;
       box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    }
+  .searchbar.valid{
+      background: 50% no-repeat,linear-gradient(to left, #fff, #fff, #f3e4ff, #f3e4ff, #fff, #fff) no-repeat;
+      background-size: contain ,500% auto ;
+      animation: bgrad 1s forwards;
+    }
+  @keyframes bgrad {
+      from {
+        background-position: left, right;
+      }
     }
   .searchBar img{
       width: 60px;
@@ -1075,51 +1085,6 @@ sub {
       position: relative;
       display: inline-block;
     }
-  .check{
-    text-align: center;
-    position: absolute;
-    font-size: 4.5em;
-    color: #55e97a;
-    width: 80px;
-    height: 80px;
-    background: transparent;
-    left: 585px;
-    top: 25px;
-    z-index: 10;
-  }
-  .checkmarkCircle {
-      fill: none;
-    }
-  .checkmarkCircle checked {
-      stroke-dasharray: 166;
-      stroke-dashoffset: 166;
-      stroke-width: 2;
-      stroke-miterlimit: 10;
-      stroke: #aa91e9;
-      animation: stroke .6s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
-    }
-  .checkmark {
-      width: 35px;
-      height: 35px;
-    }
-  .checkmark checked {
-      border-radius: 50%;
-      display: block;
-      stroke-width: 2px;
-      stroke: #fff;
-      stroke-miterlimit: 10;
-      margin: 10% auto;
-      box-shadow: inset 0px 0px 0px #aa91e9;
-      animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-    }
-  .checkmarkCheck {
-      stroke-dasharray: 48;
-      stroke-dashoffset: 48;
-    }
-  .checkmarkCheck checked {
-      transform-origin: 50% 50%;
-      animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
-    }
   @keyframes stroke {
       100% {
         stroke-dashoffset: 0;
@@ -1138,14 +1103,14 @@ sub {
         box-shadow: inset 0px 0px 0px 30px #aa91e9;
       }
     }
-  input {
+  .searchBar input {
       border: none;
       background-color: #fff;
       padding: 10px;
       font-size: 25px;
+      transition: color 0.3s;
     }
   input[type=text] {
-      background-color: #fff;
       width: 70%;
       margin-left: 50px;
       outline: none;
@@ -1157,7 +1122,7 @@ sub {
       border: none;
       border-bottom: none;
       border-top: none;
-      z-index: 99;
+      z-index: 100;
       font-weight: 400;
       /*position the autocomplete items to be the same width as the container:*/
       top: 55px;
@@ -1187,7 +1152,7 @@ sub {
       border: none;
       border-bottom: none;
       border-top: none;
-      z-index: 99;
+      z-index: 50;
       font-weight: 400;
       /*position the autocomplete items to be the same width as the container:*/
       top: 55px;
@@ -1268,14 +1233,15 @@ sub {
       }
     }
   .startbar input{
-
       position: fixed;
       left: -45px;
       top: 0px;
       width: 225px;
-    }
-  position_icon{
-      z-index: -1;
+      border: none;
+      background-color: #fff;
+      padding: 8px;
+      font-size: 55px;
+      transition: color 0.3s;
     }
   .startposBtn{
       display: inline-block;
@@ -1309,6 +1275,16 @@ sub {
     z-index: 3;
     box-shadow: 0 10px 18px rgba(0,0,0,0.5);
   }
+  .searchBar.valid{
+    background: 50% no-repeat,linear-gradient(to left, #fff, #fff, #f3e4ff, #f3e4ff, #fff, #fff) no-repeat;
+    background-size: contain ,500% auto ;
+    animation: bgrad 1s forwards;
+  }
+  @keyframes bgrad {
+    from {
+      background-position: left, right;
+    }
+  }
   .searchBar img{
     width: 220px;
     cursor: auto;
@@ -1337,49 +1313,6 @@ sub {
     position: relative;
     display: inline-block;
   }
-  .check{
-    position: absolute;
-    width: auto;
-    height: auto;
-    background: transparent;
-    right: 222px;
-    top: 27px;
-    z-index: 10;
-  }
-  .checkmarkCircle {
-    fill: none;
-  }
-  .checkmarkCircle checked {
-    stroke-dasharray: 166;
-    stroke-dashoffset: 166;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-    stroke: #aa91e9;
-    animation: stroke .6s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
-  }
-  .checkmark {
-    width: 55px;
-    height: 55px;
-  }
-  .checkmark checked {
-    background: #aa91e9;
-    border-radius: 50%;
-    display: block;
-    stroke-width: 3px;
-    stroke: white;
-    stroke-miterlimit: 2;
-    margin: 10% auto;
-    box-shadow: inset 0px 0px 0px #aa91e9;
-    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-  }
-  .checkmarkCheck {
-    stroke-dasharray: 48;
-    stroke-dashoffset: 48;
-  }
-  .checkmarkCheck checked {
-    transform-origin: 50% 50%;
-    animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
-  }
   @keyframes stroke {
     100% {
       stroke-dashoffset: 0;
@@ -1398,14 +1331,14 @@ sub {
       box-shadow: inset 0px 0px 0px 30px #aa91e9;
     }
   }
-  input {
+  .searchBar input {
     border: none;
-    background-color: #fff;
+    background-color: transparent;
     padding: 8px;
     font-size: 55px;
+    transition: color 0.3s;
   }
   input[type=text] {
-    background-color: #fff;
     width: 65%;
     margin-left: 135px;
     outline: none;
@@ -1417,7 +1350,7 @@ sub {
     border: none;
     border-bottom: none;
     border-top: none;
-    z-index: 99;
+    z-index: 100;
     font-weight: 400;
     /*position the autocomplete items to be the same width as the container:*/
     top: 140px;
@@ -1447,7 +1380,7 @@ sub {
         border: none;
         border-bottom: none;
         border-top: none;
-        z-index: 99;
+        z-index: 10;
         font-weight: 400;
         /*position the autocomplete items to be the same width as the container:*/
         top: 125px;
@@ -1491,7 +1424,6 @@ sub {
   }
   .searchBtn img:hover{
     opacity: 0.5;
-    animation: twist .25s forwards;
   }
   .startbar{
     background: white;
@@ -1505,10 +1437,12 @@ sub {
     animation: hid .01s forwards;
     z-index: -2;
     }
-    .startbar.active{
+  .startbar.active{
     animation: appear .5s forwards;
     box-shadow: 0 6px 14px rgba(0,0,0,0.5);
-    }
+    z-index: 4;
+    transition: z-index 0.8s;
+  }
 
     @keyframes hid {
     0%{
@@ -1521,23 +1455,26 @@ sub {
     @keyframes appear {
     0%{
       transform: translateY(-140px);
-      z-index: -2;
       box-shadow: 0 rgba(0,0,0,0.5);
+      opacity: 0;
       }
     100%{
       transform: translateY(0px);
-      z-index: 4;
       box-shadow: 5px 10px 10px rgba(0,0,0,0.5);
+      opacity: 1;
       }
     }
   .startbar input{
+    outline: none;
     position: fixed;
     left: -120px;
     top: -10px;
     width: 455px;
-  }
-  position_icon{
-    z-index: -1;
+    border: none;
+    background-color: #fff;
+    padding: 8px;
+    font-size: 55px;
+    transition: color 0.3s;
   }
   .startposBtn{
     display: inline-block;
