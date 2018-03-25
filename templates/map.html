@@ -194,6 +194,18 @@
     });
     </script>
     <script>
+    $(document).ready(function(){
+      $('#search').click(function(){
+        $('.searchBar input').css("color", "#000");
+      });
+    });
+    $(document).ready(function(){
+      $('#searchpos').click(function(){
+        $('.startbar input').css("color", "#000");
+      });
+    });
+    </script>
+    <script>
     function Call(){
       Destination();
       Entry();
@@ -222,25 +234,29 @@
           html = init_html.substring(0, init_html.indexOf("/map/")),
           x = document.getElementById("search").value,
           y = document.getElementById("searchpos").value;
-        if ( $('.startbar').hasClass('active') ){
-          if (y == x){
-            $('.ETA').removeClass('show');
-            document.getElementById('searchpos').value = '';
+      if ( $('.startbar').hasClass('active') ){
+        if (y == x){
+          $('.ETA').removeClass('show');
+          document.getElementById('searchpos').value = '';
+        } else {
+          if (results.indexOf(y) >= 0 && results.indexOf(x) < 0){
+            $('.searchBar input').css("color", "#e03e3e");
           } else {
             if (results.indexOf(y) >= 0){
                 document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
                 document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
                 document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
                 document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-	              location.assign(html + "/map/" + y + "/" + x + "/");
-	              // stop link reloading the page
+  	            location.assign(html + "/map/" + y + "/" + x + "/");
+  	            // stop link reloading the page
                 $('.searchBar input').css("color", "#3ee062");
                 $('.startbar input').css("color", "#3ee062");
             } else {
-              document.getElementById('searchpos').value = '';
+              $('.startbar input').css("color", "#e03e3e");
             }
           }
         }
+      }
     }
     var z = "Room not found.";
     var results = ["110","Art","Athletic Dir.","Boys Locker Room","Cafeteria","Community Ed","Courtyard Upper","E101","E102","E103",
