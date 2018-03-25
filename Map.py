@@ -1,5 +1,6 @@
 import Draw
 import random
+import os
 
 #a function to read vertices from a .txt file
 def load_vertices(name):
@@ -211,16 +212,18 @@ def parse_input(raw):
 
 #return blank base64 encodings
 def defaults():
-    zin = open("static/FloorPlans/Floor0.txt", "r")
+    #idk why but this needs to be here
+    realpath = os.path.dirname(os.path.realpath(__file__))+"/static/FloorPlans/"
+    zin = open(realpath + "Floor0.txt", "r")
     zero = zin.read()
     zin.close()
-    fin = open("static/FloorPlans/Floor1.txt", "r")
+    fin = open(realpath + "Floor1.txt", "r")
     one = fin.read()
     fin.close()
-    sin = open("static/FloorPlans/Floor2.txt", "r")
+    sin = open(realpath + "Floor2.txt", "r")
     two = sin.read()
     sin.close()
-    tin = open("static/FloorPlans/Floor3.txt", "r")
+    tin = open(realpath + "Floor3.txt", "r")
     three = tin.read()
     tin.close()
     return (zero, one, two, three)
@@ -235,6 +238,8 @@ def route(start, end):
     #boolean variable to check if keys are valid
     startvalid = False
     endvalid = False
+    #idk why but it needs this
+    realpath = os.path.dirname(os.path.realpath(__file__)) + "/"
     for key in ["Data/W1verts.txt",
                 "Data/N1verts.txt",
                 "Data/W2verts.txt",
@@ -245,7 +250,7 @@ def route(start, end):
                 "Data/E0verts.txt",
                 "Data/E1verts.txt"
                 ]:
-        vertices = load_vertices(key)
+        vertices = load_vertices(realpath + key)
         for vertex in vertices:
             #set up the necesarry mappings
             v[vertex.getkey()] = vertex
@@ -268,7 +273,7 @@ def route(start, end):
                 "Data/E1edges.txt",
                 "Data/BetweenSections.txt"
                 ]:
-        e.extend(load_edges(v, key))
+        e.extend(load_edges(v, realpath + key))
     g = Graph(v, e)
     #classic procedure
     path = g.path(start, end)

@@ -19,11 +19,12 @@ def draw_path(vertices, r = 16):
     if len(vertices) < 1:
         #failsafe
         return False
+    realpath = os.path.dirname(os.path.realpath(__file__))+"/static/FloorPlans/"
     floor_map = {
-        "0": "static/FloorPlans/SW_Map_Floor_0.png",
-        "1": "static/FloorPlans/SW_Map_Floor_1.png",
-        "2": "static/FloorPlans/SW_Map_Floor_2.png",
-        "3": "static/FloorPlans/SW_Map_Floor_3.png"
+        "0": realpath + "SW_Map_Floor_0.png",
+        "1": realpath + "SW_Map_Floor_1.png",
+        "2": realpath + "SW_Map_Floor_2.png",
+        "3": realpath + "SW_Map_Floor_3.png"
     }
     images = {
         "0": Image.open(floor_map["0"]),
