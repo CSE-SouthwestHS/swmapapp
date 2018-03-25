@@ -2,20 +2,20 @@ from PIL import Image, ImageDraw
 import os
 
 #draws an individual point
-def draw_vertex(draw, vertex, r, fill = (89, 79, 161)):
+def draw_vertex(draw, vertex, r, fill = (100, 50, 180)):
     draw.ellipse([vertex.getx()-r, vertex.gety()-r, \
                  vertex.getx()+r, vertex.gety()+r], \
-                 outline = (89, 79, 161), fill = fill)
+                 outline = (100, 50, 180), fill = fill)
 
 #draws a clean line
 def draw_line(draw, v1, v2, r):
     draw_vertex(draw, v1, r)
     draw.line([v1.getx(), v1.gety(), v2.getx(), v2.gety()], \
-                             width = r*2, fill = (89, 79, 161))
+                             width = r*2, fill = (100, 50, 180))
     draw_vertex(draw, v2, r)
 
 #creates path images in a folder, in a folder
-def draw_path(vertices, r = 16):
+def draw_path(vertices, r = 12):
     if len(vertices) < 1:
         #failsafe
         return False
@@ -37,7 +37,7 @@ def draw_path(vertices, r = 16):
         #one item case
         curimage = images[vertices[0].getfloor()]
         curdraw = ImageDraw.Draw(curimage)
-        draw_vertex(curdraw, vertices[0], r*2)
+        draw_vertex(curdraw, vertices[0], r*1.7)
         return images
     #the big cajun
     #we delay drawing first node till the end to make it a different color
@@ -50,15 +50,16 @@ def draw_path(vertices, r = 16):
         if v1.getfloor() == v2.getfloor():
             draw_line(curdraw, v1, v2, r)
         else:
-            draw_vertex(curdraw, v1, r*2)
+            draw_vertex(curdraw, v1, r*1.7)
             curimage = images[v2.getfloor()]
             curdraw = ImageDraw.Draw(curimage)
-            draw_vertex(curdraw, v2, r*2)
+            draw_vertex(curdraw, v2, r*1.7)
         ix += 1
     #draw the first and last ones pretty
-    draw_vertex(curdraw, vertices[-1], r*2.2, fill = (0,0,0))
+    draw_vertex(curdraw, vertices[-1], r*1.7, fill = (0,0,0))
+    draw_vertex(curdraw, vertices[-1], r*1.3, fill = (100,50,180))
     curimage = images[vertices[0].getfloor()]
     curdraw = ImageDraw.Draw(curimage)
-    draw_vertex(curdraw, vertices[0], r*2.2, fill = (0,0,0))
-    draw_vertex(curdraw, vertices[0], r*1.9, fill = (255,255,255))
+    draw_vertex(curdraw, vertices[0], r*1.7, fill = (0,0,0))
+    draw_vertex(curdraw, vertices[0], r*1.4, fill = (255,255,255))
     return images
