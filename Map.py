@@ -211,16 +211,16 @@ def parse_input(raw):
 
 #return blank base64 encodings
 def defaults():
-    zin = open("static/FloorPlans/floor0.txt", "r")
+    zin = open("static/FloorPlans/Floor0.txt", "r")
     zero = zin.read()
     zin.close()
-    fin = open("static/FloorPlans/floor1.txt", "r")
+    fin = open("static/FloorPlans/Floor1.txt", "r")
     one = fin.read()
     fin.close()
-    sin = open("static/FloorPlans/floor2.txt", "r")
+    sin = open("static/FloorPlans/Floor2.txt", "r")
     two = sin.read()
     sin.close()
-    tin = open("static/FloorPlans/floor3.txt", "r")
+    tin = open("static/FloorPlans/Floor3.txt", "r")
     three = tin.read()
     tin.close()
     return (zero, one, two, three)
