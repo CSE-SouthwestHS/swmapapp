@@ -2,10 +2,10 @@ from PIL import Image, ImageDraw
 import os
 
 #draws an individual point
-def draw_vertex(draw, vertex, r):
+def draw_vertex(draw, vertex, r, fill = (89, 79, 161)):
     draw.ellipse([vertex.getx()-r, vertex.gety()-r, \
                  vertex.getx()+r, vertex.gety()+r], \
-                 outline = (89, 79, 161), fill = (89, 79, 161))
+                 outline = (89, 79, 161), fill = fill)
 
 #draws a clean line
 def draw_line(draw, v1, v2, r):
@@ -40,10 +40,10 @@ def draw_path(vertices, r = 16):
         draw_vertex(curdraw, vertices[0], r*2)
         return images
     #the big cajun
+    #we delay drawing first node till the end to make it a different color
+    ix = 0
     curimage = images[vertices[0].getfloor()]
     curdraw = ImageDraw.Draw(curimage)
-    draw_vertex(curdraw, vertices[0], r*2)
-    ix = 0
     while ix < len(vertices)-1:
         v1 = vertices[ix]
         v2 = vertices[ix + 1]
@@ -55,5 +55,10 @@ def draw_path(vertices, r = 16):
             curdraw = ImageDraw.Draw(curimage)
             draw_vertex(curdraw, v2, r*2)
         ix += 1
-    draw_vertex(curdraw, vertices[-1], r*2)
+    #draw the first and last ones pretty
+    draw_vertex(curdraw, vertices[-1], r*2.2, fill = (0,0,0))
+    curimage = images[vertices[0].getfloor()]
+    curdraw = ImageDraw.Draw(curimage)
+    draw_vertex(curdraw, vertices[0], r*2.2, fill = (0,0,0))
+    draw_vertex(curdraw, vertices[0], r*1.9, fill = (255,255,255))
     return images
