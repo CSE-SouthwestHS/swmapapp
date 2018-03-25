@@ -78,5 +78,10 @@ def path(first, second):
     return render_template("map.html",time=time,\
                            zero=zero,one=one,two=two,three=three)
 
+#if somebody tries to fuck with the url it'll take them to a blank map
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for("blank"))
+
 if __name__ == "__main__":
     app.run()
