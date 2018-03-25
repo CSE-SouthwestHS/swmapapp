@@ -6,8 +6,10 @@ html, body {
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
+  overflow: scroll;
+}
+#MapBody{
   overflow: hidden;
-  background-color: black;
 }
 #windowcolor{
   position: fixed;
@@ -48,7 +50,7 @@ body {
 }
 .ETA{
   color: white;
-  width:auto;
+  width: auto;
   height: auto;
   padding-left: 7%;
   padding-top: 6px;
@@ -61,7 +63,7 @@ body {
   left: 0;
   bottom: 200px;
   z-index: 5;
-  background: #333333;
+  background: #333;
   border-color: white;
   border-width: 5px;
   border-radius: 10px;
@@ -489,7 +491,7 @@ sub {
     z-index: 10;
   }
   .footer2 p{
-    color:white;
+    color: white;
     font-size: 1em;
     padding-top: 10px;
   }
@@ -909,7 +911,7 @@ sub {
   }
   .footer2{
     position: absolute;
-    height: 80px;
+    height: 120px;
     width: 100%;
     margin-top: 1150px;
     background: #000;
@@ -917,8 +919,9 @@ sub {
   }
   .footer2 p{
     color:white;
-    font-size: 1em;
+    font-size: 1.8em;
     padding-top: 10px;
+    padding-left: 40px;
   }
   .footer3{
     height: 120px;
