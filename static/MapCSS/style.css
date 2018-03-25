@@ -6,6 +6,7 @@ html, body {
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
+  overflow: hidden;
   background-color: black;
 }
 #windowcolor{
@@ -54,11 +55,11 @@ body {
   padding-bottom: 6px;
   padding-right: 10px;
   visibility: hidden;
-  position: absolute;
+  position: fixed;
   font-size: 2.5em;
   font-weight: 500;
   left: 0;
-  bottom: 130px;
+  bottom: 200px;
   z-index: 5;
   background: #333333;
   border-color: white;
@@ -154,14 +155,6 @@ sub {
 .main {
     padding: 0;
     height: inherit;
-}
-.floor_img{
-  font-size: 0.8em;
-  font-weight: 200;
-  position: inherit;
-  height: 100%;
-  width: 100%;
-  overflow: visible;
 }
 .select2{
   outline-style: solid;
@@ -1098,23 +1091,23 @@ sub {
         transform: scale3d(1.1, 1.1, 1);
       }
     }
-  @keyframes fill {
+  @keyframes fill{
       100% {
         box-shadow: inset 0px 0px 0px 30px #aa91e9;
       }
     }
-  .searchBar input {
-      border: none;
+  .searchBar input{
       background-color: #fff;
-      padding: 10px;
-      font-size: 25px;
       transition: color 0.3s;
     }
-  input[type=text] {
-      width: 70%;
-      margin-left: 50px;
-      outline: none;
-    }
+  input[type=text]{
+    border: none;
+    width: 70%;
+    margin-left: 50px;
+    outline: none;
+    padding: 10px;
+    font-size: 25px;
+  }
   /*------------Autocompleters Below-------------*/
   /*-----Top-----*/
   .autocomplete-items {
@@ -1135,7 +1128,7 @@ sub {
       font-size: 1em;
       cursor: pointer;
       border-bottom: 1px solid #d4d4d4;
-      overflow: scroll;
+      overflow: hidden;
     }
   .autocomplete-items div:hover {
       /*when hovering an item:*/
@@ -1165,7 +1158,7 @@ sub {
       cursor: pointer;
       background-color: #fff;
       border-bottom: 1px solid #d4d4d4;
-      overflow: scroll;
+      overflow: hidden;
     }
   .autocomplete_pos-items div:hover {
       /*when hovering an item:*/
@@ -1331,16 +1324,16 @@ sub {
       box-shadow: inset 0px 0px 0px 30px #aa91e9;
     }
   }
-  .searchBar input {
-    border: none;
+  .searchBar input{
     background-color: transparent;
-    padding: 8px;
-    font-size: 55px;
     transition: color 0.3s;
   }
-  input[type=text] {
+  input[type=text]{
+    border: none;
     width: 65%;
     margin-left: 135px;
+    padding: 8px;
+    font-size: 55px;
     outline: none;
     margin-top: 25px;
   }
@@ -1363,7 +1356,7 @@ sub {
     font-size: 3.5em;
     cursor: pointer;
     border-bottom: 1px solid #d4d4d4;
-    overflow: scroll;
+    overflow: hidden;
   }
   .autocomplete-items div:hover {
     /*when hovering an item:*/
@@ -1393,7 +1386,7 @@ sub {
         cursor: pointer;
         background-color: #fff;
         border-bottom: 1px solid #d4d4d4;
-        overflow: scroll;
+        overflow: hidden;
       }
   .autocomplete_pos-items div:hover {
         /*when hovering an item:*/
@@ -1621,7 +1614,7 @@ sub {
     font-weight: 500;
     margin-left: -50px;
     margin-top: -5px;
-    overflow: scroll;
+    overflow: auto;
     box-shadow: 0 6px 8px rgba(0,0,0,0.5);
     animation: slideback2 0.5s ease forwards;
   }

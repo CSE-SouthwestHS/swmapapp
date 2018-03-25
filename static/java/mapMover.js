@@ -71,8 +71,8 @@ module.exports = {
     var zoomInBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
     zoomInBackground.setAttribute('x', '5');
     zoomInBackground.setAttribute('y', '-120');
-    zoomInBackground.setAttribute('rx', '65%');
-    zoomInBackground.setAttribute('ry', '50%');
+    zoomInBackground.setAttribute('rx', '30%');
+    zoomInBackground.setAttribute('ry', '35%');
     zoomInBackground.setAttribute('width', '1525'); // larger than expected because the whole group is transformed to scale down
     zoomInBackground.setAttribute('height', '1525');
     zoomInBackground.setAttribute('class', 'svg-pan-zoom-control-background');
@@ -130,8 +130,8 @@ module.exports = {
     var zoomOutBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
     zoomOutBackground.setAttribute('x', '5');
     zoomOutBackground.setAttribute('y', '-120');
-    zoomOutBackground.setAttribute('rx', '65%');
-    zoomOutBackground.setAttribute('ry', '50%');
+    zoomOutBackground.setAttribute('rx', '30%');
+    zoomOutBackground.setAttribute('ry', '35%');
     zoomOutBackground.setAttribute('width', '1525'); // larger than expected because the whole group is transformed to scale down
     zoomOutBackground.setAttribute('height', '1525');
     zoomOutBackground.setAttribute('class', 'svg-pan-zoom-control-background');
