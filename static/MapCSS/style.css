@@ -1,16 +1,13 @@
 /*--------------GENERAL PAGE SETUP-------------*/
-
 html, body {
   margin: 0;
   padding: 0;
 }
-
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   background-color: black;
 }
-
 #windowcolor{
   position: fixed;
   z-index: -5;
@@ -20,7 +17,6 @@ body {
   margin-top: 0;
   min-height: 100%;
 }
-
 @keyframes CCActivate {
   0%{
     background-color: #eeeccc;
@@ -35,7 +31,6 @@ body {
     background-color: #eeeccc;
   }
 }
-
 .FLUI{
   width: 100%;
   height: 100%;
@@ -43,7 +38,6 @@ body {
   position: fixed;
   z-index: 0;
 }
-
 .colors{
   animation: cchange 2s infinite;
   font-size: inherit;
@@ -80,7 +74,6 @@ body {
   visibility: visible !important;
   animation: slide 2s forwards;
 }
-
 @keyframes cchange {
   0%{color: #ff7474;}
   20%{color: #d777ff;}
@@ -97,19 +90,16 @@ body {
   80%{background: #e0d56b;}
   100%{background: #ff7474;}
 }
-
 .floor_text{
   font-size: 1em;
   color: #777;
   font-weight: 500;
 }
-
 .container {
   margin: auto;
   max-width: 100%;
   padding: 0 10px;
 }
-
 .container2 {
   width: 100%;
   padding: 0 0px;
@@ -117,12 +107,10 @@ body {
   background: white;
   overflow: scroll;
 }
-
 .header .container {
   position: relative;
   top: 40px;
 }
-
 .smallheader {
   background-color: rgb(102,51,153);
   background-size: cover;
@@ -131,18 +119,15 @@ body {
   text-align: center;
   text-decoration: none;
 }
-
 .smallheader .container, .smallheader2 .container {
   position: relative;
   top: 56px;
 }
-
 .btn:hover {
   background: rgba(100,100,100,50);
   cursor: pointer;
   transition: background .5s;
 }
-
 .btnwht:hover {
   border-bottom-style: solid;
   border-bottom-color: #ddd;
@@ -150,17 +135,14 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
-
 .main .container {
   top: 100%;
   height: auto;
 }
-
 .essay {
   margin: 5% 100%;
   overflow: hidden;
 }
-
 sub {
   font-size: 12pt;
   font-weight: 500;
@@ -169,12 +151,10 @@ sub {
   bottom: 4px;
   left: 4px;
 }
-
 .main {
     padding: 0;
     height: inherit;
 }
-
 .floor_img{
   font-size: 0.8em;
   font-weight: 200;
@@ -182,6 +162,11 @@ sub {
   height: 100%;
   width: 100%;
   overflow: visible;
+}
+.select2{
+  outline-style: solid;
+  outline-color: #fff;
+  outline-width: thin;
 }
 
 @media (max-width:900px){
@@ -191,13 +176,11 @@ sub {
     width: 100%;
     overflow:hidden;
   }
-
   .nav2 {
     background:#fff;
     height: 80px;
     width: 100%;
   }
-
   .nav .btn {
     display: inline-block;
     height: 80px;
@@ -207,7 +190,6 @@ sub {
     transition: background .5s;
     overflow: hidden;
   }
-
   .nav2 btn{
     display: inline-block;
     height: 80px;
@@ -215,7 +197,6 @@ sub {
     list-style: none;
     padding: 0 10px;
   }
-
   .nav ul {
     height: 80px;
     width: 100%;
@@ -225,7 +206,6 @@ sub {
     text-align: center;
     overflow: hidden;
   }
-
   .nav2 ul{
     height: 80px;
     width: 100%;
@@ -235,7 +215,6 @@ sub {
     text-align: center;
     overflow: auto;
   }
-
   .nav ul li {
     color: #fff;
     display: inline-block;
@@ -246,7 +225,6 @@ sub {
     transition: background .5s;
     overflow: hidden;
   }
-
   .nav2 ul li {
     color: black;
     display: inline-block;
@@ -258,7 +236,6 @@ sub {
     font-size: 1.1em;
     margin: 0 30px;
   }
-
   .select{
     outline-style: dashed;
     outline-color: #663399;
@@ -315,7 +292,6 @@ sub {
     padding-left: 100px;
     padding-top: 30px;
   }
-
   .feedbox{
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -326,7 +302,6 @@ sub {
     margin-bottom: 60px;
     position: relative;
   }
-
   .feedbox h1{
     margin-top: -25px;
     padding-bottom: 20px;
@@ -334,12 +309,10 @@ sub {
     font-weight: 400;
     text-align: center;
   }
-
   .feedbox label{
     font-weight: 400;
     font-size: 1.2em;
   }
-
   .feedbox input[type=text], .feedbox textarea, .feedbox [type=email]{
     width: 90%;
     padding: 9px;
@@ -353,7 +326,6 @@ sub {
     font-size: 1em;
     outline:none;
   }
-
   .feedbox select{
     width: 90%;
     height: 40px;
@@ -366,7 +338,6 @@ sub {
     font-size: 1em;
     resize: vertical;
   }
-
   .feedbox input[type=submit] {
       background-color: #9c65d4;
       color: white;
@@ -378,13 +349,9 @@ sub {
       height:50px;
       width:auto;
   }
-
-  .feedbox input[type=submit] {
-
-  }]:hover {
+  .feedbox input[type=submit]:hover {
       background-color: #9364c0;
   }
-
   .essay2 {
     position: absolute;
     width: 100%;
@@ -395,7 +362,6 @@ sub {
     margin-top: 300px;
     z-index: 0;
   }
-
   .essay2 a{
     position: absolute;
     font-size: 1.8em;
@@ -403,14 +369,12 @@ sub {
     padding-left: 10%;
     margin-top: 50px;
   }
-
   .helpbox{
     background: #c694ff;
     width: 100%;
     height: 300px;
     z-index: -3;
   }
-
   .helpbox h1{
     position: absolute;
     padding-left: 100px;
@@ -423,7 +387,6 @@ sub {
     font-size: 3em;
     color: white;
   }
-
   .qbox{
     position: absolute;
     background: white;
@@ -524,7 +487,6 @@ sub {
     z-index: -1;
     overflow: hidden;
   }
-
   .footer2{
     position: absolute;
     height: 80px;
@@ -538,21 +500,18 @@ sub {
     font-size: 1em;
     padding-top: 10px;
   }
-
   .footer3{
     height: 80px;
     width: 100%;
     background: #000;
     z-index: 20;
   }
-
   .footer3 p{
     color:white;
     font-size: 1em;
     padding-top: 25px;
     padding-left: 40px;
   }
-
   .smallheader2 {
     background-color: rgb(102,51,153);
     background-size: cover;
@@ -581,7 +540,6 @@ sub {
     z-index: 100;
     margin-top: 60%;
   }
-
   .footer p {
     color: #fff;
     font-size: 14px;
@@ -589,29 +547,26 @@ sub {
     line-height: 80px;
     margin: 0;
   }
-
   /*--------------Start Button-------------*/
-
-    .header .startbtn {
-      display: inline-block;
-      height: 40px;
-      line-height: 40px;
-      width: 100px;
-      list-style: none;
-      padding: 0 10px;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: 400;
-    }
-    a.startbtn {
-    		font-size: 1.5rem;
-    		color: #008794;
-    		position: relative;
-    		border-radius: 20px;
-    		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    		transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
-    }
-    a.startbtn:after {
+  .header .startbtn {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 100px;
+    list-style: none;
+    padding: 0 10px;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  a.startbtn {
+    font-size: 1.5rem;
+		color: #008794;
+		position: relative;
+		border-radius: 20px;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+		transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+  }
+  a.startbtn:after {
     		content: "";
     		width: 100%;
     		height: 100%;
@@ -623,20 +578,20 @@ sub {
     		border-radius: 20px;
     		transition: all 0.3s ease;
     }
-    a.startbtn:hover:after {
+  a.startbtn:hover:after {
     		transform: scale(1);
     		box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
     }
-    a.startbtn:nth-of-type(1) {
+  a.startbtn:nth-of-type(1) {
     		background-color: #fff;
     }
-    a.startbtn:nth-of-type(1):hover {
+  a.startbtn:nth-of-type(1):hover {
     		color: white;
     }
-    a.startbtn:nth-of-type(1):after {
+  a.startbtn:nth-of-type(1):after {
     		border-color: white;
     }
-    a.startbtn:hover {
+  a.startbtn:hover {
     		background-color: #9f38fa;
     		cursor: pointer;
     		box-shadow: none;
@@ -650,13 +605,11 @@ sub {
     width: 100%;
     overflow: hidden;
   }
-
   .nav2 {
     background:#fff;
     height: 180px;
     width: 100%;
   }
-
   .nav .btn {
     display: inline-block;
     height: 180px;
@@ -665,7 +618,6 @@ sub {
     padding: 0 30px;
     transition: background .5s;
   }
-
   .nav2 btn{
     display: inline-block;
     height: 180px;
@@ -673,7 +625,6 @@ sub {
     list-style: none;
     padding: 0 0px;
   }
-
   .nav ul {
     height: 180px;
     width: 100%;
@@ -683,7 +634,6 @@ sub {
     text-align: center;
     overflow: hidden;
   }
-
   .nav2 ul{
     height: 180px;
     width: 100%;
@@ -693,7 +643,6 @@ sub {
     text-align: center;
     overflow: auto;
   }
-
   .nav ul li {
     color: #fff;
     display: inline-block;
@@ -705,7 +654,6 @@ sub {
     padding: 0 10px;
     transition: background .5s;
   }
-
   .nav2 ul li {
     color: black;
     display: inline-block;
@@ -717,7 +665,6 @@ sub {
     font-size: 2em;
     margin: 0 20px;
   }
-
   .select{
     outline-style: dashed;
     outline-color: #663399;
@@ -772,7 +719,6 @@ sub {
     padding-left: 100px;
     padding-top: 30px;
   }
-
   .feedbox{
     border-radius: 15px;
     background-color: #f2f2f2;
@@ -782,7 +728,6 @@ sub {
     margin-top: 1400px;
     margin-bottom: 100px;
   }
-
   .feedbox h1{
     margin-top: -20px;
     padding-bottom: 35px;
@@ -790,12 +735,10 @@ sub {
     font-weight: 400;
     text-align: center;
   }
-
   .feedbox label{
     font-weight: 400;
     font-size: 2.2em;
   }
-
   .feedbox input[type=text], .feedbox textarea, .feedbox [type=email]{
     width: 100%;
     padding: 10px;
@@ -809,7 +752,6 @@ sub {
     font-size: 2em;
     outline:none;
   }
-
   .feedbox select{
     width: 100%;
     height: 70px;
@@ -823,7 +765,6 @@ sub {
     resize: vertical;
     outline:none;
   }
-
   .feedbox input[type=submit] {
       background-color: #9c65d4;
       color: white;
@@ -835,11 +776,9 @@ sub {
       height: 100px;
       width: auto;
   }
-
   .feedbox input[type=submit]:hover {
       background-color: #9364c0;
   }
-
   .essay2 {
     position: absolute;
     width: 100%;
@@ -850,7 +789,6 @@ sub {
     margin-top: 400px;
     z-index: -2;
   }
-
   .essay2 a{
     position: absolute;
     font-size: 1.8em;
@@ -858,7 +796,6 @@ sub {
     padding-left: 10%;
     margin-top: 50px;
   }
-
   .helpbox{
     position: absolute;
     background: #c694ff;
@@ -866,7 +803,6 @@ sub {
     height: 400px;
     z-index: 13;
   }
-
   .helpbox h1{
     position: absolute;
     padding-left: 15%;
@@ -876,7 +812,6 @@ sub {
     font-size: 4em;
     color: white;
   }
-
   .qbox{
     position: absolute;
     background: white;
@@ -979,7 +914,6 @@ sub {
       transform: rotate(0deg);
     }
   }
-
   .footer2{
     position: absolute;
     height: 80px;
@@ -988,27 +922,22 @@ sub {
     background: #000;
     z-index: 20;
   }
-
   .footer2 p{
     color:white;
     font-size: 1em;
     padding-top: 10px;
   }
-
   .footer3{
     height: 120px;
     width: 100%;
     background: #000;
     z-index: 20;
   }
-
   .footer3 p{
     color:white;
     font-size: 1.8em;
     padding-top: 40px;
     padding-left: 40px;
-  }
-
   }
   h2{
     font-size: 3em;
@@ -1053,9 +982,7 @@ sub {
     margin: 0px;
     padding: 40px;
   }
-
-/*--------------Start Button-------------*/
-
+  /*--------------Start Button-------------*/
   .header .startbtn {
     display: inline-block;
     height: 80px;
@@ -1107,18 +1034,11 @@ sub {
   		box-shadow: none;
   }
 }
+/*--------------^ GENERAL PAGE SETUP ^-------------*/
 
-.select2{
-  outline-style: solid;
-  outline-color: #fff;
-  outline-width: thin;
-}
-/*--------------GENERAL PAGE SETUP-------------*/
 /*-----------------Search bar and contents--------------*/
-
 @media (max-width: 900px){
-
-    .searchBar{
+  .searchBar{
       background: white;
       height: 55px;
       width: auto;
@@ -1127,8 +1047,7 @@ sub {
       z-index: 3;
       box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
-
-    .searchBar img{
+  .searchBar img{
       width: 60px;
       cursor: auto;
       position: absolute;
@@ -1138,8 +1057,7 @@ sub {
       cursor: pointer;
       z-index: 4;
     }
-
-    .searchSpace{
+  .searchSpace{
       min-height: auto;
       overflow: visible;
       width: 100%;
@@ -1149,17 +1067,15 @@ sub {
       left: 0;
       z-index: 0;
     }
-
-    * {
+  * {
       box-sizing: border-box;
     }
-
-    .autocomplete {
+  .autocomplete {
       /*the container must be positioned relative:*/
       position: relative;
       display: inline-block;
     }
-    .check{
+  .check{
     text-align: center;
     position: absolute;
     font-size: 4.5em;
@@ -1171,10 +1087,10 @@ sub {
     top: 25px;
     z-index: 10;
   }
-    .checkmarkCircle {
+  .checkmarkCircle {
       fill: none;
     }
-    .checkmarkCircle checked {
+  .checkmarkCircle checked {
       stroke-dasharray: 166;
       stroke-dashoffset: 166;
       stroke-width: 2;
@@ -1182,11 +1098,11 @@ sub {
       stroke: #aa91e9;
       animation: stroke .6s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
     }
-    .checkmark {
+  .checkmark {
       width: 35px;
       height: 35px;
     }
-    .checkmark checked {
+  .checkmark checked {
       border-radius: 50%;
       display: block;
       stroke-width: 2px;
@@ -1196,21 +1112,20 @@ sub {
       box-shadow: inset 0px 0px 0px #aa91e9;
       animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
     }
-    .checkmarkCheck {
+  .checkmarkCheck {
       stroke-dasharray: 48;
       stroke-dashoffset: 48;
     }
-    .checkmarkCheck checked {
+  .checkmarkCheck checked {
       transform-origin: 50% 50%;
       animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
     }
-    @keyframes stroke {
+  @keyframes stroke {
       100% {
         stroke-dashoffset: 0;
       }
     }
-
-    @keyframes scale {
+  @keyframes scale {
       0%, 100% {
         transform: none;
       }
@@ -1218,31 +1133,26 @@ sub {
         transform: scale3d(1.1, 1.1, 1);
       }
     }
-
-    @keyframes fill {
+  @keyframes fill {
       100% {
         box-shadow: inset 0px 0px 0px 30px #aa91e9;
       }
     }
-
-    input {
+  input {
       border: none;
       background-color: #fff;
       padding: 10px;
       font-size: 25px;
     }
-
-    input[type=text] {
+  input[type=text] {
       background-color: #fff;
       width: 70%;
       margin-left: 50px;
       outline: none;
     }
-
-/*------------Autocompleters Below-------------*/
-/*-----Top-----*/
-
-    .autocomplete-items {
+  /*------------Autocompleters Below-------------*/
+  /*-----Top-----*/
+  .autocomplete-items {
       position: absolute;
       border: none;
       border-bottom: none;
@@ -1255,29 +1165,24 @@ sub {
       width: 100px;
       background-color: white;
     }
-
-    .autocomplete-items div {
+  .autocomplete-items div {
       padding: 10px;
       font-size: 1em;
       cursor: pointer;
       border-bottom: 1px solid #d4d4d4;
       overflow: scroll;
     }
-
-    .autocomplete-items div:hover {
+  .autocomplete-items div:hover {
       /*when hovering an item:*/
       background-color: #e9e9e9;
     }
-
-    .autocomplete-active {
+  .autocomplete-active {
       /*when navigating through the items using the arrow keys:*/
       background-color: DodgerBlue !important;
       color: #ffffff;
     }
-
-/*----Bottom-----*/
-
-    .autocomplete_pos-items {
+  /*----Bottom-----*/
+  .autocomplete_pos-items {
       position: absolute;
       border: none;
       border-bottom: none;
@@ -1289,8 +1194,7 @@ sub {
       margin-left: 10px;
       width: 100px;
     }
-
-    .autocomplete_pos-items div {
+  .autocomplete_pos-items div {
       padding: 10px;
       font-size: 1em;
       cursor: pointer;
@@ -1298,21 +1202,17 @@ sub {
       border-bottom: 1px solid #d4d4d4;
       overflow: scroll;
     }
-
-    .autocomplete_pos-items div:hover {
+  .autocomplete_pos-items div:hover {
       /*when hovering an item:*/
       background-color: #e9e9e9;
     }
-
-    .autocomplete_pos-active {
+  .autocomplete_pos-active {
       /*when navigating through the items using the arrow keys:*/
       background-color: DodgerBlue !important;
       color: #ffffff;
     }
-
-/*-------------Autocompleters Above------*/
-
-    .searchBtn{
+  /*-------------Autocompleters Above------*/
+  .searchBtn{
       display: inline-block;
       width:25px;
       height: 25px;
@@ -1323,17 +1223,17 @@ sub {
       top: 45px;
       border: none;
     }
-    .searchBtn img{
+  .searchBtn img{
       width: 25px;
       right: 0px;
       top:0px;
       opacity: 1;
     }
-    .searchBtn img:hover{
+  .searchBtn img:hover{
       opacity: 0.5;
       animation: twist .25s forwards;
     }
-    .startbar{
+  .startbar{
       background: white;
       height: 55px;
       width: 300px;
@@ -1345,12 +1245,11 @@ sub {
       z-index: -2;
       animation: hid .01s forwards;
     }
-    .startbar.active{
+  .startbar.active{
       animation: appear .5s forwards;
       box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
-
-    @keyframes hid {
+  @keyframes hid {
       0%{
         transform: translateY(0px);
       }
@@ -1358,7 +1257,7 @@ sub {
         transform: translateY(-55px);
       }
     }
-    @keyframes appear {
+  @keyframes appear {
       0%{
         transform: translateY(-55px);
         z-index: -2;
@@ -1368,18 +1267,17 @@ sub {
         z-index: 4;
       }
     }
-
-    .startbar input{
+  .startbar input{
 
       position: fixed;
       left: -45px;
       top: 0px;
       width: 225px;
     }
-    position_icon{
+  position_icon{
       z-index: -1;
     }
-    .startposBtn{
+  .startposBtn{
       display: inline-block;
       width: 50px;
       height: 35px;
@@ -1390,10 +1288,10 @@ sub {
       top: 10px;
       border: none;
     }
-    .startposBtn img:hover{
+  .startposBtn img:hover{
       opacity: 0.4;
     }
-    .startposBtn img{
+  .startposBtn img{
       height: 30px;
       margin-left: 0px;
       top: 5px;
@@ -1402,7 +1300,6 @@ sub {
 }
 
 @media (min-width: 900px){
-
   .searchBar{
     background: white;
     height: 140px;
@@ -1412,7 +1309,6 @@ sub {
     z-index: 3;
     box-shadow: 0 10px 18px rgba(0,0,0,0.5);
   }
-
   .searchBar img{
     width: 220px;
     cursor: auto;
@@ -1423,7 +1319,6 @@ sub {
     cursor: pointer;
     z-index: 4;
   }
-
   .searchSpace{
     min-height: auto;
     overflow: visible;
@@ -1434,11 +1329,9 @@ sub {
     left: 0;
     z-index: 0;
   }
-
   * {
     box-sizing: border-box;
   }
-
   .autocomplete {
     /*the container must be positioned relative:*/
     position: relative;
@@ -1492,7 +1385,6 @@ sub {
       stroke-dashoffset: 0;
     }
   }
-
   @keyframes scale {
     0%, 100% {
       transform: none;
@@ -1501,20 +1393,17 @@ sub {
       transform: scale3d(1.1, 1.1, 1);
     }
   }
-
   @keyframes fill {
     100% {
       box-shadow: inset 0px 0px 0px 30px #aa91e9;
     }
   }
-
   input {
     border: none;
     background-color: #fff;
     padding: 8px;
     font-size: 55px;
   }
-
   input[type=text] {
     background-color: #fff;
     width: 65%;
@@ -1522,9 +1411,7 @@ sub {
     outline: none;
     margin-top: 25px;
   }
-
-/*--------------Autocompleters Below-------------*/
-
+  /*--------------Autocompleters Below-------------*/
   .autocomplete-items {
     position: absolute;
     border: none;
@@ -1538,7 +1425,6 @@ sub {
     width: 300px;
     background-color: white;
   }
-
   .autocomplete-items div {
     padding: 15px;
     font-size: 3.5em;
@@ -1546,21 +1432,17 @@ sub {
     border-bottom: 1px solid #d4d4d4;
     overflow: scroll;
   }
-
   .autocomplete-items div:hover {
     /*when hovering an item:*/
     background-color: #e9e9e9;
   }
-
   .autocomplete-active {
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important;
     color: #ffffff;
   }
-
   /*----Bottom-----*/
-
-      .autocomplete_pos-items {
+  .autocomplete_pos-items {
         position: absolute;
         border: none;
         border-bottom: none;
@@ -1572,8 +1454,7 @@ sub {
         margin-left: 20px;
         width: 300px;
       }
-
-      .autocomplete_pos-items div {
+  .autocomplete_pos-items div {
         padding: 15px;
         font-size: 3.5em;
         cursor: pointer;
@@ -1581,18 +1462,15 @@ sub {
         border-bottom: 1px solid #d4d4d4;
         overflow: scroll;
       }
-
-      .autocomplete_pos-items div:hover {
+  .autocomplete_pos-items div:hover {
         /*when hovering an item:*/
         background-color: #e9e9e9;
       }
-
-      .autocomplete_pos-active {
+  .autocomplete_pos-active {
         /*when navigating through the items using the arrow keys:*/
         background-color: DodgerBlue !important;
         color: #ffffff;
       }
-
   .searchBtn{
     display: inline-block;
     width:80px;
@@ -1611,12 +1489,10 @@ sub {
     top:0px;
     opacity: 1;
   }
-
   .searchBtn img:hover{
     opacity: 0.5;
     animation: twist .25s forwards;
   }
-
   .startbar{
     background: white;
     height: 140px;
@@ -1654,18 +1530,15 @@ sub {
       box-shadow: 5px 10px 10px rgba(0,0,0,0.5);
       }
     }
-
   .startbar input{
     position: fixed;
     left: -120px;
     top: -10px;
     width: 455px;
   }
-
   position_icon{
     z-index: -1;
   }
-
   .startposBtn{
     display: inline-block;
     width: 90px;
@@ -1677,11 +1550,9 @@ sub {
     top: 25px;
     border: none;
   }
-
   .startposBtn img:hover{
     opacity: 0.4;
   }
-
   .startposBtn img{
     height: 65px;
     margin-left: -5px;
@@ -1689,19 +1560,8 @@ sub {
     opacity: 0.5;
   }
 }
+/*-----------------^ Search bar and contents ^--------------*/
 
-@keyframes twist {
-  0%{
-    transform: rotate(0deg);
-  }
-  50%{
-    transform: rotate(15deg);
-  }
-  100%{
-    transform: rotate(0deg);
-  }
-}
-/*-----------------Search bar and contents--------------*/
 /*-------------- HAMBURGER BUTTON and SEARCH BUTTON--------------*/
 @media (max-width: 900px){
   .icon{
@@ -1713,7 +1573,6 @@ sub {
     height: 35px;
     cursor: auto;
   }
-
   .hamburger{
     width: 30px;
     height: 4px;
@@ -1725,10 +1584,8 @@ sub {
     transition: .25s;
     cursor: auto;
   }
-
   .hamburger:before,
-  .hamburger:after
-  {
+  .hamburger:after{
     content: '';
     position: absolute;
     width: 30px;
@@ -1736,11 +1593,9 @@ sub {
     background: #777;
     transition: 0.25s;
   }
-
   .colors p{
     line-height: 0px;
   }
-
   .icon a{
     background: #eee;
     color: #222;
@@ -1759,15 +1614,12 @@ sub {
     animation: slideback 0.75s ease forwards;
     z-index: 5;
   }
-
   .icon a:hover{
     background: #dabbfd !important;
   }
-
   .icon.active a{
     animation: slide 0.75s ease forwards;
   }
-
   @keyframes slide{
     0%{
       transform: translateX(-130px) translateY(19px);
@@ -1776,7 +1628,6 @@ sub {
       transform: translateX(-6px) translateY(19px);
     }
   }
-
   @keyframes slideback{
     0%{
       transform: translateX(-6px) translateY(19px);
@@ -1785,32 +1636,24 @@ sub {
       transform: translateX(-130px) translateY(19px);
     }
   }
-
   .hamburger:before{
     top: -9px;
   }
-
   .hamburger:after{
     top: 9px;
   }
-
-  .icon.active .hamburger
-  {
+  .icon.active .hamburger{
     background: rgba(0,0,0,0);
   }
-
   .icon.active .hamburger:before {
     top: 0;
     transform: rotate(-45deg);
   }
-
   .icon.active .hamburger:after {
     top: 0;
     transform: rotate(-135deg);
   }
-
   /*-----------Floor Slector---------*/
-
   .floor{
     position: absolute;
     width: 20px;
@@ -1818,21 +1661,16 @@ sub {
     right: 0px;
     transform: translate(-50$, -50%);
   }
-
   .floor:hover{
     opacity: 0.8;
   }
-
   .flico{
     transition: .25s;
   }
-
   .flico:before,
-  .flico:after
-  {
+  .flico:after{
     transition: 0.25s;
   }
-
   .floor a{
     background: #eee;
     color: #222;
@@ -1850,19 +1688,15 @@ sub {
     box-shadow: 0 6px 8px rgba(0,0,0,0.5);
     animation: slideback2 0.5s ease forwards;
   }
-
   .floor a:hover{
     background: #dabbfd !important;
   }
-
   .floor.active a{
     animation: slide2 0.75s ease forwards;
   }
-
   .floor.active{
     animation: brighten 0.5s ease forwards;
   }
-
   @keyframes slide2{
     0%{
       -webkit-transform: translateX(75px) translateY(60px);
@@ -1872,7 +1706,6 @@ sub {
       transform: translateX(-50px) translateY(60px);
     }
   }
-
   @keyframes slideback2{
     0%{
       transform: translateX(-50px) translateY(60px);
@@ -1881,7 +1714,6 @@ sub {
       transform: translateX(75px) translateY(60px);
     }
   }
-
   @keyframes brighten{
     0%{
       opacity: 0.3;
@@ -1909,7 +1741,6 @@ sub {
     background: transparent;
     cursor: pointer;
   }
-
   .hamburger{
     width: 85px;
     height: 13px;
@@ -1921,10 +1752,8 @@ sub {
     transition: .25s;
     cursor: auto;
   }
-
   .hamburger:before,
-  .hamburger:after
-  {
+  .hamburger:after{
     content: '';
     position: absolute;
     width: 85px;
@@ -1953,15 +1782,12 @@ sub {
     box-shadow: 0 10px 18px rgba(0,0,0,0.5);
     z-index: 4;
   }
-
   .icon a:hover{
     background: #dabbfd !important;
   }
-
   .icon.active a{
     animation: slide 0.75s ease forwards;
   }
-
   @keyframes slide{
     0%{
       transform: translateX(-360px) translateY(66px);
@@ -1970,7 +1796,6 @@ sub {
       transform: translateX(-17px) translateY(66px);
     }
   }
-
   @keyframes slideback{
     0%{
       transform: translateX(-17px) translateY(66px);
@@ -1979,32 +1804,24 @@ sub {
       transform: translateX(-360px) translateY(66px);
     }
   }
-
   .hamburger:before{
     top: -30px;
   }
-
   .hamburger:after{
     top: 30px;
   }
-
-  .icon.active .hamburger
-  {
+  .icon.active .hamburger{
     background: rgba(0,0,0,0);
   }
-
   .icon.active .hamburger:before {
     top: 0;
     transform: rotate(-45deg);
   }
-
   .icon.active .hamburger:after {
     top: 0;
     transform: rotate(-135deg);
   }
-
   /*-----------Floor Slector---------*/
-
   .floor{
     position: absolute;
     width: 20px;
@@ -2012,17 +1829,13 @@ sub {
     right: 0px;
     transform: translate(-50$, -50%);
   }
-
   .flico{
     transition: .25s;
   }
-
   .flico:before,
-  .flico:after
-  {
+  .flico:after{
     transition: 0.25s;
   }
-
   .floor a{
     background: #eee;
     color: #222;
@@ -2040,19 +1853,15 @@ sub {
     box-shadow: 0 10px 18px rgba(0,0,0,0.5);
     animation: slideback2 0.5s ease forwards;
   }
-
   .floor a:hover{
     background: #dabbfd !important;
   }
-
   .floor.active a{
     animation: slide2 0.75s ease forwards;
   }
-
   .floor.active{
     animation: brighten 0.5s ease forwards;
   }
-
   @keyframes slide2{
     0%{
       transform: translateX(70px) translateY(145px);
@@ -2061,7 +1870,6 @@ sub {
       transform: translateX(-330px) translateY(145px);
     }
   }
-
   .floor.active a :first-child{
     animation-delay: 0s;
   }
@@ -2074,8 +1882,6 @@ sub {
   .floor.active a :last-child{
     animation-delay: 0.3s;
   }
-
-
   @keyframes slideback2{
     0%{
       transform: translateX(-330px) translateY(145px);
@@ -2084,7 +1890,6 @@ sub {
       transform: translateX(70px) translateY(145px);
     }
   }
-
   @keyframes brighten{
     0%{
       opacity: 0.3;
@@ -2100,5 +1905,4 @@ sub {
     }
   }
 }
-
 /*------------------ HAMBURGER BUTTON--------------*/
