@@ -81,7 +81,7 @@
     }
     </style>
   </head>
-  <body>
+  <body id="MapBody">
 
     <div id="load_screen">
       <div id="loading">
@@ -168,7 +168,12 @@
     <script>
     function colorChange() {
       var Color = document.getElementById("Cinput").value;
-      $("#windowcolor").css("background-color", "hsl(" + Color + ", 50%, 85%)");
+      if ( $('.DarkMode').hasClass('DayMode') ){
+        $("#windowcolor").css("background-color", "hsl(" + Color + ", 50%, 85%)");
+        $("#windowcolor").css("filter", "invert(80%)");
+      } else {
+        $("#windowcolor").css("background-color", "hsl(" + Color + ", 50%, 85%)");
+      }
     }
     function isNumberKey(evt){
       var charCode = (evt.which) ? evt.which : event.keyCode;
