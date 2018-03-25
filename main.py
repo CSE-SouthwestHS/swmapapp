@@ -1,11 +1,20 @@
 from flask import Flask, flash, redirect, url_for, render_template, request, session, abort
-from random import randint
-
+from flask_mail import Mail, Message
 from Map import route, defaults
 from io import BytesIO
 import base64
 
 app = Flask(__name__, static_url_path='/static')
+#mail sophisticated
+app.config.update(dict(
+    MAIL_SERVER = 'smtp.gmail.com',
+    MAIL_PORT = 465,
+    MAIL_USE_TLS = False,
+    MAIL_USE_SSL = True,
+    MAIL_USERNAME = 'swcodeclub@gmail.com',
+    MAIL_PASSWORD = 'mark&seay@1901'
+))
+mail = Mail(app)
 
 @app.route("/")
 @app.route("/home/")
@@ -15,6 +24,23 @@ def home():
 @app.route("/contact/")
 def contact():
     return render_template("contact.html")
+
+@app.route("/feedback/", methods=["POST"])
+def feedback():
+    msg = Message('MapSW Feedback', sender='swcodeclub@gmail.com', \
+            recipients=['mpek66@gmail.com', 'seaystir@gmail.com', 'swcodeclub@gmail.com'])
+    msg.body = request.form.get('firstname') + " " + request.form.get('lastname',) + \
+                " has submitted feedback.\n" + \
+                "Their experience was " + request.form.get('experience') + ".\n" + \
+                "They said:\n" + \
+                request.form.get('subject') + "\n" + \
+                "Contact them at: " + request.form.get('email')
+    mail.send(msg)
+    return redirect(url_for("thank_you"))
+
+@app.route("/thank-you/")
+def thank_you():
+    return render_template("thank-you.html")
 
 @app.route("/help/")
 def help():
