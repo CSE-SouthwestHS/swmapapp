@@ -382,29 +382,27 @@ sub {
     color: rgb(50,50,50);
   }
   .essay3{
-    position: absolute;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
-    padding-right: 105px;
-    width: 77%;
+    position: auto;
+    display: block;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+    width: 75%;
     height: auto;
-    border-radius: 7px;
+    border-radius: 10px;
     background: #f2f2f2;
   }
-  .contact{
-    padding-left: 100px;
-    padding-top: 30px;
-  }
   .feedbox{
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #f2f2f2;
     padding: 40px;
     z-index: 100;
-    width: 90%;
-    margin-top: 1000px;
-    margin-bottom: 60px;
-    position: relative;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    position: auto;
   }
   .feedbox h1{
     margin-top: -25px;
@@ -812,25 +810,28 @@ sub {
     color: rgb(50,50,50);
   }
   .essay3{
-    position: absolute;
+    position: auto;
+    display: block;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 60px;
-    width: 82%;
+    width: 80%;
     height: auto;
     border-radius: 15px;
     background: #f2f2f2;
   }
-  .contact{
-    padding-left: 100px;
-    padding-top: 30px;
-  }
   .feedbox{
+    position: auto;
+    display: block;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 15px;
     background-color: #f2f2f2;
     padding: 60px;
     z-index: 100;
-    width: 90%;
-    margin-top: 1400px;
-    margin-bottom: 100px;
+    width: 80%;
   }
   .feedbox h1{
     margin-top: -20px;
