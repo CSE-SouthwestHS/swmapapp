@@ -12,17 +12,20 @@ body {
   overflow: hidden;
 }
 #TYbg{
-  background: #BE93C5;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
+  background: no-repeat, -webkit-linear-gradient(to top, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: no-repeat,linear-gradient(to top, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .TYbox{
   position: auto;
-  margin-top: 120px;
+  margin-top: 100px;
   max-width: 600px;
   min-width: 260px;
   max-height: 600px;
   min-height: 450px;
+  margin-bottom: 400px;
   width: 65%;
   height: 55%;
   display: block;
