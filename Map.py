@@ -18,10 +18,10 @@ def distance(x1, y1, x2, y2):
 
 def time_between(v1, v2):
     scale = {
-        "0": 16/165,
-        "1": 54/468,
-        "2": 36/447,
-        "3": 38/422
+        "0": .07,
+        "1": .07,
+        "2": .07,
+        "3": .07
     }
     if v1.getfloor() == v2.getfloor():
         d = distance(v1.getx(), v1.gety(), v2.getx(), v2.gety())

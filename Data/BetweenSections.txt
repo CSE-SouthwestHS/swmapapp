@@ -1,10 +1,10 @@
 #Edges Between floors, and between buildings
-W1NM N154
 W1NN N103
 W1NO N102
 W1NP N101
 W1NQ N1NU
-W1NM N1NA
+W1NM N1NV
+W1NX N1NV
 #
 W1NV W2NA
 W1NX W2NW

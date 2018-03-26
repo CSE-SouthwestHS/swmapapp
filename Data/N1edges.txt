@@ -1,6 +1,9 @@
 #North Building
 #
 #Floor 1
+N1NV N1NA
+N1NV N154
+#
 N1NA N153
 N1NA N1NB
 #
