@@ -57,9 +57,9 @@ def draw_path(vertices, r = 12):
         ix += 1
     #draw the first and last ones pretty
     draw_vertex(curdraw, vertices[-1], r*1.7, fill = (0,0,0))
-    draw_vertex(curdraw, vertices[-1], r*1.3, fill = (100,50,180))
+    draw_vertex(curdraw, vertices[-1], r*1.3, fill = (255,255,255))
     curimage = images[vertices[0].getfloor()]
     curdraw = ImageDraw.Draw(curimage)
     draw_vertex(curdraw, vertices[0], r*1.7, fill = (0,0,0))
-    draw_vertex(curdraw, vertices[0], r*1.4, fill = (255,255,255))
+    draw_vertex(curdraw, vertices[0], r*1.4, fill = (100,50,180))
     return images
