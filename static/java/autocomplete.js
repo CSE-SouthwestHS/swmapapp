@@ -109,17 +109,16 @@
     }
 
   /*An array containing all the rooms in the school:*/
-  var results = ["110","Art","Athletic Dir.","Boys Locker Room","Cafeteria","Community Ed","Courtyard Upper","E101","E102",
-  "E103","E104","E105","E106","E107","E110","E112","E115","E117","E119","E120","E122","E124","Girls Locker Room","Kitchen",
-  "Main Office","N101","N102","N103","N104","N113","N130","N131","N132","N133","N135","N136","N137","N140","N142","N144","N145",
-  "N148","N149","N150","N151","N152","N153","N154","Pool Seating","The Cove","The Garages","W101","W102","W105","W106","W108",
-  "W109","W111","W114","W115","W116","W117","W118","W119","W120","W121","W124","W125","W126","Weight Room","West Gym",
-  "Gender Neutral Bathroom", "Men's Bathroom", "Women's Bathroom", "Elevator","Door 1","Door 2","Door 5","Door 6","Athletic Entrance",
-  "Door 7","Door 12","Door 13","Door 15","Door 16","Door 17","201","203","206","207","208","209","211","212","Auditorium","Band",
-  "BlackBox","Choir","Dance","Media Center","W201","W202","W203","W204","W208","W221","W223","W225","W226","W228","W229","W230",
-  "W232 A-M","Guitar Room","303","306","307","308","309","310","311","313","314","315","317","321","W301","W302","W303","W304",
-  "W313","W314","W316","W318","W319","W320","W321","W322","Pool","Pool Locker Rooms","E05","E08","E09","E10","E12","E13","E19",
-  "E20","E21","E23","Courtyard Lower","East Gym"];
+  var results = ["110","Art","Athletic Dir.","Boys Locker Room","Cafeteria","Community Ed","Courtyard Upper","E101","E102","E103",
+  "E104","E105","E106","E107","E110","E112","E115","E117","E119","E120","E122","E124","Girls Locker Room","Kitchen","Main Office",
+  "N101","N102","N103","N104","N113","N130","N131","N132","N133","N135","N136","N137","N140","N142","N144","N145","N148","N149",
+  "N150","N151","N152","N153","N154","Pool Seating","The Cove","The Garages","W101","W102","W105","W106","W108","W109","W111",
+  "W114","W115","W116","W117","W118","W119","W120","W121","W124","W125","W126","Weight Room","West Gym","Gender Neutral Bathroom",
+  "Mens Bathroom", "Womens Bathroom", "Elevator","Door 1","Door 2","Door 5","Door 6","Athletic Entrance","Door 7","Door 12",
+  "Door 13","Door 15","Door 16","Door 17","201","203","206","207","208","209","211","212","Auditorium","Band","BlackBox","Choir",
+  "Dance","Media Center","W201","W202","W203","W204","W208","W221","W223","W225","W226","W228","W229","W230","W232 A-M","Guitar Room",
+  "303","306","307","308","309","310","311","313","314","315","317","321","W301","W302","W303","W304","W313","W314","W316","W318",
+  "W319","W320","W321","W322","Pool","Pool Locker Rooms","E05","E08","E09","E10","E12","E13","E19","E20","E21","E23","Courtyard Lower","East Gym"];
 
   /*initiate the autocomplete function on the "search" element, and pass along the rooms array as possible autocomplete values:*/
   autocomplete(document.getElementById("search"), results);
