@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/static/MapCSS/style.css" type="text/css">
     <link rel="stylesheet" href="/static/MapCSS/BGColor.css" type="text/css">
     <script>
-//----------------------Loading Screen-------//
+    //----------------------Loading Screen-------//
     window.addEventListener("load", function(){
       var load_screen = document.getElementById("load_screen");
       setTimeout(function(){
@@ -109,8 +109,6 @@
       </svg>
     </div>
     <div class="ETA">Travel time: {{time}}sec.</div>
-<!--Estimated Travel Time: {{time}} seconds.
--->
 
     <div class="searchSpace">
       <div class="searchBar">
@@ -122,7 +120,7 @@
         </form>
         <div class="floor">
           <div class="flico">
-              <img src="/static/images/layer.png" alt="Floors"/>
+              <img src="/static/images/layer.png" alt="Floors">
               <a onclick="fl1()">Floor 1</a>
               <a onclick="fl2()">Floor 2</a>
               <a onclick="fl3()">Floor 3</a>
@@ -156,15 +154,12 @@
 
     <div class="DarkMode"></div>
 
-<!-- ________BEGIN javascript________ -->
-
+    <!-- ________BEGIN javascript________ -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
     <script src="/static/java/interactive.js"></script>
     <script src="/static/java/mapMover.js"></script>
     <script src="/static/java/autocomplete.js"></script>
     <script src="/static/java/autocomplete_pos.js"></script>
-
     <script>
     function colorChange() {
       var Color = document.getElementById("Cinput").value;
@@ -219,20 +214,37 @@
       Trace();
     }
     function Entry(){
-      var x = document.getElementById("search").value;
-       if (results.indexOf(x) < 0){
-         $('.startbar').removeClass('active');
-         document.getElementById('search').value = '';
-         $('.ETA').removeClass('show');
-       } else {
-         // stop link reloading the page
-         event.preventDefault();
-         $('.startbar').addClass('active');
-         $('.searchBar').addClass('valid');
-         setTimeout(function(){
-         $('.searchBar').removeClass('valid');
-       }, 2000);
-       }
+      var x = document.getElementById("search").value,
+          s = "Seay";
+      if (x == s){
+        $("#windowcolor").css("background-color", "#000");
+        $(".searchBar").css("background-color", "#000");
+        $(".startbar").css("background-color", "#000");
+        $("#search").css("background-color", "#000");
+        $("#search").css("color", "#000");
+        $("#searchpos").css("color", "#000");
+        $("#searchpos").css("background-color", "#000");
+        $(".floor a").css("background-color", "#000");
+        $(".icon a").css("background-color", "#000");
+        $(".floor a").css("color", "#000");
+        $(".icon a").css("color", "#000");
+      } else {
+        if (results.indexOf(x) < 0){
+          $('.startbar').removeClass('active');
+          $('.searchBar input').css("color", "#e03e3e");
+          $('.ETA').removeClass('show');
+          $('#search').blur();
+          document.getElementById('searchpos').value = '';
+        } else {
+          // stop link reloading the page
+          event.preventDefault();
+          $('.startbar').addClass('active');
+          $('.searchBar').addClass('valid');
+          setTimeout(function(){
+            $('.searchBar').removeClass('valid');
+          }, 2000);
+        }
+      }
     }
     function Trace(){
       var init_html = window.location.href,
@@ -242,10 +254,12 @@
       if ( $('.startbar').hasClass('active') ){
         if (y == x){
           $('.ETA').removeClass('show');
-          document.getElementById('searchpos').value = '';
+          $('.startbar input').css("color", "#e03e3e");
+          $('#searchpos').blur();
         } else {
           if (results.indexOf(y) >= 0 && results.indexOf(x) < 0){
             $('.searchBar input').css("color", "#e03e3e");
+            $('#search').blur();
           } else {
             if (results.indexOf(y) >= 0){
               document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -253,11 +267,11 @@
               document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
               document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
   	          location.assign(html + "/map/" + y + "/" + x + "/");
-  	          // stop link reloading the page
               $('.searchBar input').css("color", "#3ee062");
               $('.startbar input').css("color", "#3ee062");
             } else {
               $('.startbar input').css("color", "#e03e3e");
+              $('#searchpos').blur();
             }
           }
         }
@@ -269,7 +283,7 @@
     "N101","N102","N103","N104","N113","N130","N131","N132","N133","N135","N136","N137","N140","N142","N144","N145","N148","N149",
     "N150","N151","N152","N153","N154","Pool Seating","The Cove","The Garages","W101","W102","W105","W106","W108","W109","W111",
     "W114","W115","W116","W117","W118","W119","W120","W121","W124","W125","W126","Weight Room","West Gym","Gender Neutral Bathroom",
-    "Mens Bathroom", "Womens Bathroom", "Elevator","Door 1","Door 2","Door 5","Door 6","Athletic Entrance","Door 7","Door 12",
+    "Mens Bathroom","Womens Bathroom","Elevator","Door 1","Door 2","Door 5","Door 6","Athletic Entrance","Door 7","Door 12",
     "Door 13","Door 15","Door 16","Door 17","201","203","206","207","208","209","211","212","Auditorium","Band","BlackBox","Choir",
     "Dance","Media Center","W201","W202","W203","W204","W208","W221","W223","W225","W226","W228","W229","W230","W232 A-M","Guitar Room",
     "303","306","307","308","309","310","311","313","314","315","317","321","W301","W302","W303","W304","W313","W314","W316","W318",
@@ -314,7 +328,6 @@
 
             return customPan
           }
-
           // Expose to window namespace for testing purposes
           window.panZoom = svgPanZoom('#FLUI-svg', {
             zoomEnabled: true
@@ -323,50 +336,77 @@
           , center: 1
           , beforePan: beforePan
           });
-
           // panZoom.setBeforePan(beforePan)
         };
     </script>
-
-    <!-- Changing floors-->
-    <script>
-      function fl1() {
-        document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{one}}');
-        document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+    <script>  //Changing Floors
+    var init_html = window.location.href,
+        html = init_html.substring(0, init_html.indexOf("/map/")) + "/map/";
+      function fl1(){
+        if (init_html == html){
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_1.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{one}}');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        }
         document.getElementById("searchpos").value = '';
         document.getElementById("search").value = '';
         $('.startbar').removeClass('active');
       }
-      function fl2() {
-        document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{two}}');
-        document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+      function fl2(){
+        if (init_html == html){
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_2.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{two}}');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        }
+        document.getElementById("searchpos").value = 'WOrk';
+        document.getElementById("search").value = 'BrOKe';
+        $('.startbar').removeClass('active');
+      }
+      function fl3(){
+        if (init_html == html){
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_3.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{three}}');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        }
         document.getElementById("searchpos").value = '';
         document.getElementById("search").value = '';
         $('.startbar').removeClass('active');
       }
-      function fl3() {
-        document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{three}}');
-        document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+      function bsm(){
+        if (init_html == html){
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_0.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{zero}}');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        }
         document.getElementById("searchpos").value = '';
         document.getElementById("search").value = '';
         $('.startbar').removeClass('active');
       }
-      function bsm() {
-        document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{zero}}');
-        document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        document.getElementById("searchpos").value = '';
-        document.getElementById("search").value = '';
-        $('.startbar').removeClass('active');
-      }
-      function clr() {
+      function clr(){
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
@@ -375,11 +415,18 @@
         document.getElementById("search").value = '';
         $('.startbar').removeClass('active');
       }
-      function All() {
-        document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{one}}');
-        document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{two}}');
-        document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{three}}');
-        document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{zero}}');
+      function All(){
+        if (init_html == html){
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_1.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_2.svg');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_3.svg');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_bsm.svg');
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{one}}');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{two}}');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{three}}');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,{{zero}}');
+        }
         document.getElementById("searchpos").value = '';
         document.getElementById("search").value = '';
         $('.startbar').removeClass('active');
@@ -393,6 +440,6 @@
       });
     });
     </script>
-<!--____________ END javascript___________-->
+    <!--____________ END javascript___________-->
   </body>
 </html>
