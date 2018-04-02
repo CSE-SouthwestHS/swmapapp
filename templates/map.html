@@ -214,20 +214,12 @@
       Trace();
     }
     function Entry(){
-      var x = document.getElementById("search").value,
-          s = "Seay";
-      if (x == s){
-        $("#windowcolor").css("background-color", "#000");
-        $(".searchBar").css("background-color", "#000");
-        $(".startbar").css("background-color", "#000");
-        $("#search").css("background-color", "#000");
-        $("#search").css("color", "#000");
-        $("#searchpos").css("color", "#000");
-        $("#searchpos").css("background-color", "#000");
-        $(".floor a").css("background-color", "#000");
-        $(".icon a").css("background-color", "#000");
-        $(".floor a").css("color", "#000");
-        $(".icon a").css("color", "#000");
+      var init_html = window.location.href,
+          html = init_html.substring(0, init_html.indexOf("/map/")),
+          x = document.getElementById("search").value,
+          s = ["Seay", "Mark", "seay", "mark"];
+      if (s.indexOf(x) >= 0){
+        location.assign(html + "/egg/");
       } else {
         if (results.indexOf(x) < 0){
           $('.startbar').removeClass('active');
@@ -370,8 +362,8 @@
           document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         }
-        document.getElementById("searchpos").value = 'WOrk';
-        document.getElementById("search").value = 'BrOKe';
+        document.getElementById("searchpos").value = '';
+        document.getElementById("search").value = '';
         $('.startbar').removeClass('active');
       }
       function fl3(){

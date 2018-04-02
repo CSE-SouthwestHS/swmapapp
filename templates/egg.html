@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
+    <title>|EGG|</title>
+    <link href="/static/MapCSS/style.css" type="text/css" rel="stylesheet">
+  </head>
+  <body id="egg">
+    <div class="egg" id="border"><a class="tooltip" data-tip='Type "Quit()" to go back to MapSW.'>&#8505;</a></div>
+    <div class="eggTextBox">
+      <textarea id="bottomText" onclick="eggTextInit()"></textarea>
+    </div>
+    <div class="infocard"></div>
+    <script>
+    var clicked = 0;
+      function eggTextInit(){
+        if (clicked < 1){
+          var startup = document.getElementById('bottomText').value;
+          document.getElementById('bottomText').value = "Starting Program... \n\n\n";
+          ++clicked
+          setTimeout(function(){
+            eggTextArray();
+            start();
+          }, 1500);
+        } else {}
+      }
+    </script>
+    <script>
+    var eggBox = document.getElementById('bottomText').value;
+    var result = null;
+      function start(){
+        var result = setInterval(eggTextArray, 1);
+        setTimeout(function(){
+          clearInterval(result);
+          document.getElementById('bottomText').value = '';
+          startGame();
+        }, 2200);
+      }
+      function clearEggBox(){
+        setTimeout(function(){
+          document.getElementById('bottomText').value = '';
+        }, 2500);
+      }
+      function eggTextArray(){
+          var eggArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
+                          'r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7',
+                          '8','9','0',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','.',',',':',';',
+                          '/',' {','} ','()','( ',' )',' function(){ ','+',' = ','-','?','&&',
+                          '||',' | ','var','Math', 'Array', 'YEET', 'item','length','list',
+                          'document','value','random', 'interval', 'output', 'focus', 'getElementById',
+                          'sequencing', 'name', 'input', 'terminal', 'null', 'Files', '//', 'true',
+                          'false', 'iterate', 'items/', '/static/'],
+              item = eggArray[(Math.random()*eggArray.length)|0],
+              eggBox = document.getElementById('bottomText').value;
+          document.getElementById('bottomText').value = eggBox + item;
+          $('#bottomText').scrollTop($('#bottomText')[0].scrollHeight);
+      }
+      function startGame(){
+        setTimeout(function(){
+          document.getElementById('bottomText').value = "This is a game...\n\n";
+          Begin();
+        }, 700);
+      }
+      function Begin(){
+        setTimeout(function(){
+          document.getElementById('bottomText').value = "Type anything then press Enter";
+        clearEggBox();
+        }, 1700);
+      }
+    </script>
+    <script>
+      window.onkeypress = function(event) {
+        if (event.keyCode == 13) {
+          goBack();
+        }
+      }
+    </script>
+    <script>
+      function goBack(){
+        var init_html = window.location.href,
+        html = init_html.substring(0, init_html.indexOf("/egg/")),
+        input = ['Quit()'],
+        value = document.getElementById('bottomText').value;
+        if (input.indexOf(value) >= 0){
+          location.assign(html + "/map/");
+        } else {}
+      }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  </body>
+</html>
