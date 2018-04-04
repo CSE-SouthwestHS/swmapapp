@@ -18,18 +18,24 @@
       function eggTextInit(){
         if (clicked < 1){
           var startup = document.getElementById('bottomText').value;
-          document.getElementById('bottomText').value = "Starting Program... \n\n\n";
-          ++clicked
+          document.getElementById('bottomText').value = "Starting Program...\n\n\n";
+          $('.egg a').css("display", "inline-block");
+          $('#bottomText').attr("disabled", true);
+          clicked++;
           setTimeout(function(){
             eggTextArray();
             start();
           }, 1500);
-        } else {}
+        }
       }
     </script>
     <script>
+    var Usable = 0;
+    var Strike = 0;
     var eggBox = document.getElementById('bottomText').value;
     var result = null;
+    var algorithm = null;
+    var progressed = 0;
       function start(){
         var result = setInterval(eggTextArray, 1);
         setTimeout(function(){
@@ -38,52 +44,282 @@
           startGame();
         }, 2200);
       }
-      function clearEggBox(){
+      function progress1(){
+        var algorithm = setInterval(eggTextArray, 1);
+        setTimeout(function(){
+          clearInterval(algorithm);
+          document.getElementById('bottomText').value = 'Fruit Punch.';
+          clearAll();
+        }, 3000);
+      }
+      function clearAll(){
         setTimeout(function(){
           document.getElementById('bottomText').value = '';
+          $('#bottomText').attr("disabled", false);
+          document.getElementById('bottomText').focus();
         }, 2500);
       }
       function eggTextArray(){
           var eggArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
                           'r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7',
-                          '8','9','0',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','.',',',':',';',
-                          '/',' {','} ','()','( ',' )',' function(){ ','+',' = ','-','?','&&',
-                          '||',' | ','var','Math', 'Array', 'YEET', 'item','length','list',
-                          'document','value','random', 'interval', 'output', 'focus', 'getElementById',
-                          'sequencing', 'name', 'input', 'terminal', 'null', 'Files', '//', 'true',
-                          'false', 'iterate', 'items/', '/static/'],
-              item = eggArray[(Math.random()*eggArray.length)|0],
-              eggBox = document.getElementById('bottomText').value;
+                          '8','9','0','\n','\n','\n','\n','\n','\n','\n',' ',' ',' ',' ',' ',
+                          ' ',' ','.',',',':',';','/',' {','} ','()','( ',' )',' function(){ ',
+                          '+',' = ','~','-','?','&&','||',' | ','var','Math','Array','YEET',
+                          'item','length','list','document','value','random','interval','output',
+                          'focus','getElementById','sequencing','name','input','terminal','null',
+                          'Files','//','true','false','iterate','items/','/static/','Systems',
+                          'start','ID','Top','inner','.Load'];
+          var item     = eggArray[(Math.random()*eggArray.length)|0];
+          var eggBox   = document.getElementById('bottomText').value;
+          $('#bottomText').attr("disabled", true);
           document.getElementById('bottomText').value = eggBox + item;
           $('#bottomText').scrollTop($('#bottomText')[0].scrollHeight);
       }
       function startGame(){
         setTimeout(function(){
-          document.getElementById('bottomText').value = "This is a game...\n\n";
+          document.getElementById('bottomText').value = "This is a game...";
           Begin();
         }, 700);
       }
       function Begin(){
         setTimeout(function(){
           document.getElementById('bottomText').value = "Type anything then press Enter";
-        clearEggBox();
+          clearAll();
+          Usable++;
         }, 1700);
       }
-    </script>
-    <script>
       window.onkeypress = function(event) {
         if (event.keyCode == 13) {
-          goBack();
+          endGame();
+          theGame();
         }
       }
-    </script>
-    <script>
-      function goBack(){
+      function theGame(){
+        var value = document.getElementById('bottomText').value;
+        var greetings  = ['hello','hello?','hi','hi?','hey','yes','no'];
+        var questions  = ['help','?','assist','how','how?','what','what?','why','why?','yes?'];
+        var password   = ['i.win.'];
+        var words      = ['anything','go','stop','play','begin','game','start','work','password','i'];
+        var characters = ['a','b','c','d','e','f','g','h','j','k','l','m','n','o','p','q',
+                        'r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7',
+                        '8','9','0','!','@','#','$','%','^','&','*','(',')','_','-','+','=',';',
+                        ':','.','>',',','<','~','[',']','{','}','[]','{}','|'];
+        var phrases    = ['what should i do?','what should i do'];
+        var profanity  = ['fuck','shit','bitch','dick'];
+        var allInput   = ['hello','hello?','hi','hi?','hey','yes','no','help','?','assist','how','how?',
+                        'what','what?','why','why?','yes?','i.win.','anything','go','stop','play','begin',
+                        'game','start','work','password','i','a','b','c','d','e','f','g','h','j','k','l',
+                        'm','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7',
+                        '8','9','0','!','@','#','$','%','^','&','*','(',')','_','-','+','=',';',':','.','>',
+                        ',','<','~','[',']','{','}','[]','{}','|','what should i do?','what should i do',
+                        'fuck','shit','bitch','dick','quit()'];
+        if (Usable > 0 && allInput.indexOf(value.toLowerCase()) == -1){
+          document.getElementById('bottomText').value = value + "\n\nTry again.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1200);
+        }
+        if (greetings.indexOf(value.toLowerCase()) >= 0){
+          document.getElementById('bottomText').value = value + "\n\nYes?";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 700);
+        }
+        if (questions.indexOf(value.toLowerCase()) >= 0 && questions.indexOf(value.toLowerCase()) <= 4){ //help, ?, assist, how, how?
+          document.getElementById('bottomText').value = value + "\n\nI can't help you.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1200);
+        }
+        if (questions.indexOf(value.toLowerCase()) == 5 || questions.indexOf(value.toLowerCase()) == 6){ //what, what?
+          document.getElementById('bottomText').value = value + "\n\nHow would I know?";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1400);
+        }
+        if (questions.indexOf(value.toLowerCase()) == 7 || questions.indexOf(value.toLowerCase()) == 8){ //why, why?
+          document.getElementById('bottomText').value = value + "\n\nBecause.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1000);
+        }
+        if (questions.indexOf(value.toLowerCase()) == 9){ //yes?
+          if (progressed >= 1){
+            document.getElementById('bottomText').value = value + "\n\nYah ok, we've already done this.";
+            $('#bottomText').attr("disabled", true);
+            setTimeout(function(){
+              $('textarea').val('');
+              $('#bottomText').attr("disabled", false);
+              document.getElementById('bottomText').focus();
+            }, 2500);
+          } else {
+            document.getElementById('bottomText').value = value + "\n\nYes! Okay let's begin!";
+            $('#bottomText').attr("disabled", true);
+            setTimeout(function(){
+              $('textarea').val('');
+              eggTextArray();
+              progress1();
+              progressed++;
+            }, 2500);
+          }
+        }
+        if (password.indexOf(value.toLowerCase()) >= 0){ //i.win.
+          document.getElementById('bottomText').value = value + "\n\nYou win!";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val("Quit()");
+            endGame();
+          }, 1500);
+        }
+        if (characters.indexOf(value.toLowerCase()) >= 0){
+          document.getElementById('bottomText').value = value + "\n\nNo single characters accepted.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1500);
+        }
+        if (phrases.indexOf(value.toLowerCase()) >= 0){
+          document.getElementById('bottomText').value = value + "\n\nWorks.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1500);
+        }
+        if (words.indexOf(value.toLowerCase()) == 0){ //anything
+          document.getElementById('bottomText').value = value + "\n\nI didn't actually mean Anything.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 2000);
+        }
+        if (words.indexOf(value.toLowerCase()) == 1){ //go
+          document.getElementById('bottomText').value = value + "\n\nWhere?";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1500);
+        }
+        if (words.indexOf(value.toLowerCase()) == 2){ //stop
+          document.getElementById('bottomText').value = value + "\n\nYou cannot undo what has already been started.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 2500);
+        }
+        if (words.indexOf(value.toLowerCase()) == 3){ //play
+          document.getElementById('bottomText').value = value + "\n\nYou are playing the game.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 2000);
+        }
+        if (words.indexOf(value.toLowerCase()) == 4){ //begin
+          document.getElementById('bottomText').value = value + "\n\nThe game has begun.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 2000);
+        }
+        if (words.indexOf(value.toLowerCase()) == 5){ //game
+          document.getElementById('bottomText').value = value + "\n\nInteresting...";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1400);
+        }
+        if (words.indexOf(value.toLowerCase()) == 6){ //start
+          document.getElementById('bottomText').value = value + "\n\nThe game has started.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1800);
+        }
+        if (words.indexOf(value.toLowerCase()) == 7){ //work
+          document.getElementById('bottomText').value = value + "\n\nThe game is not broken.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1700);
+        }
+        if (words.indexOf(value.toLowerCase()) == 8){ //password
+          document.getElementById('bottomText').value = value + "\n\nI cannot give you the password.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 2200);
+        }
+        if (words.indexOf(value.toLowerCase()) == 9){ //i
+          document.getElementById('bottomText').value = value + "\n\nYes, you?";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1500);
+        }
+        if (value.search("fuck") >= 0 || value.search("shit") >= 0 || value.search("bitch") >= 0 || value.search("dick") >= 0){ //Bad words not tollerated
+          if (Strike == 2){
+            document.getElementById('bottomText').value = value + "\n\nFowl language exceeded!";
+            $('#bottomText').attr("disabled", true);
+            setTimeout(function(){
+              $('textarea').val("Quit()");
+              endGame();
+            }, 2000);
+          } else {
+            document.getElementById('bottomText').value = value + "\n\nNo profanity allowed. You are warned.";
+            $('#bottomText').attr("disabled", true);
+            setTimeout(function(){
+              $('textarea').val('');
+              $('#bottomText').attr("disabled", false);
+              document.getElementById('bottomText').focus();
+              Strike++;
+            }, 2400);
+          }
+        }
+      }
+      function endGame(){
+        var value = document.getElementById('bottomText').value;
         var init_html = window.location.href,
-        html = init_html.substring(0, init_html.indexOf("/egg/")),
-        input = ['Quit()'],
-        value = document.getElementById('bottomText').value;
-        if (input.indexOf(value) >= 0){
+            html = init_html.substring(0, init_html.indexOf("/egg/")),
+            leave = ['Quit()'];
+        if (leave.indexOf(value) >= 0){
           location.assign(html + "/map/");
         } else {}
       }
