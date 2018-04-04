@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, url_for, render_template, request, session, abort
+from flask import Flask, flash, redirect, url_for, render_template, request, session, abort, jsonify
 from flask_mail import Mail, Message
 from Map import route, defaults
 from io import BytesIO
@@ -55,58 +55,35 @@ def blank():
     zero, one, two, three = defaults()
     return render_template("map.html", zero = zero, one = one, two = two, three = three)
 
-@app.route("/map/<string:first>/")
-def point(first):
-    #generate the estimated time and fastes route images
-    time, images = route(first,first)
-    #check if we recieved an error, for now redirect back
-    if time == "ERROR":
-        """eventually error listening will be more sophisticated.
-        I want time to contain "ERROR" and images to be a string of the error,
-        so I can make a special HTML file to render with the error message."""
-        return redirect(url_for("blank"))
-    floors = []
-    for floor in images:
-        byte_io = BytesIO()
-        images[floor].save(byte_io, 'PNG')
-        byte_io.seek(0)
-        result = base64.b64encode(byte_io.getvalue())
-        result = str(result)[2:-1]
-        floors.append(result)
-    time = int(time)
-    zero = floors[0]
-    one = floors[1]
-    two = floors[2]
-    three = floors[3]
-    return render_template("map.html",time=time,\
-                           zero=zero,one=one,two=two,three=three)
-
-@app.route("/map/<string:first>/<string:second>/")
-def path(first, second):
-    #generate the estimated time and fastes route images
-    time, images = route(first,second)
-    #check if we recieved an error, for now redirect back
-    if time == "ERROR":
-        """eventually error listening will be more sophisticated.
-        I want time to contain "ERROR" and images to be a string of the error,
-        so I can make a special HTML file to render with the error message."""
-        return redirect(url_for("blank"))
-    #code below does all the image shit
-    floors = []
-    for floor in images:
-        byte_io = BytesIO()
-        images[floor].save(byte_io, 'PNG')
-        byte_io.seek(0)
-        result = base64.b64encode(byte_io.getvalue())
-        result = str(result)[2:-1]
-        floors.append(result)
-    time = int(time)
-    zero = floors[0]
-    one = floors[1]
-    two = floors[2]
-    three = floors[3]
-    return render_template("map.html",time=time,\
-                           zero=zero,one=one,two=two,three=three)
+@app.route("/load_path/")
+def load_path():
+    try:
+        #get the input
+        start = request.args.get('start', "NOSTART", type=str)
+        end = request.args.get('end', "NOEND", type=str)
+        #get the route
+        time, images = route(start, end)
+        if time == "ERROR":
+            zero, one, two, three = defaults()
+            return jsonify(time=time,zero=zero,one=one,two=two,three=three)
+        floors = []
+        for floor in images:
+            byte_io = BytesIO()
+            images[floor].save(byte_io, 'PNG')
+            byte_io.seek(0)
+            result = base64.b64encode(byte_io.getvalue())
+            result = str(result)[2:-1]
+            floors.append(result)
+        time = int(time)
+        zero = floors[0]
+        one = floors[1]
+        two = floors[2]
+        three = floors[3]
+        return jsonify(time=time,zero=zero,one=one,two=two,three=three)
+    except Exception as e:
+        #if theres an error return defaults
+        zero, one, two, three = defaults()
+        return jsonify(time=str(e),zero=zero,one=one,two=two,three=three)
 
 #if somebody tries to fuck with the url it'll take them to a blank map
 @app.errorhandler(404)
