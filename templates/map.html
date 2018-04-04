@@ -248,6 +248,7 @@
           $('.ETA').removeClass('show');
           $('.startbar input').css("color", "#e03e3e");
           $('#searchpos').blur();
+          document.getElementById('searchpos').value = y + ' ';
         } else {
           if (results.indexOf(y) >= 0 && results.indexOf(x) < 0){
             $('.searchBar input').css("color", "#e03e3e");

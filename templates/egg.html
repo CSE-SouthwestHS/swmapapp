@@ -3,9 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
     <title>|EGG|</title>
-    <link href="/static/MapCSS/style.css" type="text/css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115470904-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115470904-1');
+    </script>
+    <link rel="shortcut icon" href="/static/SWmapico.ico">
+    <link rel="icon" type="image/png" href="/static/images/SWmapico_16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" type="image/png" href="/static/images/SWmapico_32x32.png" sizes="32x32">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' type='text/css'>
+    <link rel="stylesheet" href="/static/MapCSS/style.css" type="text/css">
   </head>
   <body id="egg">
     <div class="egg" id="border"><a class="tooltip" data-tip='Type "Quit()" to go back to MapSW.'>&#8505;</a></div>
@@ -97,22 +109,24 @@
       function theGame(){
         var value = document.getElementById('bottomText').value;
         var greetings  = ['hello','hello?','hi','hi?','hey','yes','no'];
-        var questions  = ['help','?','assist','how','how?','what','what?','why','why?','yes?'];
+        var questions  = ['help','?','assist','how','how?','what','what?','why','why?','yes?','you?','me?'];
         var password   = ['i.win.'];
-        var words      = ['anything','go','stop','play','begin','game','start','work','password','i'];
+        var words      = ['anything','go','stop','play','begin','game','start','work','password','i','you','me'];
         var characters = ['a','b','c','d','e','f','g','h','j','k','l','m','n','o','p','q',
                         'r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7',
                         '8','9','0','!','@','#','$','%','^','&','*','(',')','_','-','+','=',';',
                         ':','.','>',',','<','~','[',']','{','}','[]','{}','|'];
-        var phrases    = ['what should i do?','what should i do'];
+        var phrases    = ['what should i do?','what should i do','what do i do?','what do i do','how do i play?',
+                        'how do i play','how do i win?','how do i win'];
         var profanity  = ['fuck','shit','bitch','dick'];
         var allInput   = ['hello','hello?','hi','hi?','hey','yes','no','help','?','assist','how','how?',
-                        'what','what?','why','why?','yes?','i.win.','anything','go','stop','play','begin',
-                        'game','start','work','password','i','a','b','c','d','e','f','g','h','j','k','l',
+                        'what','what?','why','why?','yes?','you?','me?','i.win.','anything','go','stop','play','begin',
+                        'game','start','work','password','i','you','me','a','b','c','d','e','f','g','h','j','k','l',
                         'm','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7',
                         '8','9','0','!','@','#','$','%','^','&','*','(',')','_','-','+','=',';',':','.','>',
                         ',','<','~','[',']','{','}','[]','{}','|','what should i do?','what should i do',
-                        'fuck','shit','bitch','dick','quit()'];
+                        'what do i do?','what do i do','how do i play?','how do i play','how do i win?',
+                        'how do i win','fuck','shit','bitch','dick','quit()'];
         if (Usable > 0 && allInput.indexOf(value.toLowerCase()) == -1){
           document.getElementById('bottomText').value = value + "\n\nTry again.";
           $('#bottomText').attr("disabled", true);
@@ -157,6 +171,15 @@
             $('#bottomText').attr("disabled", false);
             document.getElementById('bottomText').focus();
           }, 1000);
+        }
+        if (questions.indexOf(value.toLowerCase()) == 10 || questions.indexOf(value.toLowerCase()) == 11){ //you?, me?
+          document.getElementById('bottomText').value = value + "\n\nNo, banana.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1200);
         }
         if (questions.indexOf(value.toLowerCase()) == 9){ //yes?
           if (progressed >= 1){
@@ -294,7 +317,34 @@
             document.getElementById('bottomText').focus();
           }, 1500);
         }
-        if (value.search("fuck") >= 0 || value.search("shit") >= 0 || value.search("bitch") >= 0 || value.search("dick") >= 0){ //Bad words not tollerated
+        if (words.indexOf(value.toLowerCase()) == 10){ //you
+          document.getElementById('bottomText').value = value + "\n\nI.am.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1500);
+        }
+        if (words.indexOf(value.toLowerCase()) == 11){ //me
+          document.getElementById('bottomText').value = value + "\n\nYou.win.not.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 1500);
+        }
+        if (phrases.indexOf(value.toLowerCase()) >= 0){ //Multi-word questions
+          document.getElementById('bottomText').value = value + "\n\nYou.can.win.";
+          $('#bottomText').attr("disabled", true);
+          setTimeout(function(){
+            $('textarea').val('');
+            $('#bottomText').attr("disabled", false);
+            document.getElementById('bottomText').focus();
+          }, 2000);
+        }
+        if (value.toLowerCase().search("fuck") >= 0 || value.toLowerCase().search("shit") >= 0 || value.toLowerCase().search("bitch") >= 0 || value.toLowerCase().search("dick") >= 0){ //Bad words not tollerated
           if (Strike == 2){
             document.getElementById('bottomText').value = value + "\n\nFowl language exceeded!";
             $('#bottomText').attr("disabled", true);
@@ -321,7 +371,7 @@
             leave = ['Quit()'];
         if (leave.indexOf(value) >= 0){
           location.assign(html + "/map/");
-        } else {}
+        }
       }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

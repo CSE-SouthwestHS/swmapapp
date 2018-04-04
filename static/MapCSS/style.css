@@ -1766,17 +1766,21 @@ sub {
   @keyframes slide{
     0%{
       transform: translateX(-130px) translateY(19px);
+      opacity: 0;
     }
     100%{
       transform: translateX(-6px) translateY(19px);
+      opacity: 1;
     }
   }
   @keyframes slideback{
     0%{
       transform: translateX(-6px) translateY(19px);
+      opacity: 1;
     }
     100%{
       transform: translateX(-130px) translateY(19px);
+      opacity: 0;
     }
   }
   .hamburger:before{
@@ -1796,7 +1800,7 @@ sub {
     top: 0;
     transform: rotate(-135deg);
   }
-  /*-----------Floor Slector---------*/
+  /*-----------Floor Selector---------*/
   .floor{
     position: absolute;
     width: 20px;
@@ -1844,17 +1848,21 @@ sub {
     0%{
       -webkit-transform: translateX(75px) translateY(60px);
       -moz-transform: translateX(75px) translateY(60px);
+      opacity: 0;
     }
     100%{
       transform: translateX(-50px) translateY(60px);
+      opacity: 1;
     }
   }
   @keyframes slideback2{
     0%{
       transform: translateX(-50px) translateY(60px);
+      opacity: 1;
     }
     100%{
       transform: translateX(75px) translateY(60px);
+      opacity: 0;
     }
   }
   @keyframes brighten{
@@ -1934,17 +1942,21 @@ sub {
   @keyframes slide{
     0%{
       transform: translateX(-360px) translateY(66px);
+      opacity: 0;
     }
     100%{
       transform: translateX(-17px) translateY(66px);
+      opacity: 1;
     }
   }
   @keyframes slideback{
     0%{
       transform: translateX(-17px) translateY(66px);
+      opacity: 1;
     }
     100%{
       transform: translateX(-360px) translateY(66px);
+      opacity: 0;
     }
   }
   .hamburger:before{
@@ -2008,9 +2020,11 @@ sub {
   @keyframes slide2{
     0%{
       transform: translateX(70px) translateY(145px);
+      opacity: 0;
     }
     100%{
       transform: translateX(-330px) translateY(145px);
+      opacity: 1;
     }
   }
   .floor.active a :first-child{
@@ -2028,9 +2042,11 @@ sub {
   @keyframes slideback2{
     0%{
       transform: translateX(-330px) translateY(145px);
+      opacity: 1;
     }
     100%{
       transform: translateX(70px) translateY(145px);
+      opacity: 0;
     }
   }
   @keyframes brighten{
