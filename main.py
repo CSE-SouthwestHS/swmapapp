@@ -20,7 +20,6 @@ global_location = "home"
 
 @app.route("/home/", methods=["GET","POST"])
 def home():
-    print(global_location)
     return render_template("index.html", page=global_location)
 
 @app.route("/page_navigation/")
