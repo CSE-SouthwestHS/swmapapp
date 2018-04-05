@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <title>MapSW Home</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115470904-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115470904-1');
+    </script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="/static/SWmapico.ico">
+    <link rel="icon" type="image/png" href="/static/images/SWmapico_16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" type="image/png" href="/static/images/SWmapico32x32.png" sizes="32x32">
+    <link rel="stylesheet" href="/static/MapCSS/style.css" type="text/css">
+    <script type="text/javascript">
+//----------------------Loading Screen-------//
+    window.addEventListener("load", function(){
+      var load_screen = document.getElementById("load_screen");
+      setTimeout(function(){
+      document.body.removeChild(load_screen);
+    }, 800);
+    });
+    </script>
+    <style>
+    /*--------------Loading Loading Screen--------------*/
+    #load_screen{
+      background: #424242;
+      opacity: 1;
+      position: fixed;
+      z-index: 10;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+    }
+    #loading{
+      width: 240px;
+      height: 48px;
+      margin: 400px auto;
+    }
+    .bar p{
+      padding-top: 40px;
+      padding-left: 50px;
+      position: inherit;
+      color: white;
+    }
+    .bar {
+      width: 240px;
+      height: 48px;
+      border: 3px solid #ddd;
+      border-radius: 40px;
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          #891cdf,
+          #891cdf 15px,
+          #ddd 25px,
+          #ddd 40px /* determines size */
+        );
+      background-size: 56px 56px;
+      animation: move .5s linear infinite;
+    }
+    @keyframes move {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 56px 0;
+      }
+    }
+    </style>
+  </head>
+  <body>
+
+    <div id="load_screen">
+      <div id="loading">
+        <div class="bar">
+        <p>Loading...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="header">
+      <div class="container">
+        <h1>Map Southwest</h1>
+        <a class="startbtn" href="/map/" onclick="Load()">Explore</a>
+      </div>
+    </div>
+
+    <div class="nav">
+      <div class="container">
+        <ul>
+	        <a class="btn select" href="/home/"><li>Home</li></a>
+          <a class="btn" href="/contact/"><li>Contact</li></a>
+          <a class="btn" href="/help/"><li>Help</li></a>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container2">
+	      <div class="textbox">
+          <h2>How it was made?</h2>
+          <p>The foundation of this perfectly optimized web app is based on a simple HTML frame and neatly decaorated with highly complex Cascading Style Sheets (CSS). Javascript is used for most of the functionality including buttons, toggles, and displaying navigational features. The actual navigational functionality, however, is reserved to the Python code. With a complete index of hallways and rooms converted to individual nodes, the Python code finds the shortest route between the nodes, providing the user with a quick, reliable navigation app.</p>
+      	</div>
+        <a href="/map/"><img src="/static/images/SWmapico.png"></a>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p>&copy; MapSW</p>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

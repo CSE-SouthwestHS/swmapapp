@@ -3,6 +3,7 @@ from flask_mail import Mail, Message
 from Map import route, defaults
 from io import BytesIO
 import base64
+import os
 
 app = Flask(__name__, static_url_path='/static')
 #mail sophisticated
@@ -15,15 +16,45 @@ app.config.update(dict(
     MAIL_PASSWORD = 'mark&seay@1901'
 ))
 mail = Mail(app)
+global_location = "home"
 
-@app.route("/")
-@app.route("/home/")
+@app.route("/home/", methods=["GET","POST"])
 def home():
-    return render_template("index.html")
+    print(global_location)
+    return render_template("index.html", page=global_location)
 
+@app.route("/page_navigation/")
+def page_navigation():
+    try:
+        goal = request.args.get('goal', None, type=str)
+        if goal == None:
+            return url_for("home")
+        realpath = os.path.dirname(os.path.realpath(__file__))+"/templates/parts/"
+        with open(realpath + goal + "head.html","r") as f:
+                head = f.read()
+        with open(realpath + goal + "body.html","r") as f:
+                body = f.read()
+        return jsonify(head=head, body=body)
+
+    except Exception as e:
+        return redirect(url_for("home"))
+
+#these routes are needed to go from the map interface back to regular
+@app.route("/gohome/")
+def gohome():
+    global global_location
+    global_location = "home"
+    return redirect(url_for("home"))
 @app.route("/contact/")
 def contact():
-    return render_template("contact.html")
+    global global_location
+    global_location = "contact"
+    return redirect(url_for("home"))
+@app.route("/help/")
+def help():
+    global global_location
+    global_location = "help"
+    return redirect(url_for("home"))
 
 @app.route("/feedback/", methods=["POST"])
 def feedback():
@@ -41,10 +72,6 @@ def feedback():
 @app.route("/thank-you/")
 def thank_you():
     return render_template("thank-you.html")
-
-@app.route("/help/")
-def help():
-    return render_template("help.html")
 
 @app.route("/egg/")
 def egg():
@@ -88,7 +115,7 @@ def load_path():
 #if somebody tries to fuck with the url it'll take them to a blank map
 @app.errorhandler(404)
 def page_not_found(e):
-    return redirect(url_for("blank"))
+    return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.run()
