@@ -190,7 +190,7 @@ def parse_input(raw):
         "Athletic Entrance": "N1D7",
         "Door 7": "N1D7",
         "Door 12": "N1D12",
-        "Door 12": "N1D13",
+        "Door 13": "N1D13",
         "Door 15": "C1D15",
         "Door 16": "C1D16",
         "Door 17": "E1D17",
