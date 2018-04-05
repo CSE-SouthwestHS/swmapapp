@@ -109,7 +109,7 @@ module.exports = {
     resetPanZoomControl.addEventListener('click', function() {instance.getPublicInstance().reset()}, false);
     resetPanZoomControl.addEventListener('touchstart', function() {instance.getPublicInstance().reset()}, false);
 
-    var resetPanZoomControlBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
+    var resetPanZoomControlBackground = document.createElementNS(SvgUtils.svgNS, 'rect');
     resetPanZoomControlBackground.setAttribute('x', '0.5');
     resetPanZoomControlBackground.setAttribute('y', '1.5');
     resetPanZoomControlBackground.setAttribute('rx', '15px');
@@ -141,7 +141,7 @@ module.exports = {
     zoomOut.addEventListener('click', function() {instance.getPublicInstance().zoomOut()}, false);
     zoomOut.addEventListener('touchstart', function() {instance.getPublicInstance().zoomOut()}, false);
 
-    var zoomOutBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
+    var zoomOutBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); 
     zoomOutBackground.setAttribute('x', '5');
     zoomOutBackground.setAttribute('y', '-120');
     zoomOutBackground.setAttribute('rx', '30%');
