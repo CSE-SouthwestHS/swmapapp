@@ -194,6 +194,7 @@ def parse_input(raw):
         "Door 15": "C1D15",
         "Door 16": "C1D16",
         "Door 17": "E1D17",
+        "Door 19": "E1D19",
         "Auditorium": "W2AU",
         "Band": "W2BR",
         "BlackBox": "W2XB",
