@@ -27,7 +27,9 @@ def page_navigation():
     try:
         goal = request.args.get('goal', None, type=str)
         if goal == None:
-            return url_for("home")
+            return redirect(url_for("home"))
+        global global_location
+        global_location = goal
         realpath = os.path.dirname(os.path.realpath(__file__))+"/templates/parts/"
         with open(realpath + goal + "head.html","r") as f:
                 head = f.read()
@@ -91,6 +93,7 @@ def load_path():
         time, images = route(start, end)
         if time == "ERROR":
             zero, one, two, three = defaults()
+
             return jsonify(time=time,zero=zero,one=one,two=two,three=three)
         floors = []
         for floor in images:
@@ -109,7 +112,7 @@ def load_path():
     except Exception as e:
         #if theres an error return defaults
         zero, one, two, three = defaults()
-        return jsonify(time=str(e),zero=zero,one=one,two=two,three=three)
+        return jsonify(time="error: " + str(e),zero=zero,one=one,two=two,three=three)
 
 #if somebody tries to fuck with the url it'll take them to a blank map
 @app.errorhandler(404)
