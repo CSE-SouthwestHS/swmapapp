@@ -160,9 +160,9 @@ body {
   height: 100%;
 }
 .eggTextBox{
-  width: 50%;
-  max-width: 300px;
-  height: 350px;
+  width: 75%;
+  max-width: 750px;
+  height: 650px;
   position: auto;
   display: block;
   border: solid 2px;
@@ -199,18 +199,21 @@ body {
 }
 a.tooltip {
 			position: relative;
+      transform: scale(2);
 		}
 a.tooltip::before {
 			content: attr(data-tip) ;
 			font-family: arial, sans-serif;
-			font-size: 0.5em;
+			font-size: 0.7em;
 			font-weight: bold;
 			position: absolute;
+      top: 10px;
+      left: 20px;
 			z-index: 10;
 			white-space: nowrap;
 			background: white;
 			color: black;
-			padding: 7px;
+			padding: 10px;
       width: auto;
 			height: auto;
 			opacity: 0;
@@ -242,22 +245,24 @@ a.tooltip:hover::before	{
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  line-height: 18px;
+  line-height: 38px;
   text-align: left;
-  margin-top: 75px;
-  font-weight: 100;
-  max-height: 96%;
+  margin-top: 72px;
+  padding: 20px;
+  font-weight: 300;
+  max-height: 98%;
   display: block;
   resize: none;
-  max-width: 92%;
+  max-width: 95%;
   color: #70fb59;
-  font-size: 1em;
+  font-size: 2.2em;
   outline: none;
   opacity: 0.9;
   bottom: 68px;
-  height: 96%;
+  height: 98%;
   border:none;
-  width: 92%;
+  width: 95%;
+  z-index: 0;
 }
 .ETA{
   color: white;
