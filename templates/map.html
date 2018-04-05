@@ -126,7 +126,7 @@
               <a class="Floor3">Floor 3</a>
               <a class="Floor0">Basement</a>
               <a class="Floor4">Show all</a>
-              <a class="Floor-1">Clear</a>
+              <a class="Floor00">Clear</a>
           </div>
         </div>
         <div class="icon">
@@ -192,7 +192,6 @@
     });
     </script>
     <script>
-    var floorDisplay = 0;
     function Call(){
       Destination();
       Entry();
@@ -222,7 +221,6 @@
           setTimeout(function(){
             $('.searchBar').removeClass('valid');
           }, 2000);
-          floorDisplay = 0;
         }
       }
     }
@@ -241,7 +239,6 @@
             $('#search').blur();
           } else {
             if (results.indexOf(y) >= 0){
-              if (floorDisplay = 0){
                 $('.searchBar input').css("color", "#3ee062");
                 $('.startbar input').css("color", "#3ee062");
                 $.getJSON('/load_path/', {
@@ -255,7 +252,6 @@
                   $("#time_estimate").text("Travel Time: " + data.time + "sec.");
                 });
                 $('.ETA').addClass('show');
-              }
             } else {
               $('.startbar input').css("color", "#e03e3e");
               $('#searchpos').blur();
@@ -277,114 +273,80 @@
     "W319","W320","W321","W322","Pool","Pool Locker Rooms","E05","E08","E09","E10","E12","E13","E19","E20","E21","E23","Courtyard Lower","East Gym"];
     //------------Changing Floors---------------->
     $(document).ready(function(){
+      var x = document.getElementById("search").value,
+          y = document.getElementById("searchpos").value;
       $('.Floor1').click(function(){
-        floorDisplay = 1;
-        floorChange();
-      });
-    });
-    $(document).ready(function(){
-      $('.Floor2').click(function(){
-        floorDisplay = 2;
-        floorChange();
-      });
-    });
-    $(document).ready(function(){
-      $('.Floor3').click(function(){
-        floorDisplay = 3;
-        floorChange();
-      });
-    });
-    $(document).ready(function(){
-      $('.Floor0').click(function(){
-        floorDisplay = 4;
-        floorChange();
-      });
-    });
-    $(document).ready(function(){
-      $('.Floor4').click(function(){
-        floorDisplay = 5;
-        floorChange();
-      });
-    });
-    $(document).ready(function(){
-      $('.Floor-1').click(function(){
-        floorDisplay = 6;
-        floorChange();
-      });
-    });
-    function floorChange(){
-      if(floorDisplay = 1){
-        var x = document.getElementById("search").value,
-            y = document.getElementById("searchpos").value;
-        $.getJSON('/load_path/', {
-          start: y,
-          end: x,
-        }, function(data){
+        if (x.length > 1 && y.length > 1){
           document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.one);
           document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        });
-      }
-      if(floorDisplay = 2){
-        var x = document.getElementById("search").value,
-            y = document.getElementById("searchpos").value;
-        $.getJSON('/load_path/', {
-          start: y,
-          end: x,
-        }, function(data){
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_1.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        }
+      });
+      $('.Floor2').click(function(){
+        if (x.length > 1 && y.length > 1){
           document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.two);
           document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        });
-      }
-      if(floorDisplay = 3){
-        var x = document.getElementById("search").value,
-            y = document.getElementById("searchpos").value;
-        $.getJSON('/load_path/', {
-          start: y,
-          end: x,
-        }, function(data){
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_2.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        }
+      });
+      $('.Floor3').click(function(){
+        if (x.length > 1 && y.length > 1){
           document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
           document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        });
-      }
-      if(floorDisplay = 4){
-        var x = document.getElementById("search").value,
-            y = document.getElementById("searchpos").value;
-        $.getJSON('/load_path/', {
-          start: y,
-          end: x,
-        }, function(data){
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_3.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        }
+      });
+      $('.Floor0').click(function(){
+        if (x.length > 1 && y.length > 1){
           document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.zero);
           document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
           document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-        });
-      }
-      if(floorDisplay = 5){
-        var x = document.getElementById("search").value,
-            y = document.getElementById("searchpos").value;
-        $.getJSON('/load_path/', {
-          start: y,
-          end: x,
-        }, function(data){
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_bsm.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
+        }
+      });
+      $('.Floor4').click(function(){
+        if (x.length > 1 && y.length > 1){
           document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.zero);
           document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.one);
           document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.two);
           document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
-        });
-      }
-      if(floorDisplay = 6){
+        } else {
+          document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_1.svg');
+          document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_2.svg');
+          document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_3.svg');
+          document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/static/images/SW_Floor_bsm.svg');
+        }
+      });
+      $('.Floor00').click(function(){
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
-      }
-    }
+      });
+    });
     </script>
     <script> // Allow the Enter key to trigger search function.
         var input = document.getElementById("search");
