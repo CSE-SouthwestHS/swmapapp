@@ -30,10 +30,8 @@ inp.addEventListener("input", function(e) {
         b.addEventListener("click", function(e) {
             /*insert the value for the autocomplete text field:*/
             inp.value = this.getElementsByTagName("input")[0].value;
-            document.getElementById("strtBtn").click();
-            /*close the list of autocompleted values,
-            (or any other open lists of autocompleted values:*/
             closeAllLists();
+            document.getElementById("strtBtn").click();
         });
         a.appendChild(b);
       }
@@ -63,6 +61,7 @@ inp.addEventListener("keydown", function(e) {
         /*and simulate a click on the "active" item:*/
         if (x) x[currentFocus].click();
       }
+      closeAllLists();
     }
 });
 
