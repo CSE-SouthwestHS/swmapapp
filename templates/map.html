@@ -23,9 +23,6 @@
     //----------------------Loading Screen-------//
     window.addEventListener("load", function(){
       var load_screen = document.getElementById("load_screen");
-      setTimeout(function(){
-      document.body.removeChild(load_screen);
-    }, 200);
       $.getJSON('/load_path/', {
         start: "BLANK",
         end: "BLANK",
@@ -36,6 +33,12 @@
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
         $("#time_estimate").text("Travel Time: " + data.time + " sec.");
       });
+      $('.closer').click(function(){
+        $('.floor').removeClass('active');
+        $('.icon').removeClass('active');
+      });
+      reset_searchbar();
+      document.body.removeChild(load_screen);
     });
     </script>
     <style>
@@ -166,6 +169,7 @@
     <script src="/static/java/mapMover.js"></script>
     <script src="/static/java/autocomplete.js"></script>
     <script src="/static/java/autocomplete_pos.js"></script>
+
     <script>
     function colorChange() {
       var Color = document.getElementById("Cinput").value;
@@ -184,18 +188,7 @@
       return true;
     }
     </script>
-    <script>
-    $(document).ready(function(){
-      $('#search').click(function(){
-        $('.searchBar input').css("color", "#000");
-      });
-    });
-    $(document).ready(function(){
-      $('#searchpos').click(function(){
-        $('.startbar input').css("color", "#000");
-      });
-    });
-    </script>
+
     <script>
     // the function below resets the floor button behavior to reflect a path
     function set_floor_buttons(data){
@@ -286,6 +279,7 @@
             if (results.indexOf(y) >= 0){
                 $('.searchBar input').css("color", "#3ee062");
                 $('.startbar input').css("color", "#3ee062");
+                $('.ETA').removeClass('show');
                 $.getJSON('/load_path/', {
                   start: y,
                   end: x,
@@ -296,9 +290,9 @@
                   document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
                   set_floor_buttons(data);
                   $("#time_estimate").text("Travel Time: " + data.time + " sec.");
+                  $('.ETA').addClass('show');
                   reset_searchbar();
                 });
-                $('.ETA').addClass('show');
             } else {
               $('.startbar input').css("color", "#e03e3e");
               $('#searchpos').blur();
@@ -377,15 +371,6 @@
           });
           // panZoom.setBeforePan(beforePan)
         };
-    </script>
-    <script>
-    $(document).ready(function(){
-      $('.closer').click(function(){
-        $('.floor').removeClass('active');
-        $('.icon').removeClass('active');
-        $('.ETA').removeClass('show');
-      });
-    });
     </script>
     <!--____________ END javascript___________-->
   </body>
