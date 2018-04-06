@@ -14,14 +14,6 @@ $(document).ready(function(){
     $('.icon').removeClass('active');
   });
 });
-//---------------deactivate buttons below------------
-
-function Destination() {
-  var x = document.getElementById("search").value;
-  if (results.indexOf(x) == -1) {
-    $('.startbar').removeClass('active');
-  }
-}
 //---------------deactivate buttons above------------
 
 $(document).ready(function(){

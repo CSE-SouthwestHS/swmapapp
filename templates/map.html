@@ -236,6 +236,14 @@
         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
       });
     }
+    function reset_searchbar(){
+      $('.searchBar input').css("color", "#000");
+      $('.startbar input').css("color", "#000");
+      $('.searchBar').removeClass('active');
+      $('.startbar').removeClass('active');
+      document.getElementById("search").value = "";
+      document.getElementById("searchpos").value = "";
+    }
     function Entry(){
       var init_html = window.location.href,
           html = init_html.substring(0, init_html.indexOf("/map/")),
@@ -278,7 +286,6 @@
             if (results.indexOf(y) >= 0){
                 $('.searchBar input').css("color", "#3ee062");
                 $('.startbar input').css("color", "#3ee062");
-                alert("Calling path");
                 $.getJSON('/load_path/', {
                   start: y,
                   end: x,
@@ -289,6 +296,7 @@
                   document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
                   set_floor_buttons(data);
                   $("#time_estimate").text("Travel Time: " + data.time + " sec.");
+                  reset_searchbar();
                 });
                 $('.ETA').addClass('show');
             } else {
