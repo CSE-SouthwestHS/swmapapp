@@ -20,14 +20,17 @@ global_location = "home"
 
 @app.route("/home/", methods=["GET","POST"])
 def home():
-    return render_template("index.html", page=global_location)
+    global global_location
+    g = global_location
+    global_location = "home"
+    return render_template("index.html", page=g)
 
 @app.route("/page_navigation/")
 def page_navigation():
     try:
         goal = request.args.get('goal', None, type=str)
         if goal == None:
-            return url_for("home")
+            return redirect(url_for("home"))
         realpath = os.path.dirname(os.path.realpath(__file__))+"/templates/parts/"
         with open(realpath + goal + "head.html","r") as f:
                 head = f.read()
@@ -87,10 +90,15 @@ def load_path():
         #get the input
         start = request.args.get('start', "NOSTART", type=str)
         end = request.args.get('end', "NOEND", type=str)
+        #this is how you signal you want a blank map
+        if start == "BLANK":
+            zero, one, two, three = defaults()
+            return jsonify(time="",zero=zero,one=one,two=two,three=three)
         #get the route
         time, images = route(start, end)
         if time == "ERROR":
             zero, one, two, three = defaults()
+
             return jsonify(time=time,zero=zero,one=one,two=two,three=three)
         floors = []
         for floor in images:
@@ -109,7 +117,7 @@ def load_path():
     except Exception as e:
         #if theres an error return defaults
         zero, one, two, three = defaults()
-        return jsonify(time=str(e),zero=zero,one=one,two=two,three=three)
+        return jsonify(time="error: " + str(e),zero=zero,one=one,two=two,three=three)
 
 #if somebody tries to fuck with the url it'll take them to a blank map
 @app.errorhandler(404)
