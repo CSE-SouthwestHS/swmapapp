@@ -90,6 +90,10 @@ def load_path():
         #get the input
         start = request.args.get('start', "NOSTART", type=str)
         end = request.args.get('end', "NOEND", type=str)
+        #this is how you signal you want a blank map
+        if start == "BLANK":
+            zero, one, two, three = defaults()
+            return jsonify(time="",zero=zero,one=one,two=two,three=three)
         #get the route
         time, images = route(start, end)
         if time == "ERROR":
