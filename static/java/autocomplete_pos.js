@@ -30,6 +30,7 @@ inp.addEventListener("input", function(e) {
         b.addEventListener("click", function(e) {
             /*insert the value for the autocomplete text field:*/
             inp.value = this.getElementsByTagName("input")[0].value;
+            document.getElementById("strtBtn").click();
             /*close the list of autocompleted values,
             (or any other open lists of autocompleted values:*/
             closeAllLists();
@@ -91,22 +92,6 @@ function closeAllLists(elmnt) {
     }
   }
 }
-/*execute a function when someone clicks in the document:*/
-document.addEventListener("click", function (e) {
-  var x = document.getElementById("searchpos").value;
-  closeAllLists(e.target);
-    if (results.indexOf(x) <= -1){
-      /*do nothing*/
-    } else {
-      if ( $('.startbar').hasClass('active') ){
-        /*do nothing*/
-        document.getElementById("strtBtn").click();
-      } else {
-      /*simulate click on searchBtn*/
-
-      }
-    }
-  });
 }
 
 /*An array containing all the rooms in the school:*/
