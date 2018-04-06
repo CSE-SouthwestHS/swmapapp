@@ -1548,12 +1548,12 @@ sub {
   }
   input[type=text]{
     border: none;
-    width: 65%;
-    margin-left: 135px;
+    width: 70%;
+    margin-left: 150px;
     padding: 8px;
     font-size: 55px;
     outline: none;
-    margin-top: 25px;
+    margin-top: 30px;
   }
   /*--------------Autocompleters Below-------------*/
   .autocomplete-items {

@@ -100,7 +100,7 @@
       <div id="Xicon" onclick="noColor()"></div>
     </div>
 
-    <div id="FLUI-div" class="FLUI" onclick="Deactivate()">
+    <div id="FLUI-div" class="FLUI">
       <svg id="FLUI-svg" class="closer" xmlns="http://www.w3.org/2000/svg" style="display: inline; width: 100%; min-width: 100%; max-width: 100%; height: 100%; min-height: 100%; max-height: 100%;" version="1.1">
         <image x="0" y="0" id="FloorX" width="150" height="150" xlink:href="/static/images/SW_Floor_1.svg" clip-path="url(#mapView)"/>
         <image x="0" y="115" id="FloorY" width="150" height="150" xlink:href="" clip-path="url(#mapView)"/>
@@ -411,7 +411,6 @@
       $('.closer').click(function(){
         $('.floor').removeClass('active');
         $('.icon').removeClass('active');
-        $('.ETA').removeClass('show');
       });
     });
     </script>
