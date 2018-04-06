@@ -20,7 +20,10 @@ global_location = "home"
 
 @app.route("/home/", methods=["GET","POST"])
 def home():
-    return render_template("index.html", page=global_location)
+    global global_location
+    g = global_location
+    global_location = "home"
+    return render_template("index.html", page=g)
 
 @app.route("/page_navigation/")
 def page_navigation():
@@ -28,8 +31,6 @@ def page_navigation():
         goal = request.args.get('goal', None, type=str)
         if goal == None:
             return redirect(url_for("home"))
-        global global_location
-        global_location = goal
         realpath = os.path.dirname(os.path.realpath(__file__))+"/templates/parts/"
         with open(realpath + goal + "head.html","r") as f:
                 head = f.read()
