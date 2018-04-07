@@ -58,32 +58,30 @@ $(document).ready(function(){
 
 function DNMode(){
   if ( $('.DarkMode').hasClass('DayMode')) {
-    $("#windowcolor").css("background-color", "#3b3b2b");
-    $(".searchBar").css("background-color", "#494949");
-    $(".startbar").css("background-color", "#494949");
-    $("#search").css("background-color", "#494949");
-    $("#search").css("color", "white");
-    $("#searchpos").css("color", "white");
-    $("#searchpos").css("background-color", "#494949");
-    $(".floor a").css("background-color", "#656565");
-    $(".icon a").css("background-color", "#656565");
+    $("#windowcolor").css("background", "#3b3b2b");
+    $(".searchBar").css("filter", "invert(80%)");
+    $(".startbar").css("filter", "invert(80%)");
+    $('.searchBar input').css("filter", "invert(100%)");
+    $('.startbar input').css("filter", "invert(100%)");
+    $(".floor a").css("background", "#656565");
+    $(".icon a").css("background", "#656565");
     $(".floor a").css("color", "#d1d1d1");
     $(".icon a").css("color", "#d1d1d1");
     $(".FLUI").css("filter", "invert(80%)");
+    $(".ETA").css("filter", "invert(20%)");
     document.getElementById('displayMode').innerHTML = "Day &#x2600;";
   } else {
-    $("#windowcolor").css("background-color", "#eeeccc");
-    $(".searchBar").css("background-color", "white");
-    $(".startbar").css("background-color", "white");
-    $("#search").css("background-color", "white");
-    $("#search").css("color", "black");
-    $("#searchpos").css("color", "black");
-    $("#searchpos").css("background-color", "white");
-    $(".floor a").css("background-color", "#eee");
-    $(".icon a").css("background-color", "#eee");
+    $("#windowcolor").css("background", "#eeeccc");
+    $(".searchBar").css("filter", "invert(0%)");
+    $(".startbar").css("filter", "invert(0%)");
+    $('.searchBar input').css("filter", "invert(0%)");
+    $('.startbar input').css("filter", "invert(0%)");
+    $(".floor a").css("background", "#eee");
+    $(".icon a").css("background", "#eee");
     $(".floor a").css("color", "#222");
     $(".icon a").css("color", "#222");
     $(".FLUI").css("filter", "invert(0%)");
+    $(".ETA").css("filter", "invert(0%)");
     document.getElementById('displayMode').innerHTML = "Night &#x263E;";
   }
 }

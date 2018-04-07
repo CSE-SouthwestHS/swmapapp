@@ -1,60 +1,65 @@
 // svg-pan-zoom v3.5.2
 // https://github.com/ariutta/svg-pan-zoom
-(function e(t,n,r){function s(o,u){
-  if(!n[o]){
-    if(!t[o]){
-      var a=typeof require=="function"&&require;
-      if(!u&&a)return a(o,!0);
-      if(i)return i(o,!0);
-      var f=new Error("Cannot find module '"+o+"'");
-      throw f.code="MODULE_NOT_FOUND",f}
-      var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){
+(function e(t,n,r){
+  function s(o,u){
+    if(!n[o]){
+      if(!t[o]){
+        var a=typeof require=="function"&&require;
+        if(!u&&a)return a(o,!0);
+        if(i)return i(o,!0);
+        var f=new Error("Cannot find module '"+o+"'");
+        throw f.code="MODULE_NOT_FOUND",f
+      }
+      var l=n[o]={exports:{}};
+      t[o][0].call(l.exports,function(e){
         var n=t[o][1][e];
-        return s(n?n:e)},l,l.exports,e,t,n,r)}
-        return n[o].exports}
-        var i=typeof require=="function"&&require;
-        for(var o=0;o<r.length;o++)s(r[o]);
-        return s})({1:[function(require,module,exports){
-var svgPanZoom = require('./svg-pan-zoom.js');
-
-// UMD module definition
-(function(window, document){
-  // AMD
-  if (typeof define === 'function' && define.amd) {
-    define('svg-pan-zoom', function () {
-      return svgPanZoom;
-    });
-  // CMD
-  } else if (typeof module !== 'undefined' && module.exports) {
-    module.exports = svgPanZoom;
-
-    // Browser
-    // Keep exporting globally as module.exports is available because of browserify
-    window.svgPanZoom = svgPanZoom;
+        return s(n?n:e)
+      },l,l.exports,e,t,n,r)
+    }
+    return n[o].exports
   }
-})(window, document)
-
-},{"./svg-pan-zoom.js":4}],2:[function(require,module,exports){
-var SvgUtils = require('./svg-utilities');
-
-module.exports = {
-  enable: function(instance) {
-    // Select (and create if necessary) defs
-    var defs = instance.svg.querySelector('defs')
-    if (!defs) {
-      defs = document.createElementNS(SvgUtils.svgNS, 'defs')
-      instance.svg.appendChild(defs)
+  var i=typeof require=="function"&&require;
+  for(var o=0;o<r.length;o++)s(r[o]);
+  return s
+})({1:[function(require,module,exports){
+  var svgPanZoom = require('./svg-pan-zoom.js');
+  // UMD module definition
+  (function(window, document){
+    // AMD
+    if (typeof define === 'function' && define.amd) {
+      define('svg-pan-zoom', function () {
+        return svgPanZoom;
+      });
+      // CMD
+    } else if (typeof module !== 'undefined' && module.exports) {
+      module.exports = svgPanZoom;
+      // Browser
+      // Keep exporting globally as module.exports is available because of browserify
+      window.svgPanZoom = svgPanZoom;
     }
+  })(window, document)
+},
+{"./svg-pan-zoom.js":4}],2:[function(require,module,exports){
+  var SvgUtils = require('./svg-utilities');
 
-    // Check for style element, and create it if it doesn't exist
-    var styleEl = defs.querySelector('style#svg-pan-zoom-controls-styles');
-    if (!styleEl) {
-      var style = document.createElementNS(SvgUtils.svgNS, 'style')
-      style.setAttribute('id', 'svg-pan-zoom-controls-styles')
-      style.setAttribute('type', 'text/css')
-      style.textContent = '.svg-pan-zoom-control { cursor: pointer; fill: black; fill-opacity: 0.333; } .svg-pan-zoom-control:hover { fill-opacity: 0.8; } .svg-pan-zoom-control-background { fill: white; fill-opacity: 0.5; } .svg-pan-zoom-control-background { fill-opacity: 0.8; }'
-      defs.appendChild(style)
-    }
+  module.exports = {
+    enable: function(instance) {
+      // Select (and create if necessary) defs
+      var defs = instance.svg.querySelector('defs')
+      if (!defs) {
+        defs = document.createElementNS(SvgUtils.svgNS, 'defs')
+        instance.svg.appendChild(defs)
+      }
+
+      // Check for style element, and create it if it doesn't exist
+      var styleEl = defs.querySelector('style#svg-pan-zoom-controls-styles');
+      if (!styleEl) {
+        var style = document.createElementNS(SvgUtils.svgNS, 'style')
+        style.setAttribute('id', 'svg-pan-zoom-controls-styles')
+        style.setAttribute('type', 'text/css')
+        style.textContent = '.svg-pan-zoom-control { cursor: pointer; fill: black; fill-opacity: 0.333; } .svg-pan-zoom-control:hover { fill-opacity: 0.8; } .svg-pan-zoom-control-background { fill: white; fill-opacity: 0.5; } .svg-pan-zoom-control-background { fill-opacity: 0.8; }'
+        defs.appendChild(style)
+      }
 
     // Zoom Group
     var zoomGroup = document.createElementNS(SvgUtils.svgNS, 'g');
@@ -82,7 +87,7 @@ module.exports = {
     zoomIn.addEventListener('click', function() {instance.getPublicInstance().zoomIn()}, false)
     zoomIn.addEventListener('touchstart', function() {instance.getPublicInstance().zoomIn()}, false)
 
-    var zoomInBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); // TODO change these background space fillers to rounded rectangles so they look prettier
+    var zoomInBackground = document.createElementNS(SvgUtils.svgNS, 'rect');
     zoomInBackground.setAttribute('x', '5');
     zoomInBackground.setAttribute('y', '-120');
     zoomInBackground.setAttribute('rx', '30%');
@@ -141,7 +146,7 @@ module.exports = {
     zoomOut.addEventListener('click', function() {instance.getPublicInstance().zoomOut()}, false);
     zoomOut.addEventListener('touchstart', function() {instance.getPublicInstance().zoomOut()}, false);
 
-    var zoomOutBackground = document.createElementNS(SvgUtils.svgNS, 'rect'); 
+    var zoomOutBackground = document.createElementNS(SvgUtils.svgNS, 'rect');
     zoomOutBackground.setAttribute('x', '5');
     zoomOutBackground.setAttribute('y', '-120');
     zoomOutBackground.setAttribute('rx', '30%');

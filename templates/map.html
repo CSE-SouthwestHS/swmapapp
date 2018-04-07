@@ -18,6 +18,7 @@
     <link rel="apple-touch-icon" type="image/png" href="/static/images/SWmapico_32x32.png" sizes="32x32">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' type='text/css'>
     <link rel="stylesheet" href="/static/MapCSS/style.css" type="text/css">
+    <link rel="stylesheet" href="/static/MapCSS/loading_icon.css" type="text/css">
     <link rel="stylesheet" href="/static/MapCSS/BGColor.css" type="text/css">
     <script>
     //----------------------Loading Screen-------//
@@ -33,12 +34,12 @@
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
         $("#time_estimate").text("Travel Time: " + data.time + " sec.");
       });
-      $('.closer').click(function(){
+      $('.closer').on('click touchend', function(){
         $('.floor').removeClass('active');
         $('.icon').removeClass('active');
       });
       reset_searchbar();
-      document.body.removeChild(load_screen);
+      $('#load_screen').css('display', 'none');
     });
     </script>
     <style>
@@ -99,6 +100,14 @@
       </div>
     </div>
 
+    <div id="loading_icon">
+      <div class="ring">
+        <div class="spinner"></div>
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
     <div id="windowcolor"></div>
 
     <div class="Scontainer closer">
@@ -108,8 +117,8 @@
       <div id="Xicon" onclick="noColor()"></div>
     </div>
 
-    <div id="FLUI-div" class="FLUI">
-      <svg id="FLUI-svg" class="closer" xmlns="http://www.w3.org/2000/svg" style="display: inline; width: 100%; min-width: 100%; max-width: 100%; height: 100%; min-height: 100%; max-height: 100%;" version="1.1">
+    <div id="FLUI-div" class="FLUI closer">
+      <svg id="FLUI-svg" xmlns="http://www.w3.org/2000/svg" style="display: inline; width: 100%; min-width: 100%; max-width: 100%; height: 100%; min-height: 100%; max-height: 100%;" version="1.1">
         <image x="0" y="0" id="FloorX" width="150" height="150" xlink:href="" clip-path="url(#mapView)"/>
         <image x="0" y="115" id="FloorY" width="150" height="150" xlink:href="" clip-path="url(#mapView)"/>
         <image x="0" y="205" id="FloorZ" width="150" height="150" xlink:href="" clip-path="url(#mapView)"/>
@@ -124,7 +133,7 @@
           <div class="autocomplete">
             <input id="search" type="text" name="Search" placeholder="Search Southwest" class="closer"></input>
           </div>
-          <button type="button" id="srchBtn" class="searchBtn" onclick="Entry()"><img src="/static/images/searchButton.jpg" alt="Search"/></button>
+          <button type="button" id="srchBtn" class="searchBtn closer" onclick="Entry()"><img src="/static/images/searchButton.jpg" alt="Search"/></button>
         </form>
         <div class="floor">
           <div class="flico">
@@ -156,7 +165,7 @@
             <input id="searchpos" type="text" name="Searchpos" placeholder="Your location" class="closer"></input>
           </div>
         </form>
-        <button type="button" id="strtBtn" class="startposBtn" onclick="Trace()"><img src="/static/images/Locationicon.png" alt="Search"/></button>
+        <button type="button" id="strtBtn" class="startposBtn closer" onclick="Trace()"><img src="/static/images/Locationicon.png" alt="Search"/></button>
       </div>
     </div>
 
@@ -248,7 +257,7 @@
         if (results.indexOf(x) < 0){
           $('.startbar').removeClass('active');
           $('.searchBar input').css("color", "#e03e3e");
-          $('.ETA').removeClass('show');
+          $('.show').css("animation", "slideback 2s forwards");
           $('#search').blur();
           document.getElementById('searchpos').value = '';
         } else {
@@ -267,7 +276,6 @@
           y = document.getElementById("searchpos").value;
       if ( $('.startbar').hasClass('active') ){
         if (y == x){
-          $('.ETA').removeClass('show');
           $('.startbar input').css("color", "#e03e3e");
           $('#searchpos').blur();
           document.getElementById('searchpos').value = y + ' ';
@@ -277,19 +285,22 @@
             $('#search').blur();
           } else {
             if (results.indexOf(y) >= 0){
+                $('#loading_icon').css('display', 'block');
                 $('.searchBar input').css("color", "#3ee062");
                 $('.startbar input').css("color", "#3ee062");
-                $('.ETA').removeClass('show');
+                $('.show').css("animation", "slideback 2s forwards");
                 $.getJSON('/load_path/', {
                   start: y,
                   end: x,
                 }, function(data){
+                  $('#loading_icon').css('display', 'none');
                   document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.zero);
                   document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.one);
                   document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.two);
                   document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
                   set_floor_buttons(data);
                   $("#time_estimate").text("Travel Time: " + data.time + " sec.");
+                  $('.show').css("animation", "slide 2s forwards");
                   $('.ETA').addClass('show');
                   reset_searchbar();
                 });
@@ -320,6 +331,20 @@
       }, function(data){
         set_floor_buttons(data);
       });
+    });
+    $("#search").click(function(){
+      if ( $('.DarkMode').hasClass('DayMode') ){
+        $('.searchBar input').css("color", "white");
+      } else{
+        $('.searchBar input').css("color", "black");
+      }
+    });
+    $("#searchpos").click(function(){
+      if ( $('.DarkMode').hasClass('DayMode') ){
+        $('.startbar input').css("color", "white");
+      } else{
+        $('.startbar input').css("color", "black");
+      }
     });
     </script>
     <script> // Allow the Enter key to trigger search function.
@@ -372,17 +397,6 @@
           // panZoom.setBeforePan(beforePan)
         };
     </script>
-<<<<<<< HEAD
-    <script>
-    $(document).ready(function(){
-      $('.closer').click(function(){
-        $('.floor').removeClass('active');
-        $('.icon').removeClass('active');
-      });
-    });
-    </script>
-=======
->>>>>>> b647773e3068c03d587d7402e40fe06cd07fd25e
     <!--____________ END javascript___________-->
   </body>
 </html>
