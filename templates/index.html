@@ -85,6 +85,10 @@
         </div>
       </div>
     </div>
+    <!-- this form is necesarry to ensure a token is generated -->
+    <form method=post action="">
+      <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+    </form>
     <div id="thebody"></div>
     <!-- functions for changing page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -94,7 +98,7 @@
         goal: "home",
       }, function(data) {
         $("#page_title").text("MapSW Home");
-        $("#thehead").html(data.head)
+        $("#thehead").html(data.head);
         $("#thebody").html(data.body);
       });
     }
@@ -103,7 +107,7 @@
         goal: "contact",
       }, function(data) {
         $("#page_title").text("MapSW Contact");
-        $("#thehead").html(data.head)
+        $("#thehead").html(data.head);
         $("#thebody").html(data.body);
       });
     }

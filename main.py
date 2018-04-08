@@ -4,8 +4,10 @@ from Map import route, defaults
 from io import BytesIO
 import base64
 import os
+import uuid
 
 app = Flask(__name__, static_url_path='/static')
+
 #mail sophisticated
 app.config.update(dict(
     MAIL_SERVER = 'smtp.gmail.com',
@@ -18,18 +20,43 @@ app.config.update(dict(
 mail = Mail(app)
 global_location = "home"
 
-@app.route("/home/", methods=["GET","POST"])
+#security section
+app.secret_key = "super secret key"
+#this method is called before all requests, make sure no unauthorized posts
+@app.before_request
+def csrf_protect():
+    if request.method == "POST":
+        token = session.pop("_csrf_token", None)
+        if not token or token != request.form.get("_csrf_token"):
+            print(token)
+            print(request.form.get("_csrf_token"))
+            abort(403)
+
+def generate_csrf_token():
+    if "_csrf_token" not in session:
+        session["_csrf_token"] = generate_token()
+    return session["_csrf_token"]
+
+#generates a random token for the user
+def generate_token():
+    return uuid.uuid4()
+
+#makes the app create a csrf token for each session
+app.jinja_env.globals["csrf_token"] = generate_csrf_token
+
+#below are all the routes for webpages
+@app.route("/home/", methods=["GET"])
 def home():
     global global_location
     g = global_location
     global_location = "home"
     return render_template("index.html", page=g)
 
-@app.route("/page_navigation/")
+@app.route("/page_navigation/", methods=["GET"])
 def page_navigation():
     try:
         goal = request.args.get('goal', None, type=str)
-        if goal == None:
+        if goal not in ["home","contact","help"]:
             return redirect(url_for("home"))
         realpath = os.path.dirname(os.path.realpath(__file__))+"/templates/parts/"
         with open(realpath + goal + "head.html","r") as f:
@@ -42,17 +69,17 @@ def page_navigation():
         return redirect(url_for("home"))
 
 #these routes are needed to go from the map interface back to regular
-@app.route("/gohome/")
+@app.route("/gohome/", methods=["GET"])
 def gohome():
     global global_location
     global_location = "home"
     return redirect(url_for("home"))
-@app.route("/contact/")
+@app.route("/contact/", methods=["GET"])
 def contact():
     global global_location
     global_location = "contact"
     return redirect(url_for("home"))
-@app.route("/help/")
+@app.route("/help/", methods=["GET"])
 def help():
     global global_location
     global_location = "help"
@@ -71,20 +98,20 @@ def feedback():
     mail.send(msg)
     return redirect(url_for("thank_you"))
 
-@app.route("/thank-you/")
+@app.route("/thank-you/", methods=["GET"])
 def thank_you():
     return render_template("thank-you.html")
 
-@app.route("/egg/")
+@app.route("/egg/", methods=["GET"])
 def egg():
     return render_template("egg.html")
 
-@app.route("/map/")
+@app.route("/map/", methods=["GET"])
 def blank():
     zero, one, two, three = defaults()
     return render_template("map.html", zero = zero, one = one, two = two, three = three)
 
-@app.route("/load_path/")
+@app.route("/load_path/", methods=["GET"])
 def load_path():
     try:
         #get the input
@@ -122,6 +149,11 @@ def load_path():
 #if somebody tries to fuck with the url it'll take them to a blank map
 @app.errorhandler(404)
 def page_not_found(e):
+    return redirect(url_for("home"))
+
+#this is to handle CSRF attacks
+@app.errorhandler(400)
+def csrf_prevention(e):
     return redirect(url_for("home"))
 
 if __name__ == "__main__":

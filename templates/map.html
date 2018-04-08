@@ -125,11 +125,12 @@
         <image x="0" y="310" id="Floor0" width="150" height="150" xlink:href="" clip-path="url(#mapView)"/>
       </svg>
     </div>
-    <div class="ETA" id="time_estimate">Travel Time: {{time}} sec.</div>
+    <div class="ETA" id="time_estimate"></div>
 
     <div class="searchSpace">
       <div class="searchBar">
         <form autocomplete="off">
+          <input type=hidden name=_csrf_token value="{{ csrf_token() }}">
           <div class="autocomplete">
             <input id="search" type="text" name="Search" placeholder="Search Southwest" class="closer"></input>
           </div>
@@ -161,6 +162,7 @@
 
       <div class="startbar">
         <form autocomplete="off">
+          <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
           <div class="autocomplete">
             <input id="searchpos" type="text" name="Searchpos" placeholder="Your location" class="closer"></input>
           </div>
