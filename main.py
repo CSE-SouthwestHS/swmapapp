@@ -106,6 +106,10 @@ def thank_you():
 def egg():
     return render_template("egg.html")
 
+@app.route("/form/", methods=["GET"])
+def form():
+    return render_template("form.html")
+
 @app.route("/map/", methods=["GET"])
 def blank():
     zero, one, two, three = defaults()

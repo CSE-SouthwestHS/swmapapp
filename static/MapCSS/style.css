@@ -1,9 +1,9 @@
 /*--------------GENERAL PAGE SETUP-------------*/
-html, body {
+html, body{
   margin: 0;
   padding: 0;
 }
-body {
+body{
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   overflow: scroll;
@@ -371,13 +371,26 @@ sub {
   left: 4px;
 }
 .main {
-    padding: 0;
-    height: inherit;
+  padding: 0;
+  height: inherit;
 }
 .select2{
   outline-style: solid;
   outline-color: #fff;
   outline-width: thin;
+}
+.searchSpace{
+  min-height: auto;
+  max-height: inherit;
+  overflow: visible;
+  min-width: 100%;
+  max-width: 100%;
+  user-zoom: none;
+  position: fixed;
+  display: inline;
+  top:30px;
+  left: 0;
+  z-index: 0;
 }
 
 @media (max-width:900px){
@@ -448,8 +461,8 @@ sub {
     margin: 0 30px;
   }
   .select{
-    outline-style: dashed;
-    outline-color: #663399;
+    border-left: dashed 3px #663399;
+    border-right: dashed 3px #663399;
   }
   .header {
     background-color: rgb(102,51,153);
@@ -509,6 +522,7 @@ sub {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+    margin-bottom: 50px;
     position: auto;
   }
   .feedbox h1{
@@ -804,7 +818,60 @@ sub {
     		background-color: #9f38fa;
     		cursor: pointer;
     		box-shadow: none;
-    }
+  }
+  .sub .formbtn{
+    display: block;
+    height: 50px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    line-height: 50px;
+    width: 250px;
+    list-style: none;
+    padding: 0 15px;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  a.formbtn {
+    font-size: 1.5rem;
+    text-align: center;
+  	color: #008794;
+  	position: relative;
+  	border-radius: 40px;
+  	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  	transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+  }
+  a.formbtn:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border: solid 2px;
+    transform: scale(0.8);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+  }
+  a.formbtn:hover:after {
+    transform: scale(1);
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+  }
+  a.formbtn:nth-of-type(1) {
+    background-color: #fff;
+  }
+  a.formbtn:nth-of-type(1):hover {
+    color: white;
+  }
+  a.formbtn:nth-of-type(1):after {
+    border-color: white;
+  }
+  a.formbtn:hover {
+    background-color: #9f38fa;
+    cursor: pointer;
+    box-shadow: none;
+  }
 }
 
 @media (min-width:900px){
@@ -875,9 +942,8 @@ sub {
     margin: 0 20px;
   }
   .select{
-    outline-style: dashed;
-    outline-color: #663399;
-    outline-width: 7px;
+    border-left: dashed 7px #663399;
+    border-right: dashed 7px #663399;
   }
   .header {
     background-color: rgb(102,51,153);
@@ -934,6 +1000,7 @@ sub {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
     border-radius: 15px;
     background-color: #f2f2f2;
     padding: 60px;
@@ -1246,6 +1313,59 @@ sub {
   		cursor: pointer;
   		box-shadow: none;
   }
+  .sub .formbtn{
+    display: block;
+    height: 80px;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    line-height: 80px;
+    width: 400px;
+    list-style: none;
+    padding: 0 25px;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  a.formbtn {
+    font-size: 2.2rem;
+    text-align: center;
+  	color: #008794;
+  	position: relative;
+  	border-radius: 80px;
+  	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  	transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+  }
+  a.formbtn:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border: solid 2px;
+    transform: scale(0.8);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    border-radius: 80px;
+    transition: all 0.3s ease;
+  }
+  a.formbtn:hover:after {
+    transform: scale(1);
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+  }
+  a.formbtn:nth-of-type(1) {
+    background-color: #fff;
+  }
+  a.formbtn:nth-of-type(1):hover {
+    color: white;
+  }
+  a.formbtn:nth-of-type(1):after {
+    border-color: white;
+  }
+  a.formbtn:hover {
+    background-color: #9f38fa;
+    cursor: pointer;
+    box-shadow: none;
+  }
 }
 /*--------------^ GENERAL PAGE SETUP ^-------------*/
 
@@ -1260,7 +1380,7 @@ sub {
       z-index: 3;
       box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
-  .searchbar.valid{
+  .searchBar.valid{
       background: 50% no-repeat,linear-gradient(to left, #fff, #fff, #f3e4ff, #f3e4ff, #fff, #fff) no-repeat;
       background-size: contain ,500% auto ;
       animation: bgrad 1s forwards;
@@ -1279,16 +1399,6 @@ sub {
       opacity: 0.6;
       cursor: pointer;
       z-index: 4;
-    }
-  .searchSpace{
-      min-height: auto;
-      overflow: visible;
-      width: 100%;
-      position: fixed;
-      display: inline;
-      top:30px;
-      left: 0;
-      z-index: 0;
     }
   * {
       box-sizing: border-box;
@@ -1506,16 +1616,6 @@ sub {
     opacity: 0.5;
     cursor: pointer;
     z-index: 4;
-  }
-  .searchSpace{
-    min-height: auto;
-    overflow: visible;
-    width: 100%;
-    position: fixed;
-    display: inline;
-    top:30px;
-    left: 0;
-    z-index: 0;
   }
   * {
     box-sizing: border-box;
@@ -1750,7 +1850,7 @@ sub {
     color: #222;
     text-decoration: none;
     list-style: none;
-    display: inline-block;
+    display: none;
     font-size: .92em;
     padding: 0px 30px;
     width: 130px;
@@ -1760,7 +1860,6 @@ sub {
     margin-top: -5px;
     overflow: auto;
     box-shadow: 0 6px 8px rgba(0,0,0,0.5);
-    animation: slideback 0.75s ease forwards;
     z-index: 5;
   }
   .icon a:hover{
@@ -1768,6 +1867,7 @@ sub {
   }
   .icon.active a{
     animation: slide 0.75s ease forwards;
+    display: inline-block;
   }
   @keyframes slide{
     0%{
@@ -1829,7 +1929,7 @@ sub {
     color: #222;
     text-decoration: none;
     list-style: none;
-    display: inline-block;
+    display: none;
     font-size: .92em;
     padding: 0px 30px;
     width: 120px;
@@ -1839,13 +1939,13 @@ sub {
     margin-top: -5px;
     overflow: auto;
     box-shadow: 0 6px 8px rgba(0,0,0,0.5);
-    animation: slideback2 0.5s ease forwards;
   }
   .floor a:hover{
     background: #dabbfd !important;
   }
   .floor.active a{
     animation: slide2 0.75s ease forwards;
+    display: inline-block;
   }
   .floor.active{
     animation: brighten 0.5s ease forwards;
@@ -1859,16 +1959,6 @@ sub {
     100%{
       transform: translateX(-50px) translateY(60px);
       opacity: 1;
-    }
-  }
-  @keyframes slideback2{
-    0%{
-      transform: translateX(-50px) translateY(60px);
-      opacity: 1;
-    }
-    100%{
-      transform: translateX(75px) translateY(60px);
-      opacity: 0;
     }
   }
   @keyframes brighten{
@@ -1926,7 +2016,7 @@ sub {
     color: #222;
     text-decoration: none;
     list-style: none;
-    display: inline-block;
+    display: none;
     font-size: 3.6em;
     padding: 0px 50px;
     width: 340px;
@@ -1935,7 +2025,6 @@ sub {
     margin-left: -50px;
     margin-top: -6px;
     overflow: auto;
-    animation: slideback 0.75s ease forwards;
     box-shadow: 0 10px 18px rgba(0,0,0,0.5);
     z-index: 4;
   }
@@ -1944,6 +2033,7 @@ sub {
   }
   .icon.active a{
     animation: slide 0.75s ease forwards;
+    display: inline-block;
   }
   @keyframes slide{
     0%{
@@ -1968,8 +2058,14 @@ sub {
   .hamburger:before{
     top: -30px;
   }
+  .hamburger ul:before{
+    display: none;
+  }
   .hamburger:after{
     top: 30px;
+  }
+  hamburger ul:after{
+    display: auto;
   }
   .icon.active .hamburger{
     background: rgba(0,0,0,0);
@@ -2002,7 +2098,7 @@ sub {
     color: #222;
     text-decoration: none;
     list-style: none;
-    display: inline-block;
+    display: none;
     font-size: 3.6em;
     padding: 0px 50px;
     width: 400px;
@@ -2012,13 +2108,13 @@ sub {
     margin-top: -5px;
     overflow: auto;
     box-shadow: 0 10px 18px rgba(0,0,0,0.5);
-    animation: slideback2 0.5s ease forwards;
   }
   .floor a:hover{
     background: #dabbfd !important;
   }
   .floor.active a{
     animation: slide2 0.75s ease forwards;
+    display: inline-block;
   }
   .floor.active{
     animation: brighten 0.5s ease forwards;
@@ -2044,16 +2140,6 @@ sub {
   }
   .floor.active a :last-child{
     animation-delay: 0.3s;
-  }
-  @keyframes slideback2{
-    0%{
-      transform: translateX(-330px) translateY(145px);
-      opacity: 1;
-    }
-    100%{
-      transform: translateX(70px) translateY(145px);
-      opacity: 0;
-    }
   }
   @keyframes brighten{
     0%{
