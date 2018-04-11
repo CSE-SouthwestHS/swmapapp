@@ -205,36 +205,42 @@
     // the function below resets the floor button behavior to reflect a path
     function set_floor_buttons(data){
       $('.Floor1').click(function(){
+        window.panZoom.reset();
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.one);
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
       });
       $('.Floor2').click(function(){
+        window.panZoom.reset();
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.two);
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
       });
       $('.Floor3').click(function(){
+        window.panZoom.reset();
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
       });
       $('.Floor0').click(function(){
+        window.panZoom.reset();
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.zero);
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
       });
       $('.Floor4').click(function(){
+        window.panZoom.reset();
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.one);
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.two);
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.three);
         document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.zero);
       });
       $('.Floor00').click(function(){
+        window.panZoom.reset();
         document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
         document.getElementById("FloorZ").setAttributeNS('http://www.w3.org/1999/xlink', 'href', '');
