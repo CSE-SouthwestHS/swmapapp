@@ -26,10 +26,8 @@ app.secret_key = "super secret key"
 @app.before_request
 def csrf_protect():
     if request.method == "POST":
-        token = session.pop("_csrf_token", None)
-        if not token or token != request.form.get("_csrf_token"):
-            print(token)
-            print(request.form.get("_csrf_token"))
+        token = str(session.pop("_csrf_token", None))[:36]
+        if token != str(request.form.get("_csrf_token"))[:36]:
             abort(403)
 
 def generate_csrf_token():
