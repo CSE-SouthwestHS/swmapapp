@@ -147,7 +147,7 @@ body{
   z-index: 0;
 }
 .colors{
-  animation: cchange 2s infinite;
+  animation: cchange 5s infinite;
   font-size: inherit;
   text-decoration: none;
   list-style: none;

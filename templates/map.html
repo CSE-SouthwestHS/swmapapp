@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="user-scalable=no">
     <title>MapSW</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115470904-1"></script>
@@ -303,6 +303,7 @@
                   end: x,
                 }, function(data){
                   $('#loading_icon').css('display', 'none');
+                  window.panZoom.reset();
                   document.getElementById("Floor0").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.zero);
                   document.getElementById("FloorX").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.one);
                   document.getElementById("FloorY").setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'data:image/png;base64,'+data.two);
