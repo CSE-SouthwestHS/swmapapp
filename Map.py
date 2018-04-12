@@ -180,7 +180,9 @@ def parse_input(raw):
         "Weight Room": "N1WR",
         "West Gym": "N1WG",
         "Mens Bathroom": "BM",
+        "Men's Bathroom": "BM",
         "Womens Bathroom": "BW",
+        "Women's Bathroom": "BW",
         "Gender Neutral Bathroom": "BGN",
         "Elevator": "Elevator",
         "Door 1": "C1D1",
@@ -207,7 +209,8 @@ def parse_input(raw):
         "Pool": "E0PO",
         "Courtyard Lower": "C1CY",
         "East Gym": "E0EG",
-        "Elevator": "EV"
+        "Elevator": "EV",
+        "Code Club": "E106"
     }
     return parse.get(raw, raw)
 
