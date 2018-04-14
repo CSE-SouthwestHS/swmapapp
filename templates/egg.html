@@ -22,24 +22,28 @@
   <body id="egg">
     <div class="egg" id="border"><a class="tooltip" data-tip='Type "Quit()" to go back to MapSW.'>&#8505;</a></div>
     <div class="eggTextBox">
-      <textarea id="bottomText" onclick="eggTextInit()"></textarea>
+      <textarea id="bottomText" onclick="eggTextInit()" oninput="sanitate()"></textarea>
     </div>
     <div class="infocard"></div>
     <script>
     var clicked = 0;
-      function eggTextInit(){
-        if (clicked < 1){
-          var startup = document.getElementById('bottomText').value;
-          document.getElementById('bottomText').value = "Starting Program...\n\n\n";
-          $('.egg a').css("display", "inline-block");
-          $('#bottomText').attr("disabled", true);
-          clicked++;
-          setTimeout(function(){
-            eggTextArray();
-            start();
-          }, 1500);
-        }
+    function eggTextInit(){
+      if (clicked < 1){
+        var startup = document.getElementById('bottomText').value;
+        document.getElementById('bottomText').value = "Starting Program...\n\n\n";
+        $('.egg a').css("display", "inline-block");
+        $('#bottomText').attr("disabled", true);
+        clicked++;
+        setTimeout(function(){
+          eggTextArray();
+          start();
+        }, 1500);
       }
+    }
+    function sanitate(){
+      var safeInput = document.getElementById("bottomText").value;
+      document.getElementById("bottomText").value = safeInput.replace(/[`~@#$%^&_|+\-;:'",<>\{\}\[\]\\\/]/gi, '');
+    }
     </script>
     <script>
     var Usable = 0;

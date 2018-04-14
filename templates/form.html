@@ -2,8 +2,10 @@
 <html>
   <head>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="/static/SWmapico.ico">
     <title>Feedback</title>
+    <link rel="shortcut icon" href="/static/SWmapico.ico">
+    <link rel="icon" type="image/png" href="/static/images/SWmapico_16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" type="image/png" href="/static/images/SWmapico_32x32.png" sizes="32x32">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115470904-1"></script>
     <script>
@@ -36,13 +38,13 @@
         <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
         <h1>Tell us about your experience</h1>
         <label for="fname">First Name *</label><br/>
-        <input type="text" id="fname" name="firstname" placeholder="" required><br/>
+        <input type="text" id="fname" name="firstname" oninput="sanitateFN()" placeholder="" required><br/>
 
         <label for="lname">Last Name *</label><br/>
-        <input type="text" id="lname" name="lastname" placeholder="" required><br/>
+        <input type="text" id="lname" name="lastname" oninput="sanitateLN()" placeholder="" required><br/>
 
         <label for="email">Email *</label><br/>
-        <input type="email" id="email" name="email" placeholder="" required><br/>
+        <input type="email" id="email" name="email"  oninput="sanitateML()" placeholder="" required><br/>
 
 
         <label for="experience">Experience *</label><br/>
@@ -53,7 +55,7 @@
         </select>
 
         <label for="subject">Description</label>
-        <textarea id="coments" name="subject" placeholder="" rows="5"></textarea>
+        <textarea id="coments" name="subject" placeholder="" rows="5" oninput="sanitateArea()"></textarea>
 
         <input type="submit" name="submit" value="Submit">
       </form>
@@ -61,12 +63,30 @@
 
     <div id="success_message" style="width:100%; height:75%; display:none; "> <h3>Posted your feedback successfully!</h3> </div>
     <div id="error_message" style="width:100%; height:75%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
-    <script type="text/javascript">
-    var frmvalidator = new Validator("feedback_form");
-    frmvalidator.addValidation("fname","req","Please enter your first name.");
-    frmvalidator.addValidation("lname","req");
-    frmvalidator.addValidation("email","req");
+    <script>
+    var frmvalidator = new Validator("feedback_form"),
+    frmvalidator.addValidation("fname","req","Please enter your first name."),
+    frmvalidator.addValidation("lname","req"),
+    frmvalidator.addValidation("email","req"),
     frmvalidator.addValidation("email","email","Please enter a valid email address.");
+    </script>
+    <script>
+    function sanitateFN(){
+      var safeInput = document.getElementById('fname').value;
+      document.getElementById('fname').value = safeInput.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+    }
+    function sanitateLN(){
+      var safeInput = document.getElementById('lname').value;
+      document.getElementById('lname').value = safeInput.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+    }
+    function sanitateML(){
+      var safeInput = document.getElementById('email').value;
+      document.getElementById('email').value = safeInput.replace(/[`~!#$%^&*()_|+\-=?;:'",<>\{\}\[\]\\\/]/gi, '');
+    }
+    function sanitateArea(){
+      var safeInput = document.getElementById('coments').value;
+      document.getElementById('coments').value = safeInput.replace(/[`~@#$%^*()_|+\-=<>\{\}\[\]\\\/]/gi, '');
+    }
     </script>
   </body>
 </html>
