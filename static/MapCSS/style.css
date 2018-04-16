@@ -694,7 +694,7 @@ sub{
     margin-top: 125px;
     border-radius: 3px;
   }
-  .qbox4 p{
+  .qbox4 li{
     margin-left: 20px;
     margin-top: 15px;
     font-weight: 300;
@@ -1163,7 +1163,7 @@ sub{
     margin-top: 200px;
     border-radius: 5px;
   }
-  .qbox4 p{
+  .qbox4 li{
     margin-left: 40px;
     margin-top: 25px;
     font-weight: 300;
