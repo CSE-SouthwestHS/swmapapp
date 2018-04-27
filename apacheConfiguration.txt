@@ -1,0 +1,13 @@
+<VirtualHost *>
+    ServerName example.com
+
+    WSGIDaemonProcess mapsw user=user1 group=group1 threads=5
+    WSGIScriptAlias / /var/www/mapsw/mapsw.wsgi
+
+    <Directory /var/www/mapsw>
+        WSGIProcessGroup mapsw
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+</VirtualHost>
