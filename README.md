@@ -1,5 +1,5 @@
 # swmapapp
-An app to guide community members to evetes and locations at Southwest High School 
+An app to guide community members to events and locations at Southwest High School 
 
 Dependencies:
 Flask
